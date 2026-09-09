@@ -30,6 +30,11 @@ const THUMBNAILS = {
   'ipod-classic': `<rect x="14" y="4" width="20" height="40" rx="3"/><rect x="17.5" y="8" width="13" height="10" rx="1"/><circle cx="24" cy="31" r="7"/><circle class="accent fill" cx="24" cy="31" r="2"/>`,
   'ipod-nano': `<rect x="16" y="6" width="16" height="36" rx="3"/><rect x="19" y="10" width="10" height="12" rx="1"/><circle cx="24" cy="32" r="5"/><circle class="accent fill" cx="24" cy="32" r="1.5"/>`,
   'ipod-shuffle': `<rect x="14" y="14" width="20" height="20" rx="3"/><circle cx="24" cy="24" r="6"/><circle class="accent fill" cx="24" cy="24" r="1.5"/>`,
+  // Rumored form factors (see `src/data/rumors.ts`).
+  'iphone-fold': `<path d="M22 6H10a3 3 0 0 0-3 3v30a3 3 0 0 0 3 3h12"/><path d="M26 6h12a3 3 0 0 1 3 3v30a3 3 0 0 1-3 3H26"/><path class="accent" d="M24 6v36"/>`,
+  'home-hub': `<rect x="8" y="7" width="32" height="22" rx="3"/><path d="M13 41a11 11 0 0 1 22 0"/><path d="M10 41h28"/><circle class="accent fill" cx="24" cy="10.5" r="1"/>`,
+  glasses: `<rect x="5" y="19" width="16" height="12" rx="5"/><rect x="27" y="19" width="16" height="12" rx="5"/><path d="M21 24h6"/><path d="M5 22l-3-3M43 22l3-3"/><circle class="accent fill" cx="9" cy="16" r="1.4"/>`,
+  robot: `<rect x="18" y="5" width="23" height="16" rx="2"/><path d="M29.5 21v5l-10 9"/><rect x="8" y="35" width="24" height="7" rx="3.5"/><circle class="accent fill" cx="29.5" cy="26" r="1.6"/>`,
 } as const;
 
 export type ThumbnailKey = keyof typeof THUMBNAILS;

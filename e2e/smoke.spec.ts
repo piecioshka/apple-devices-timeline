@@ -158,6 +158,29 @@ test('Content Security Policy allows the inline theme script', async ({
   expect(errors).toEqual([]);
 });
 
+test('home page dates the list and previews rumored devices', async ({
+  page,
+}) => {
+  await page.goto(url('/'));
+
+  const updated = page.locator('header time');
+  await expect(updated).toHaveAttribute('datetime', /^\d{4}-\d{2}-\d{2}$/);
+  await expect(updated).toHaveText(/^\d{1,2} [A-Z][a-z]+ \d{4}$/);
+
+  const rumors = page.getByRole('region', { name: 'Rumors' });
+  await expect(rumors).toBeVisible();
+  await expect(rumors.getByRole('heading', { level: 4 })).not.toHaveCount(0);
+  // Rumor cards are not <article>, so they stay out of the structured data.
+  await expect(rumors.locator('article')).toHaveCount(0);
+});
+
+test('category without rumors hides the rumors section', async ({ page }) => {
+  await page.goto(url('/pl/network'));
+
+  await expect(page.getByRole('region', { name: 'Plotki' })).toHaveCount(0);
+  await expect(page.locator('article').first()).toBeVisible();
+});
+
 test('pages carry WebSite and ItemList structured data', async ({ page }) => {
   await page.goto(url('/pl/mac'));
 

@@ -1,0 +1,161 @@
+---
+import { DATA_UPDATED_AT } from '@/data/meta';
+import type { Rumor } from '@/data/rumors';
+import { UI, plural, type Locale } from '@/i18n/ui';
+import { formatWindow, groupByWindow } from '@/lib/rumors';
+import { formatFullDate } from '@/lib/timeline';
+import RumorCard from './RumorCard.astro';
+
+interface Props {
+  locale: Locale;
+  rumors: Rumor[];
+}
+
+const { locale, rumors } = Astro.props;
+const ui = UI[locale];
+const groups = groupByWindow(rumors);
+---
+
+<section id="rumors" class="rumors" aria-labelledby="rumors-title">
+  <div class="rail">
+    <h2 id="rumors-title" class="heading">
+      {ui.rumorsTitle}
+    </h2>
+    <p class="count">
+      {rumors.length} {plural(locale, rumors.length, ui.rumors)}
+    </p>
+  </div>
+
+  <div class="content">
+    <p class="intro">
+      {ui.rumorsIntro(formatFullDate(DATA_UPDATED_AT, ui.dateLocale))}
+    </p>
+    <ol class="windows">
+      {groups.map((group) => (
+        <li class="window">
+          <h3 class="window-heading">{formatWindow(group.window, locale)}</h3>
+          <ul class="grid">
+            {group.rumors.map((rumor) => (
+              <li>
+                <RumorCard locale={locale} rumor={rumor} />
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  .rumors {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+    padding-bottom: 3.5rem;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: calc(var(--toolbar-height) + 1rem);
+  }
+
+  .rail {
+    position: sticky;
+    top: calc(var(--toolbar-height) + 1.25rem);
+    align-self: start;
+  }
+
+  .heading {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    font-variation-settings: 'wdth' 80;
+    color: var(--accent);
+  }
+
+  .count {
+    margin-top: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  .intro {
+    max-width: 60ch;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  .windows {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+    margin-top: 1.5rem;
+    padding-left: 1.75rem;
+    border-left: 1px dashed var(--line-strong);
+  }
+
+  .window {
+    position: relative;
+  }
+
+  .window::before {
+    content: '';
+    position: absolute;
+    left: calc(-1.75rem - 6px);
+    top: 0.45rem;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px dashed var(--accent);
+  }
+
+  .window-heading {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 720px) {
+    .rumors {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .rail {
+      top: var(--toolbar-height);
+      z-index: 1;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      background: var(--bg);
+    }
+
+    .heading {
+      font-size: 1.75rem;
+    }
+
+    .count {
+      margin-top: 0;
+    }
+
+    .windows {
+      padding-left: 1.25rem;
+    }
+
+    .window::before {
+      left: calc(-1.25rem - 6px);
+    }
+  }
+</style>

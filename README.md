@@ -20,6 +20,8 @@ Live at https://piecioshka.github.io/apple-devices-timeline/ 🌐
 - 🏷️ Keynote taglines name the launch days that had a keynote (_filled marker_); press-release launches get a hollow marker
 - 🔍 Category pages for iPhone, iPad, Mac, Apple Watch, audio, home & TV, displays, Vision, networking and accessories (_each has its own URL_)
 - ⏩ Year links to jump straight to any year
+- 🔮 Rumors section above the timeline with the unannounced devices the press expects next, grouped by expected window and kept out of the counts (_sources named on every card_)
+- 🕒 "Last updated" date in the header, so you know how fresh the list is
 - 📦 Plain TypeScript dataset in `src/data/devices.ts` with announcement dates from Apple Newsroom
 - 🌗 Light and dark themes with a switch that remembers your choice, defaulting to the system setting
 - 🇬🇧🇵🇱 English and Polish versions with a language switch (_Polish lives under `/pl`_)
@@ -51,6 +53,7 @@ Coverage starts on 8 January 2008 with the Mac Pro and Xserve of that year and r
 - ❌ Silent spec bumps and carrier, storage, color or connector variants (_such as the USB-C AirPods Max_)
 - ❌ Beats, and input peripherals like keyboards, mice, trackpads, remotes, chargers and cases
 - ❌ Software, services and chips announced without a device
+- 🔮 Rumored devices live in a separate section and dataset: hardware in the same categories, with a named source (_Bloomberg, MacRumors, analysts_) and an expected window within about two years; they are not counted as announced devices
 
 <details>
 <summary><strong>Requirements 📋</strong></summary>
@@ -114,6 +117,10 @@ The Content Security Policy ships as a `<meta>` tag, so it works on any host. Ho
 Each entry in `src/data/devices.ts` has an `id`, `name`, `category` (_one of the slugs in `src/lib/categories.ts`_), `thumbnail` (_pictogram key from `src/lib/thumbnails.ts`_), `announcedAt` (_ISO date of the public announcement_), an optional `event` (_keynote tagline or conference name_) and a one-line `highlight` in English and Polish.
 
 To add a device, append an object and run `npm test`; the dataset tests check ids, dates and categories. The timeline shows every device in the dataset, so extending it is just adding entries.
+
+Rumored devices sit in `src/data/rumors.ts` with the same `id`, `name`, `category` and `thumbnail` fields, plus `expectedAt` (_a month like `2026-10`, a half-year like `2027-H1` or a year like `2028`_), a one-line `summary` per language and a list of `sources`. When Apple announces one, move it to `devices.ts` under the same id and delete the rumor; the tests reject ids present in both files and windows that have already passed.
+
+`src/data/meta.ts` holds `DATA_UPDATED_AT`, the date shown as "last updated" in the header and as the "as of" date of the rumors section. Bump it with every data change; a test checks it is not older than the latest announcement.
 
 </details>
 

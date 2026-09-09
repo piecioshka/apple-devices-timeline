@@ -19,12 +19,12 @@ export function announcementYear(device: Device): number {
   return Number(device.announcedAt.slice(0, 4));
 }
 
-export function filterByCategory(
-  devices: Device[],
+export function filterByCategory<T extends Pick<Device, 'category'>>(
+  items: T[],
   filter: CategoryFilter,
-): Device[] {
-  if (filter === 'all') return devices;
-  return devices.filter((device) => device.category === filter);
+): T[] {
+  if (filter === 'all') return items;
+  return items.filter((item) => item.category === filter);
 }
 
 export function sortNewestFirst(devices: Device[]): Device[] {
@@ -84,4 +84,25 @@ function launchDateFormat(locale: string): Intl.DateTimeFormat {
 /** Day and month name of an ISO date in the given BCP 47 locale. */
 export function formatLaunchDate(isoDate: string, locale = 'en-GB'): string {
   return launchDateFormat(locale).format(new Date(`${isoDate}T00:00:00Z`));
+}
+
+const fullDateFormats = new Map<string, Intl.DateTimeFormat>();
+
+function fullDateFormat(locale: string): Intl.DateTimeFormat {
+  let format = fullDateFormats.get(locale);
+  if (!format) {
+    format = new Intl.DateTimeFormat(locale, {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'UTC',
+    });
+    fullDateFormats.set(locale, format);
+  }
+  return format;
+}
+
+/** Day, month name and year of an ISO date in the given BCP 47 locale. */
+export function formatFullDate(isoDate: string, locale = 'en-GB'): string {
+  return fullDateFormat(locale).format(new Date(`${isoDate}T00:00:00Z`));
 }

@@ -3,6 +3,7 @@ import type { Device } from '@/data/devices';
 import {
   buildTimeline,
   filterByCategory,
+  formatFullDate,
   formatLaunchDate,
   sortNewestFirst,
   yearRange,
@@ -96,6 +97,13 @@ describe('yearRange', () => {
 
   it('returns null for an empty list', () => {
     expect(yearRange([])).toBeNull();
+  });
+});
+
+describe('formatFullDate', () => {
+  it('formats an ISO date with day, month name and year', () => {
+    expect(formatFullDate('2026-09-09')).toBe('9 September 2026');
+    expect(formatFullDate('2026-09-09', 'pl')).toBe('9 września 2026');
   });
 });
 

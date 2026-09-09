@@ -29,6 +29,16 @@ interface Dictionary {
   jumpToYear: string;
   pressRelease: string;
   empty: string;
+  /** Label before the date of the last data update. */
+  updatedLabel: string;
+  /** Heading of the section with unannounced, rumored devices. */
+  rumorsTitle: string;
+  rumors: PluralForms;
+  /** Disclaimer of the rumors section; `date` is the formatted "as of" date. */
+  rumorsIntro: (date: string) => string;
+  sources: string;
+  /** "First half of 2027" and the like, for rumor windows without a month. */
+  halfYear: (half: 1 | 2, year: number) => string;
   footer: string;
   themeLabel: string;
   themeSystem: string;
@@ -74,6 +84,14 @@ export const UI: Record<Locale, Dictionary> = {
     jumpToYear: 'Jump to year',
     pressRelease: 'Press release',
     empty: 'Nothing in this category yet. Pick another category above.',
+    updatedLabel: 'Last updated',
+    rumorsTitle: 'Rumors',
+    rumors: ['rumored device', 'rumored devices'],
+    rumorsIntro: (date) =>
+      `Not announced by Apple. Devices the press expects next, based on reports from Bloomberg, MacRumors and analysts, as of ${date}. They stay out of the counts above.`,
+    sources: 'Sources',
+    halfYear: (half, year) =>
+      half === 1 ? `First half of ${year}` : `Second half of ${year}`,
     footer:
       'Announcement dates follow Apple Newsroom. Devices announced on the same day are listed together; a filled marker means a keynote, a hollow one a press release.',
     themeLabel: 'Theme',
@@ -118,6 +136,18 @@ export const UI: Record<Locale, Dictionary> = {
     pressRelease: 'Komunikat prasowy',
     empty:
       'W tej kategorii nie ma jeszcze nic. Wybierz inną kategorię powyżej.',
+    updatedLabel: 'Ostatnia aktualizacja',
+    rumorsTitle: 'Plotki',
+    rumors: [
+      'plotkowane urządzenie',
+      'plotkowane urządzenia',
+      'plotkowanych urządzeń',
+    ],
+    rumorsIntro: (date) =>
+      `Niezapowiedziane przez Apple. Urządzenia, których spodziewa się prasa według doniesień Bloomberga, MacRumors i analityków, stan na ${date}. Nie wliczają się do liczb powyżej.`,
+    sources: 'Źródła',
+    halfYear: (half, year) =>
+      half === 1 ? `Pierwsza połowa ${year}` : `Druga połowa ${year}`,
     footer:
       'Daty zapowiedzi pochodzą z Apple Newsroom. Urządzenia zapowiedziane tego samego dnia są zebrane razem; pełny znacznik oznacza keynote, pusty komunikat prasowy.',
     themeLabel: 'Motyw',
