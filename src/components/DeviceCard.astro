@@ -17,6 +17,17 @@ const { locale, device } = Astro.props;
     <p class="category">{UI[locale].categories[device.category]}</p>
     <h4 class="name">{device.name}</h4>
     <p class="highlight">{device.highlight[locale]}</p>
+    <a
+      class="link"
+      href={device.url}
+      rel="noopener"
+      aria-label={UI[locale].appleLink(device.name)}
+    >
+      apple.com
+      <svg class="link-icon" viewBox="0 0 12 12" aria-hidden="true">
+        <path d="M3.5 2.5h6v6M9.5 2.5 2.5 9.5" />
+      </svg>
+    </a>
   </div>
 </article>
 
@@ -61,5 +72,29 @@ const { locale, device } = Astro.props;
     font-size: 0.875rem;
     line-height: 1.45;
     color: var(--muted);
+  }
+
+  .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .link:hover {
+    text-decoration: underline;
+  }
+
+  .link-icon {
+    width: 0.625rem;
+    height: 0.625rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
   }
 </style>

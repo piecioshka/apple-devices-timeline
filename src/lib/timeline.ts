@@ -57,10 +57,13 @@ export function buildTimeline(devices: Device[]): TimelineYear[] {
   return years;
 }
 
+export interface YearRange {
+  first: number;
+  last: number;
+}
+
 /** Earliest and latest announcement years in the list, or null when empty. */
-export function yearRange(
-  devices: Device[],
-): { first: number; last: number } | null {
+export function yearRange(devices: Device[]): YearRange | null {
   if (devices.length === 0) return null;
   const years = devices.map(announcementYear);
   return { first: Math.min(...years), last: Math.max(...years) };

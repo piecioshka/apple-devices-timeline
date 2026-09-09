@@ -1,4 +1,5 @@
 import type { CategorySlug } from '@/lib/categories';
+import type { YearRange } from '@/lib/timeline';
 
 export const LOCALES = ['en', 'pl'] as const;
 
@@ -17,7 +18,8 @@ type PluralForms =
 interface Dictionary {
   languageName: string;
   siteTitle: string;
-  siteDescription: string;
+  /** Meta description; `years` are the first and last years in the dataset. */
+  siteDescription: (years: YearRange) => string;
   title: string;
   lede: (firstYear: number) => string;
   devices: PluralForms;
@@ -28,6 +30,8 @@ interface Dictionary {
   categories: Record<CategorySlug, string>;
   jumpToYear: string;
   pressRelease: string;
+  /** Accessible name of the apple.com link on a device card. */
+  appleLink: (name: string) => string;
   empty: string;
   /** Label before the date of the last data update. */
   updatedLabel: string;
@@ -60,16 +64,16 @@ interface Dictionary {
   notFoundLink: string;
   /** Open Graph locale tag, e.g. "en_GB". */
   ogLocale: string;
-  /** Alt text of the share image at `/og-<locale>.png`. */
-  ogImageAlt: string;
+  /** Alt text of the share image at `/og-<locale>.png`, which shows `years`. */
+  ogImageAlt: (years: YearRange) => string;
 }
 
 export const UI: Record<Locale, Dictionary> = {
   en: {
     languageName: 'English',
     siteTitle: 'Apple Devices Timeline',
-    siteDescription:
-      'Every device Apple announced since 2008, newest first, grouped by launch day.',
+    siteDescription: ({ first, last }) =>
+      `Every device Apple announced from ${first} to ${last}, grouped by launch day.`,
     title: 'Apple Devices Timeline',
     lede: (firstYear) =>
       `Every device Apple announced since ${firstYear}, grouped by the day it was announced. Keynote taglines name the days that had one.`,
@@ -92,6 +96,7 @@ export const UI: Record<Locale, Dictionary> = {
     },
     jumpToYear: 'Jump to year',
     pressRelease: 'Press release',
+    appleLink: (name) => `${name} on apple.com`,
     empty: 'Nothing in this category yet. Pick another category above.',
     updatedLabel: 'Last updated',
     rumorsTitle: 'Rumors',
@@ -120,14 +125,14 @@ export const UI: Record<Locale, Dictionary> = {
     notFoundBody: 'There is nothing at this address.',
     notFoundLink: 'Back to the timeline',
     ogLocale: 'en_GB',
-    ogImageAlt:
-      'Apple Devices Timeline. Every device Apple announced since 2008, grouped by the day it was announced.',
+    ogImageAlt: ({ first, last }) =>
+      `Apple Devices Timeline, ${first}-${last}. Every device Apple announced in those years, grouped by the day it was announced.`,
   },
   pl: {
     languageName: 'Polski',
     siteTitle: 'Oś czasu urządzeń Apple',
-    siteDescription:
-      'Każde urządzenie zapowiedziane przez Apple od 2008 roku, od najnowszych, pogrupowane według dnia premiery.',
+    siteDescription: ({ first, last }) =>
+      `Każde urządzenie zapowiedziane przez Apple w latach ${first}-${last}, pogrupowane według dnia premiery.`,
     title: 'Kalendarium Sprzętu Apple',
     lede: (firstYear) =>
       `Każde urządzenie zapowiedziane przez Apple od ${firstYear} roku, pogrupowane według dnia zapowiedzi. Dni z keynote'em noszą jego hasło.`,
@@ -150,6 +155,7 @@ export const UI: Record<Locale, Dictionary> = {
     },
     jumpToYear: 'Przejdź do roku',
     pressRelease: 'Komunikat prasowy',
+    appleLink: (name) => `${name} na apple.com`,
     empty:
       'W tej kategorii nie ma jeszcze nic. Wybierz inną kategorię powyżej.',
     updatedLabel: 'Ostatnia aktualizacja',
@@ -183,8 +189,8 @@ export const UI: Record<Locale, Dictionary> = {
     notFoundBody: 'Pod tym adresem nic nie ma.',
     notFoundLink: 'Wróć do osi czasu',
     ogLocale: 'pl_PL',
-    ogImageAlt:
-      'Kalendarium Sprzętu Apple. Każde urządzenie zapowiedziane przez Apple od 2008 roku, pogrupowane według dnia zapowiedzi.',
+    ogImageAlt: ({ first, last }) =>
+      `Kalendarium Sprzętu Apple, ${first}-${last}. Każde urządzenie zapowiedziane przez Apple w tych latach, pogrupowane według dnia zapowiedzi.`,
   },
 };
 

@@ -21,6 +21,12 @@ describe('devices dataset', () => {
     }
   });
 
+  it('links every device to a page on apple.com', () => {
+    for (const d of devices) {
+      expect(d.url, d.id).toMatch(/^https:\/\/(www|support)\.apple\.com\/\S+$/);
+    }
+  });
+
   it('uses only known categories', () => {
     const known = new Set<string>(CATEGORY_SLUGS);
     for (const d of devices)

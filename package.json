@@ -2,6 +2,7 @@
   "name": "apple-devices-timeline",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "astro dev --port $(detect-port 3000)",
     "build": "astro build",
@@ -13,7 +14,7 @@
     "test:watch": "vitest",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "og": "rsvg-convert -w 1200 -h 630 assets/og/og-en.svg -o public/og-en.png && rsvg-convert -w 1200 -h 630 assets/og/og-pl.svg -o public/og-pl.png",
+    "share-images": "node --experimental-strip-types scripts/share-images.mjs",
     "e2e": "playwright test"
   },
   "devDependencies": {
@@ -34,7 +35,7 @@
     "typescript-eslint": "^8.70.0",
     "vitest": "^4.1.11"
   },
-  "description": "Timeline of every device Apple announced since 2008, newest first.",
+  "description": "Timeline of every device Apple announced from 2008 to today, grouped by launch day.",
   "license": "MIT",
   "author": {
     "name": "Piotr Kowalski",

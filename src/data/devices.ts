@@ -16,6 +16,11 @@ export interface Device {
   thumbnail: ThumbnailKey;
   /** ISO date (YYYY-MM-DD) of the public announcement. */
   announcedAt: string;
+  /**
+   * Product page on apple.com: the tech specs page on support.apple.com, or
+   * the marketing page while a device has no tech specs page yet.
+   */
+  url: string;
   /** Keynote tagline or conference name; omitted for press-release launches. */
   event?: string;
   /** One-line, plain-language reason the device mattered, per locale. */
@@ -42,6 +47,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro',
     thumbnail: 'iphone-island',
     announcedAt: '2026-09-09',
+    url: 'https://www.apple.com/iphone-18-pro/',
     event: 'Surprise and shine',
     highlight: {
       en: 'A20 Pro on a 2 nm process, Apple’s own C2 modem and a variable-aperture main camera.',
@@ -55,6 +61,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro Max',
     thumbnail: 'iphone-island',
     announcedAt: '2026-09-09',
+    url: 'https://www.apple.com/iphone-18-pro/',
     event: 'Surprise and shine',
     highlight: {
       en: 'The larger 18 Pro; both get a smaller Dynamic Island that shows three Live Activities at once.',
@@ -68,6 +75,7 @@ export const devices: Device[] = [
     line: 'iPhone Duo',
     thumbnail: 'iphone-fold',
     announcedAt: '2026-09-09',
+    url: 'https://www.apple.com/iphone-duo/',
     event: 'Surprise and shine',
     highlight: {
       en: 'First foldable iPhone: 7.6-inch inner and 5.4-inch outer display, Touch ID, A20 Pro, from $1,999; ships 23 October 2026.',
@@ -81,6 +89,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Series',
     thumbnail: 'watch',
     announcedAt: '2026-09-09',
+    url: 'https://www.apple.com/apple-watch-series-12/',
     event: 'Surprise and shine',
     highlight: {
       en: 'S11 chip and a Health Sensing System that reads heart rate every five seconds; ceramic cases return.',
@@ -94,6 +103,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Ultra',
     thumbnail: 'watch',
     announcedAt: '2026-09-09',
+    url: 'https://www.apple.com/apple-watch-ultra-4/',
     event: 'Surprise and shine',
     highlight: {
       en: 'S11 chip, the new heart sensors and up to 50 hours of battery, 84 in Low Power Mode.',
@@ -107,6 +117,7 @@ export const devices: Device[] = [
     line: 'AirPods',
     thumbnail: 'airpods',
     announcedAt: '2026-09-09',
+    url: 'https://www.apple.com/airpods-5/',
     event: 'Surprise and shine',
     highlight: {
       en: 'Active Noise Cancellation in an open-ear design, cutting up to 50% more noise than AirPods 4, and live translation.',
@@ -120,6 +131,7 @@ export const devices: Device[] = [
     line: 'Mac Studio',
     thumbnail: 'mac-studio',
     announcedAt: '2026-08-25',
+    url: 'https://www.apple.com/mac-studio/',
     highlight: {
       en: 'First Mac with the M5 Ultra; ships 22 September 2026.',
       pl: 'Pierwszy Mac z M5 Ultra; w sprzedaży od 22 września 2026.',
@@ -132,6 +144,7 @@ export const devices: Device[] = [
     line: 'Mac mini',
     thumbnail: 'mac-mini',
     announcedAt: '2026-08-25',
+    url: 'https://www.apple.com/mac-mini/',
     highlight: {
       en: 'Debut of the M6 chip in a Mac; ships 22 September 2026.',
       pl: 'Debiut czipu M6 w Macu; w sprzedaży od 22 września 2026.',
@@ -144,6 +157,7 @@ export const devices: Device[] = [
     line: 'AirPods Max',
     thumbnail: 'airpods-max',
     announcedAt: '2026-03-16',
+    url: 'https://support.apple.com/en-us/126620',
     highlight: {
       en: 'H2 chip and Bluetooth 5.3 for the over-ear headphones.',
       pl: 'Czip H2 i Bluetooth 5.3 w słuchawkach nausznych.',
@@ -156,6 +170,7 @@ export const devices: Device[] = [
     line: 'MacBook Neo',
     thumbnail: 'macbook',
     announcedAt: '2026-03-04',
+    url: 'https://support.apple.com/en-us/126322',
     highlight: {
       en: 'New entry-level laptop below the MacBook Air, built around the A18 Pro chip and priced from $599.',
       pl: 'Nowy podstawowy laptop poniżej MacBooka Air, zbudowany wokół czipu A18 Pro, w cenie od 599 dolarów.',
@@ -168,6 +183,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2026-03-03',
+    url: 'https://support.apple.com/en-us/126320',
     highlight: {
       en: 'M5 chip, 512 GB base storage and the N1 chip with Wi-Fi 7.',
       pl: 'Czip M5, 512 GB w bazowej konfiguracji i czip N1 z Wi-Fi 7.',
@@ -180,6 +196,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2026-03-03',
+    url: 'https://support.apple.com/en-us/126321',
     highlight: {
       en: 'Larger Air with the same M5 platform and up to 18 hours of battery.',
       pl: 'Większy Air na tej samej platformie M5, do 18 godzin na baterii.',
@@ -192,6 +209,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2026-03-03',
+    url: 'https://support.apple.com/en-us/126318',
     highlight: {
       en: 'M5 Pro and M5 Max with Thunderbolt 5 and up to 24 hours of battery.',
       pl: 'M5 Pro i M5 Max z Thunderbolt 5 i do 24 godzin na baterii.',
@@ -204,6 +222,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2026-03-03',
+    url: 'https://support.apple.com/en-us/126319',
     highlight: {
       en: 'Top-end laptop with storage starting at 1 TB (M5 Pro) or 2 TB (M5 Max).',
       pl: 'Topowy laptop z pamięcią od 1 TB (M5 Pro) lub 2 TB (M5 Max).',
@@ -216,6 +235,7 @@ export const devices: Device[] = [
     line: 'Studio Display',
     thumbnail: 'display',
     announcedAt: '2026-03-03',
+    url: 'https://support.apple.com/en-us/126324',
     highlight: {
       en: 'Refresh of the 27-inch 5K display four years after the original.',
       pl: 'Odświeżenie monitora 27 cali 5K cztery lata po oryginale.',
@@ -228,6 +248,7 @@ export const devices: Device[] = [
     line: 'Studio Display XDR',
     thumbnail: 'display',
     announcedAt: '2026-03-03',
+    url: 'https://support.apple.com/en-us/126323',
     highlight: {
       en: 'Mini-LED 5K display at 120 Hz that replaces the Pro Display XDR, from $3,299.',
       pl: 'Monitor 5K mini-LED z odświeżaniem 120 Hz, który zastępuje Pro Display XDR; od 3299 dolarów.',
@@ -240,6 +261,7 @@ export const devices: Device[] = [
     line: 'iPhone e',
     thumbnail: 'iphone-notch',
     announcedAt: '2026-03-02',
+    url: 'https://support.apple.com/en-us/126470',
     highlight: {
       en: 'Entry model of the iPhone 17 lineup with the A19 chip and the C1X modem.',
       pl: 'Podstawowy model linii iPhone 17 z czipem A19 i modemem C1X.',
@@ -252,6 +274,7 @@ export const devices: Device[] = [
     line: 'iPad Air',
     thumbnail: 'ipad',
     announcedAt: '2026-03-02',
+    url: 'https://support.apple.com/en-us/126471',
     highlight: {
       en: 'Yearly chip bump for the mid-range iPad.',
       pl: 'Coroczna wymiana czipu w iPadzie ze średniej półki.',
@@ -264,6 +287,7 @@ export const devices: Device[] = [
     line: 'iPad Air',
     thumbnail: 'ipad',
     announcedAt: '2026-03-02',
+    url: 'https://support.apple.com/en-us/126472',
     highlight: {
       en: 'Large-screen Air moves to the M4.',
       pl: 'Duży Air przechodzi na M4.',
@@ -276,6 +300,7 @@ export const devices: Device[] = [
     line: 'AirTag',
     thumbnail: 'airtag',
     announcedAt: '2026-01-26',
+    url: 'https://support.apple.com/en-us/126203',
     highlight: {
       en: 'Second-generation Ultra Wideband chip, Precision Finding from 50% farther and a louder speaker.',
       pl: 'Czip Ultra Wideband drugiej generacji, precyzyjne wyszukiwanie z 50% większej odległości i głośniejszy głośnik.',
@@ -289,6 +314,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad',
     announcedAt: '2025-10-15',
+    url: 'https://support.apple.com/en-us/125406',
     highlight: {
       en: 'M5 chip plus the N1 wireless chip and the C1X modem.',
       pl: 'Czip M5 plus bezprzewodowy czip N1 i modem C1X.',
@@ -301,6 +327,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad',
     announcedAt: '2025-10-15',
+    url: 'https://support.apple.com/en-us/125407',
     highlight: {
       en: 'Large tandem-OLED Pro with faster AI performance.',
       pl: 'Duży Pro z tandemowym OLED-em i szybszą obsługą AI.',
@@ -313,6 +340,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2025-10-15',
+    url: 'https://support.apple.com/en-us/125405',
     highlight: {
       en: 'First Mac with the M5, a GPU with a Neural Accelerator in each core.',
       pl: 'Pierwszy Mac z M5, czyli GPU z akceleratorem neuronowym w każdym rdzeniu.',
@@ -325,6 +353,7 @@ export const devices: Device[] = [
     line: 'Apple Vision Pro',
     thumbnail: 'vision',
     announcedAt: '2025-10-15',
+    url: 'https://support.apple.com/en-us/125436',
     highlight: {
       en: 'M5 chip, up to 120 Hz refresh and the new Dual Knit Band.',
       pl: 'Czip M5, odświeżanie do 120 Hz i nowy pasek Dual Knit Band.',
@@ -337,6 +366,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-island',
     announcedAt: '2025-09-09',
+    url: 'https://support.apple.com/en-us/125089',
     event: 'Awe Dropping',
     highlight: {
       en: 'A19 chip and a 120 Hz ProMotion display on the base model for the first time.',
@@ -350,6 +380,7 @@ export const devices: Device[] = [
     line: 'iPhone Air',
     thumbnail: 'iphone-island',
     announcedAt: '2025-09-09',
+    url: 'https://support.apple.com/en-us/125092',
     event: 'Awe Dropping',
     highlight: {
       en: 'Thinnest iPhone ever at 5.6 mm, titanium frame, A19 Pro, eSIM only.',
@@ -363,6 +394,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro',
     thumbnail: 'iphone-island',
     announcedAt: '2025-09-09',
+    url: 'https://support.apple.com/en-us/125090',
     event: 'Awe Dropping',
     highlight: {
       en: 'Aluminum unibody with a vapor chamber and 48 MP telephoto.',
@@ -376,6 +408,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro Max',
     thumbnail: 'iphone-island',
     announcedAt: '2025-09-09',
+    url: 'https://support.apple.com/en-us/125091',
     event: 'Awe Dropping',
     highlight: {
       en: 'Largest battery ever in an iPhone.',
@@ -389,6 +422,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Series',
     thumbnail: 'watch',
     announcedAt: '2025-09-09',
+    url: 'https://support.apple.com/en-us/125093',
     event: 'Awe Dropping',
     highlight: {
       en: 'Hypertension notifications, 5G and a more scratch-resistant glass.',
@@ -402,6 +436,7 @@ export const devices: Device[] = [
     line: 'Apple Watch SE',
     thumbnail: 'watch',
     announcedAt: '2025-09-09',
+    url: 'https://support.apple.com/en-us/125094',
     event: 'Awe Dropping',
     highlight: {
       en: 'S10 chip, always-on display and fast charging come to the SE.',
@@ -415,6 +450,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Ultra',
     thumbnail: 'watch',
     announcedAt: '2025-09-09',
+    url: 'https://support.apple.com/en-us/125095',
     event: 'Awe Dropping',
     highlight: {
       en: 'Satellite connectivity, 5G and the largest Apple Watch display.',
@@ -428,6 +464,7 @@ export const devices: Device[] = [
     line: 'AirPods Pro',
     thumbnail: 'airpods',
     announcedAt: '2025-09-09',
+    url: 'https://support.apple.com/en-us/125135',
     event: 'Awe Dropping',
     highlight: {
       en: 'Heart-rate sensing, live translation and improved noise cancellation.',
@@ -441,6 +478,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2025-03-05',
+    url: 'https://support.apple.com/en-us/122209',
     highlight: {
       en: 'M4 chip, sky blue finish and a $999 starting price.',
       pl: 'Czip M4, kolor błękitny i cena od 999 dolarów.',
@@ -453,6 +491,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2025-03-05',
+    url: 'https://support.apple.com/en-us/122210',
     highlight: {
       en: 'Larger Air with M4 and support for two external displays with the lid open.',
       pl: 'Większy Air z M4 i obsługą dwóch monitorów zewnętrznych przy otwartej pokrywie.',
@@ -465,6 +504,7 @@ export const devices: Device[] = [
     line: 'Mac Studio',
     thumbnail: 'mac-studio',
     announcedAt: '2025-03-05',
+    url: 'https://support.apple.com/en-us/122211',
     highlight: {
       en: 'Up to 512 GB of unified memory with the M3 Ultra.',
       pl: 'Do 512 GB zunifikowanej pamięci z M3 Ultra.',
@@ -477,6 +517,7 @@ export const devices: Device[] = [
     line: 'iPad',
     thumbnail: 'ipad',
     announcedAt: '2025-03-04',
+    url: 'https://support.apple.com/en-us/122240',
     highlight: {
       en: 'Eleventh-generation iPad with the A16 and a 128 GB base.',
       pl: 'iPad jedenastej generacji z czipem A16 i 128 GB w bazie.',
@@ -489,6 +530,7 @@ export const devices: Device[] = [
     line: 'iPad Air',
     thumbnail: 'ipad',
     announcedAt: '2025-03-04',
+    url: 'https://support.apple.com/en-us/122241',
     highlight: {
       en: 'M3 chip and a new Magic Keyboard with a function row.',
       pl: 'Czip M3 i nowa klawiatura Magic Keyboard z rzędem klawiszy funkcyjnych.',
@@ -501,6 +543,7 @@ export const devices: Device[] = [
     line: 'iPad Air',
     thumbnail: 'ipad',
     announcedAt: '2025-03-04',
+    url: 'https://support.apple.com/en-us/122242',
     highlight: {
       en: 'Large-screen Air moves to the M3.',
       pl: 'Duży Air przechodzi na M3.',
@@ -513,6 +556,7 @@ export const devices: Device[] = [
     line: 'iPhone e',
     thumbnail: 'iphone-notch',
     announcedAt: '2025-02-19',
+    url: 'https://support.apple.com/en-us/122208',
     highlight: {
       en: 'Replaces the iPhone SE line; A18, Face ID and the first Apple C1 modem.',
       pl: 'Następca linii iPhone SE; A18, Face ID i pierwszy modem Apple C1.',
@@ -526,6 +570,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2024-10-30',
+    url: 'https://support.apple.com/en-us/121552',
     highlight: {
       en: 'M4 family, Thunderbolt 5 on Pro and Max, 16 GB memory as the new base.',
       pl: 'Rodzina M4, Thunderbolt 5 w Pro i Max, 16 GB pamięci jako nowa baza.',
@@ -538,6 +583,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2024-10-30',
+    url: 'https://support.apple.com/en-us/121554',
     highlight: {
       en: 'Nano-texture display option and up to 24 hours of battery.',
       pl: 'Opcja ekranu nano-texture i do 24 godzin na baterii.',
@@ -550,6 +596,7 @@ export const devices: Device[] = [
     line: 'Mac mini',
     thumbnail: 'mac-mini',
     announcedAt: '2024-10-29',
+    url: 'https://support.apple.com/en-us/121555',
     highlight: {
       en: 'Redesigned 5-by-5-inch chassis and Thunderbolt 5 on the M4 Pro.',
       pl: 'Nowa obudowa 5 na 5 cali i Thunderbolt 5 w wersji z M4 Pro.',
@@ -562,6 +609,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2024-10-28',
+    url: 'https://support.apple.com/en-us/121557',
     highlight: {
       en: 'M4 chip, 16 GB base memory and a nano-texture glass option.',
       pl: 'Czip M4, 16 GB pamięci w bazie i opcja szkła nano-texture.',
@@ -574,6 +622,7 @@ export const devices: Device[] = [
     line: 'iPad mini',
     thumbnail: 'ipad',
     announcedAt: '2024-10-15',
+    url: 'https://support.apple.com/en-us/121456',
     highlight: {
       en: 'Seventh-generation mini built for Apple Intelligence, with Apple Pencil Pro support.',
       pl: 'Mini siódmej generacji stworzone pod Apple Intelligence, z obsługą Apple Pencil Pro.',
@@ -586,6 +635,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-island',
     announcedAt: '2024-09-09',
+    url: 'https://support.apple.com/en-us/121029',
     event: 'It’s Glowtime',
     highlight: {
       en: 'A18 chip, Camera Control button and the Action button on the base model.',
@@ -599,6 +649,7 @@ export const devices: Device[] = [
     line: 'iPhone Plus',
     thumbnail: 'iphone-island',
     announcedAt: '2024-09-09',
+    url: 'https://support.apple.com/en-us/121030',
     event: 'It’s Glowtime',
     highlight: {
       en: 'Larger 6.7-inch variant of the iPhone 16.',
@@ -612,6 +663,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro',
     thumbnail: 'iphone-island',
     announcedAt: '2024-09-09',
+    url: 'https://support.apple.com/en-us/121031',
     event: 'It’s Glowtime',
     highlight: {
       en: 'A18 Pro, 6.3-inch display and 4K 120 fps video.',
@@ -625,6 +677,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro Max',
     thumbnail: 'iphone-island',
     announcedAt: '2024-09-09',
+    url: 'https://support.apple.com/en-us/121032',
     event: 'It’s Glowtime',
     highlight: {
       en: 'Largest iPhone display yet at 6.9 inches.',
@@ -638,6 +691,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Series',
     thumbnail: 'watch',
     announcedAt: '2024-09-09',
+    url: 'https://support.apple.com/en-us/121202',
     event: 'It’s Glowtime',
     highlight: {
       en: 'Thinnest Apple Watch with a wide-angle OLED and sleep apnea notifications.',
@@ -651,6 +705,7 @@ export const devices: Device[] = [
     line: 'AirPods',
     thumbnail: 'airpods',
     announcedAt: '2024-09-09',
+    url: 'https://support.apple.com/en-us/121203',
     event: 'It’s Glowtime',
     highlight: {
       en: 'Open-ear design in two versions, one with Active Noise Cancellation.',
@@ -664,6 +719,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad',
     announcedAt: '2024-05-07',
+    url: 'https://support.apple.com/en-us/119892',
     event: 'Let Loose',
     highlight: {
       en: 'First device with the M4 and a tandem OLED display.',
@@ -677,6 +733,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad',
     announcedAt: '2024-05-07',
+    url: 'https://support.apple.com/en-us/119891',
     event: 'Let Loose',
     highlight: {
       en: 'Thinnest Apple product ever at 5.1 mm.',
@@ -690,6 +747,7 @@ export const devices: Device[] = [
     line: 'iPad Air',
     thumbnail: 'ipad',
     announcedAt: '2024-05-07',
+    url: 'https://support.apple.com/en-us/119894',
     event: 'Let Loose',
     highlight: {
       en: 'M2 chip and a landscape front camera.',
@@ -703,6 +761,7 @@ export const devices: Device[] = [
     line: 'iPad Air',
     thumbnail: 'ipad',
     announcedAt: '2024-05-07',
+    url: 'https://support.apple.com/en-us/119893',
     event: 'Let Loose',
     highlight: {
       en: 'First 13-inch iPad Air.',
@@ -716,6 +775,7 @@ export const devices: Device[] = [
     line: 'Apple Pencil',
     thumbnail: 'pencil',
     announcedAt: '2024-05-07',
+    url: 'https://support.apple.com/en-us/120123',
     event: 'Let Loose',
     highlight: {
       en: 'Squeeze gesture, barrel roll, haptic feedback and Find My support.',
@@ -729,6 +789,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2024-03-04',
+    url: 'https://support.apple.com/en-us/118551',
     highlight: {
       en: 'M3 chip and support for two external displays with the lid closed.',
       pl: 'Czip M3 i obsługa dwóch monitorów zewnętrznych przy zamkniętej pokrywie.',
@@ -741,6 +802,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2024-03-04',
+    url: 'https://support.apple.com/en-us/118552',
     highlight: {
       en: 'Larger Air moves to the M3 alongside the 13-inch model.',
       pl: 'Większy Air przechodzi na M3 razem z modelem 13-calowym.',
@@ -754,6 +816,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2023-10-30',
+    url: 'https://support.apple.com/en-us/117735',
     event: 'Scary Fast',
     highlight: {
       en: 'First 3-nanometer Macs; the base M3 replaces the 13-inch Touch Bar model.',
@@ -767,6 +830,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2023-10-30',
+    url: 'https://support.apple.com/en-us/117737',
     event: 'Scary Fast',
     highlight: {
       en: 'New space black finish for the Pro and Max models.',
@@ -780,6 +844,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2023-10-30',
+    url: 'https://support.apple.com/en-us/117734',
     event: 'Scary Fast',
     highlight: {
       en: 'First iMac update since the M1 model of 2021.',
@@ -793,6 +858,7 @@ export const devices: Device[] = [
     line: 'Apple Pencil',
     thumbnail: 'pencil',
     announcedAt: '2023-10-17',
+    url: 'https://support.apple.com/en-us/121318',
     highlight: {
       en: 'Lower-cost Pencil that charges over USB-C, without pressure sensitivity.',
       pl: 'Tańszy Pencil ładowany przez USB-C, bez czułości na nacisk.',
@@ -805,6 +871,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-island',
     announcedAt: '2023-09-12',
+    url: 'https://support.apple.com/en-us/111831',
     event: 'Wonderlust',
     highlight: {
       en: 'USB-C replaces Lightning; Dynamic Island and a 48 MP camera on the base model.',
@@ -818,6 +885,7 @@ export const devices: Device[] = [
     line: 'iPhone Plus',
     thumbnail: 'iphone-island',
     announcedAt: '2023-09-12',
+    url: 'https://support.apple.com/en-us/111830',
     event: 'Wonderlust',
     highlight: {
       en: 'Larger 6.7-inch variant of the iPhone 15.',
@@ -831,6 +899,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro',
     thumbnail: 'iphone-island',
     announcedAt: '2023-09-12',
+    url: 'https://support.apple.com/en-us/111829',
     event: 'Wonderlust',
     highlight: {
       en: 'Titanium frame, Action button and the A17 Pro chip.',
@@ -844,6 +913,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro Max',
     thumbnail: 'iphone-island',
     announcedAt: '2023-09-12',
+    url: 'https://support.apple.com/en-us/111828',
     event: 'Wonderlust',
     highlight: {
       en: 'First iPhone with a 5x tetraprism telephoto camera.',
@@ -857,6 +927,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Series',
     thumbnail: 'watch',
     announcedAt: '2023-09-12',
+    url: 'https://support.apple.com/en-us/111833',
     event: 'Wonderlust',
     highlight: {
       en: 'S9 chip with on-device Siri and the double tap gesture.',
@@ -870,6 +941,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Ultra',
     thumbnail: 'watch',
     announcedAt: '2023-09-12',
+    url: 'https://support.apple.com/en-us/111832',
     event: 'Wonderlust',
     highlight: {
       en: 'Brighter 3000-nit display and the S9 chip.',
@@ -883,6 +955,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2023-06-05',
+    url: 'https://support.apple.com/en-us/111346',
     event: 'WWDC 2023',
     highlight: {
       en: 'First 15-inch MacBook Air.',
@@ -896,6 +969,7 @@ export const devices: Device[] = [
     line: 'Mac Studio',
     thumbnail: 'mac-studio',
     announcedAt: '2023-06-05',
+    url: 'https://support.apple.com/en-us/111835',
     event: 'WWDC 2023',
     highlight: {
       en: 'Second-generation Studio with up to 192 GB of memory.',
@@ -909,6 +983,7 @@ export const devices: Device[] = [
     line: 'Mac Pro',
     thumbnail: 'mac-pro',
     announcedAt: '2023-06-05',
+    url: 'https://support.apple.com/en-us/111343',
     event: 'WWDC 2023',
     highlight: {
       en: 'Completes the transition to Apple silicon; PCIe slots remain.',
@@ -922,6 +997,7 @@ export const devices: Device[] = [
     line: 'Apple Vision Pro',
     thumbnail: 'vision',
     announcedAt: '2023-06-05',
+    url: 'https://support.apple.com/en-us/117810',
     event: 'WWDC 2023',
     highlight: {
       en: 'First spatial computer, with the M2 and R1 chips and visionOS; released 2 February 2024.',
@@ -935,6 +1011,7 @@ export const devices: Device[] = [
     line: 'HomePod',
     thumbnail: 'homepod',
     announcedAt: '2023-01-18',
+    url: 'https://support.apple.com/en-us/111843',
     highlight: {
       en: 'Return of the full-size HomePod with the S7 chip and temperature sensing.',
       pl: 'Powrót pełnowymiarowego HomePoda z czipem S7 i czujnikiem temperatury.',
@@ -947,6 +1024,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2023-01-17',
+    url: 'https://support.apple.com/en-us/111340',
     highlight: {
       en: 'M2 Pro and M2 Max with Wi-Fi 6E and HDMI 2.1.',
       pl: 'M2 Pro i M2 Max z Wi-Fi 6E i HDMI 2.1.',
@@ -959,6 +1037,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2023-01-17',
+    url: 'https://support.apple.com/en-us/111838',
     highlight: {
       en: 'Up to 96 GB of unified memory with the M2 Max.',
       pl: 'Do 96 GB zunifikowanej pamięci z M2 Max.',
@@ -971,6 +1050,7 @@ export const devices: Device[] = [
     line: 'Mac mini',
     thumbnail: 'mac-mini',
     announcedAt: '2023-01-17',
+    url: 'https://support.apple.com/en-us/111837',
     highlight: {
       en: 'First Mac mini with a Pro-class chip; starting price drops to $599.',
       pl: 'Pierwszy Mac mini z czipem klasy Pro; cena startowa spada do 599 dolarów.',
@@ -984,6 +1064,7 @@ export const devices: Device[] = [
     line: 'iPad',
     thumbnail: 'ipad',
     announcedAt: '2022-10-18',
+    url: 'https://support.apple.com/en-us/111840',
     highlight: {
       en: 'Redesign with USB-C, a landscape front camera and the A14.',
       pl: 'Nowy projekt z USB-C, przednią kamerą w układzie poziomym i czipem A14.',
@@ -996,6 +1077,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad',
     announcedAt: '2022-10-18',
+    url: 'https://support.apple.com/en-us/111842',
     highlight: {
       en: 'M2 chip and Apple Pencil hover.',
       pl: 'Czip M2 i wykrywanie Apple Pencil nad ekranem.',
@@ -1008,6 +1090,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad',
     announcedAt: '2022-10-18',
+    url: 'https://support.apple.com/en-us/111841',
     highlight: {
       en: 'Sixth-generation 12.9-inch Pro with the M2 and Wi-Fi 6E.',
       pl: 'Szósta generacja 12,9-calowego Pro z M2 i Wi-Fi 6E.',
@@ -1020,6 +1103,7 @@ export const devices: Device[] = [
     line: 'Apple TV',
     thumbnail: 'apple-tv',
     announcedAt: '2022-10-18',
+    url: 'https://support.apple.com/en-us/111839',
     highlight: {
       en: 'A15 chip, HDR10+ and a lower $129 starting price.',
       pl: 'Czip A15, HDR10+ i niższa cena startowa 129 dolarów.',
@@ -1032,6 +1116,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-notch',
     announcedAt: '2022-09-07',
+    url: 'https://support.apple.com/en-us/111850',
     event: 'Far Out',
     highlight: {
       en: 'Emergency SOS via satellite and Crash Detection.',
@@ -1045,6 +1130,7 @@ export const devices: Device[] = [
     line: 'iPhone Plus',
     thumbnail: 'iphone-notch',
     announcedAt: '2022-09-07',
+    url: 'https://support.apple.com/en-us/111854',
     event: 'Far Out',
     highlight: {
       en: 'Replaces the mini with a 6.7-inch non-Pro model.',
@@ -1058,6 +1144,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro',
     thumbnail: 'iphone-island',
     announcedAt: '2022-09-07',
+    url: 'https://support.apple.com/en-us/111849',
     event: 'Far Out',
     highlight: {
       en: 'Dynamic Island, always-on display and a 48 MP main camera.',
@@ -1071,6 +1158,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro Max',
     thumbnail: 'iphone-island',
     announcedAt: '2022-09-07',
+    url: 'https://support.apple.com/en-us/111846',
     event: 'Far Out',
     highlight: {
       en: 'Large Pro with the A16 Bionic.',
@@ -1084,6 +1172,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Series',
     thumbnail: 'watch',
     announcedAt: '2022-09-07',
+    url: 'https://support.apple.com/en-us/111848',
     event: 'Far Out',
     highlight: {
       en: 'Temperature sensing and Crash Detection.',
@@ -1097,6 +1186,7 @@ export const devices: Device[] = [
     line: 'Apple Watch SE',
     thumbnail: 'watch',
     announcedAt: '2022-09-07',
+    url: 'https://support.apple.com/en-us/111853',
     event: 'Far Out',
     highlight: {
       en: 'S8 chip at a $249 starting price.',
@@ -1110,6 +1200,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Ultra',
     thumbnail: 'watch',
     announcedAt: '2022-09-07',
+    url: 'https://support.apple.com/en-us/111852',
     event: 'Far Out',
     highlight: {
       en: 'First rugged 49 mm titanium Apple Watch with the Action button.',
@@ -1123,6 +1214,7 @@ export const devices: Device[] = [
     line: 'AirPods Pro',
     thumbnail: 'airpods',
     announcedAt: '2022-09-07',
+    url: 'https://support.apple.com/en-us/111851',
     event: 'Far Out',
     highlight: {
       en: 'H2 chip with twice the noise cancellation and touch volume control.',
@@ -1136,6 +1228,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2022-06-06',
+    url: 'https://support.apple.com/en-us/111867',
     event: 'WWDC 2022',
     highlight: {
       en: 'First Air without the wedge shape, with MagSafe and the M2.',
@@ -1149,6 +1242,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2022-06-06',
+    url: 'https://support.apple.com/en-us/111869',
     event: 'WWDC 2022',
     highlight: {
       en: 'Last MacBook Pro with the Touch Bar.',
@@ -1162,6 +1256,7 @@ export const devices: Device[] = [
     line: 'iPhone SE',
     thumbnail: 'iphone-home',
     announcedAt: '2022-03-08',
+    url: 'https://support.apple.com/en-us/111866',
     event: 'Peek Performance',
     highlight: {
       en: 'A15 Bionic and 5G in the Home-button design.',
@@ -1175,6 +1270,7 @@ export const devices: Device[] = [
     line: 'iPad Air',
     thumbnail: 'ipad',
     announcedAt: '2022-03-08',
+    url: 'https://support.apple.com/en-us/111887',
     event: 'Peek Performance',
     highlight: {
       en: 'M1 chip and 5G come to the Air.',
@@ -1188,6 +1284,7 @@ export const devices: Device[] = [
     line: 'Mac Studio',
     thumbnail: 'mac-studio',
     announcedAt: '2022-03-08',
+    url: 'https://support.apple.com/en-us/111900',
     event: 'Peek Performance',
     highlight: {
       en: 'New desktop line with the M1 Max or the first M1 Ultra.',
@@ -1201,6 +1298,7 @@ export const devices: Device[] = [
     line: 'Studio Display',
     thumbnail: 'display',
     announcedAt: '2022-03-08',
+    url: 'https://support.apple.com/en-us/111890',
     event: 'Peek Performance',
     highlight: {
       en: '27-inch 5K display with an A13 chip, Center Stage camera and speakers.',
@@ -1215,6 +1313,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2021-10-18',
+    url: 'https://support.apple.com/en-us/111902',
     event: 'Unleashed',
     highlight: {
       en: 'Touch Bar dropped; HDMI, SD card slot and MagSafe return.',
@@ -1228,6 +1327,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2021-10-18',
+    url: 'https://support.apple.com/en-us/111901',
     event: 'Unleashed',
     highlight: {
       en: 'Liquid Retina XDR display with ProMotion and up to 64 GB of memory.',
@@ -1241,6 +1341,7 @@ export const devices: Device[] = [
     line: 'AirPods',
     thumbnail: 'airpods',
     announcedAt: '2021-10-18',
+    url: 'https://support.apple.com/en-us/111863',
     event: 'Unleashed',
     highlight: {
       en: 'Spatial audio and a Pro-like shape with a shorter stem.',
@@ -1254,6 +1355,7 @@ export const devices: Device[] = [
     line: 'iPhone mini',
     thumbnail: 'iphone-notch',
     announcedAt: '2021-09-14',
+    url: 'https://support.apple.com/en-us/111873',
     event: 'California Streaming',
     highlight: {
       en: 'Last 5.4-inch mini.',
@@ -1267,6 +1369,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-notch',
     announcedAt: '2021-09-14',
+    url: 'https://support.apple.com/en-us/111872',
     event: 'California Streaming',
     highlight: {
       en: 'Cinematic mode and a smaller notch.',
@@ -1280,6 +1383,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro',
     thumbnail: 'iphone-notch',
     announcedAt: '2021-09-14',
+    url: 'https://support.apple.com/en-us/111871',
     event: 'California Streaming',
     highlight: {
       en: 'First 120 Hz ProMotion display on an iPhone.',
@@ -1293,6 +1397,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro Max',
     thumbnail: 'iphone-notch',
     announcedAt: '2021-09-14',
+    url: 'https://support.apple.com/en-us/111870',
     event: 'California Streaming',
     highlight: {
       en: 'Up to 1 TB of storage.',
@@ -1306,6 +1411,7 @@ export const devices: Device[] = [
     line: 'iPad',
     thumbnail: 'ipad-home',
     announcedAt: '2021-09-14',
+    url: 'https://support.apple.com/en-us/111898',
     event: 'California Streaming',
     highlight: {
       en: 'A13 Bionic and Center Stage; last iPad with Lightning.',
@@ -1319,6 +1425,7 @@ export const devices: Device[] = [
     line: 'iPad mini',
     thumbnail: 'ipad',
     announcedAt: '2021-09-14',
+    url: 'https://support.apple.com/en-us/111886',
     event: 'California Streaming',
     highlight: {
       en: 'All-screen 8.3-inch redesign with USB-C and the A15.',
@@ -1332,6 +1439,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Series',
     thumbnail: 'watch',
     announcedAt: '2021-09-14',
+    url: 'https://support.apple.com/en-us/111909',
     event: 'California Streaming',
     highlight: {
       en: 'Larger display with thinner borders and a full keyboard.',
@@ -1345,6 +1453,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2021-04-20',
+    url: 'https://support.apple.com/en-us/111895',
     event: 'Spring Loaded',
     highlight: {
       en: 'Thin all-in-one redesign in seven colors.',
@@ -1358,6 +1467,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad',
     announcedAt: '2021-04-20',
+    url: 'https://support.apple.com/en-us/111897',
     event: 'Spring Loaded',
     highlight: {
       en: 'First iPad with a Mac chip and Thunderbolt.',
@@ -1371,6 +1481,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad',
     announcedAt: '2021-04-20',
+    url: 'https://support.apple.com/en-us/111896',
     event: 'Spring Loaded',
     highlight: {
       en: 'Liquid Retina XDR mini-LED display.',
@@ -1384,6 +1495,7 @@ export const devices: Device[] = [
     line: 'AirTag',
     thumbnail: 'airtag',
     announcedAt: '2021-04-20',
+    url: 'https://support.apple.com/en-us/111847',
     event: 'Spring Loaded',
     highlight: {
       en: 'Ultra Wideband item tracker for the Find My network.',
@@ -1397,6 +1509,7 @@ export const devices: Device[] = [
     line: 'Apple TV',
     thumbnail: 'apple-tv',
     announcedAt: '2021-04-20',
+    url: 'https://support.apple.com/en-us/111922',
     event: 'Spring Loaded',
     highlight: {
       en: 'A12 Bionic and the redesigned Siri Remote.',
@@ -1411,6 +1524,7 @@ export const devices: Device[] = [
     line: 'AirPods Max',
     thumbnail: 'airpods-max',
     announcedAt: '2020-12-08',
+    url: 'https://support.apple.com/en-us/111858',
     highlight: {
       en: 'First over-ear headphones from Apple, with the H1 chip.',
       pl: 'Pierwsze słuchawki nauszne Apple, z czipem H1.',
@@ -1423,6 +1537,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2020-11-10',
+    url: 'https://support.apple.com/en-us/111883',
     event: 'One More Thing',
     highlight: {
       en: 'First Apple silicon Mac; fanless design.',
@@ -1436,6 +1551,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2020-11-10',
+    url: 'https://support.apple.com/en-us/111893',
     event: 'One More Thing',
     highlight: {
       en: 'Up to 20 hours of battery life.',
@@ -1449,6 +1565,7 @@ export const devices: Device[] = [
     line: 'Mac mini',
     thumbnail: 'mac-mini',
     announcedAt: '2020-11-10',
+    url: 'https://support.apple.com/en-us/111894',
     event: 'One More Thing',
     highlight: {
       en: 'First Apple silicon desktop.',
@@ -1462,6 +1579,7 @@ export const devices: Device[] = [
     line: 'iPhone mini',
     thumbnail: 'iphone-notch',
     announcedAt: '2020-10-13',
+    url: 'https://support.apple.com/en-us/111877',
     event: 'Hi, Speed',
     highlight: {
       en: 'Smallest 5G phone at launch, with a 5.4-inch display.',
@@ -1475,6 +1593,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-notch',
     announcedAt: '2020-10-13',
+    url: 'https://support.apple.com/en-us/111876',
     event: 'Hi, Speed',
     highlight: {
       en: 'Flat-edge design, 5G, OLED and MagSafe.',
@@ -1488,6 +1607,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro',
     thumbnail: 'iphone-notch',
     announcedAt: '2020-10-13',
+    url: 'https://support.apple.com/en-us/111875',
     event: 'Hi, Speed',
     highlight: {
       en: 'LiDAR scanner and Apple ProRAW.',
@@ -1501,6 +1621,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro Max',
     thumbnail: 'iphone-notch',
     announcedAt: '2020-10-13',
+    url: 'https://support.apple.com/en-us/111874',
     event: 'Hi, Speed',
     highlight: {
       en: 'Sensor-shift stabilization and a 6.7-inch display.',
@@ -1514,6 +1635,7 @@ export const devices: Device[] = [
     line: 'HomePod mini',
     thumbnail: 'homepod-mini',
     announcedAt: '2020-10-13',
+    url: 'https://support.apple.com/en-us/111914',
     event: 'Hi, Speed',
     highlight: {
       en: 'Compact $99 smart speaker with the S5 chip.',
@@ -1527,6 +1649,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Series',
     thumbnail: 'watch',
     announcedAt: '2020-09-15',
+    url: 'https://support.apple.com/en-us/111918',
     event: 'Time Flies',
     highlight: {
       en: 'Blood oxygen sensor and the S6 chip.',
@@ -1540,6 +1663,7 @@ export const devices: Device[] = [
     line: 'Apple Watch SE',
     thumbnail: 'watch',
     announcedAt: '2020-09-15',
+    url: 'https://support.apple.com/en-us/111862',
     event: 'Time Flies',
     highlight: {
       en: 'Lower-cost Watch with the Series 5 design and S5 chip.',
@@ -1553,6 +1677,7 @@ export const devices: Device[] = [
     line: 'iPad',
     thumbnail: 'ipad-home',
     announcedAt: '2020-09-15',
+    url: 'https://support.apple.com/en-us/118451',
     event: 'Time Flies',
     highlight: {
       en: 'A12 Bionic in the 10.2-inch design.',
@@ -1566,6 +1691,7 @@ export const devices: Device[] = [
     line: 'iPad Air',
     thumbnail: 'ipad',
     announcedAt: '2020-09-15',
+    url: 'https://support.apple.com/en-us/111905',
     event: 'Time Flies',
     highlight: {
       en: 'Pro-style all-screen design, USB-C, Touch ID in the top button and the A14.',
@@ -1579,6 +1705,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2020-08-04',
+    url: 'https://support.apple.com/en-us/111913',
     highlight: {
       en: 'Last Intel iMac, with a 1080p camera and a nano-texture option.',
       pl: 'Ostatni iMac z Intelem, z kamerą 1080p i opcją nano-texture.',
@@ -1591,6 +1718,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2020-05-04',
+    url: 'https://support.apple.com/en-us/111339',
     highlight: {
       en: 'Magic Keyboard replaces the butterfly keyboard; last Intel 13-inch Pro.',
       pl: 'Magic Keyboard zastępuje klawiaturę motylkową; ostatni 13-calowy Pro z Intelem.',
@@ -1603,6 +1731,7 @@ export const devices: Device[] = [
     line: 'iPhone SE',
     thumbnail: 'iphone-home',
     announcedAt: '2020-04-15',
+    url: 'https://support.apple.com/en-us/111882',
     highlight: {
       en: 'A13 Bionic in the iPhone 8 body for $399.',
       pl: "A13 Bionic w obudowie iPhone'a 8 za 399 dolarów.",
@@ -1615,6 +1744,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad',
     announcedAt: '2020-03-18',
+    url: 'https://support.apple.com/en-us/118452',
     highlight: {
       en: 'A12Z, LiDAR scanner and trackpad support with the Magic Keyboard.',
       pl: 'A12Z, skaner LiDAR i obsługa gładzika z Magic Keyboard.',
@@ -1627,6 +1757,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad',
     announcedAt: '2020-03-18',
+    url: 'https://support.apple.com/en-us/111977',
     highlight: {
       en: 'Large Pro with the same LiDAR and ultra-wide camera.',
       pl: 'Duży Pro z tym samym LiDAR-em i aparatem ultraszerokokątnym.',
@@ -1639,6 +1770,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2020-03-18',
+    url: 'https://support.apple.com/en-us/111991',
     highlight: {
       en: 'Magic Keyboard, 10th-gen Intel chips and a $999 price; last Intel Air.',
       pl: 'Magic Keyboard, procesory Intel 10. generacji i cena 999 dolarów; ostatni Air z Intelem.',
@@ -1652,6 +1784,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2019-11-13',
+    url: 'https://support.apple.com/en-us/111932',
     highlight: {
       en: 'Replaces the 15-inch model; scissor keyboard returns and the Escape key is back.',
       pl: 'Zastępuje model 15-calowy; wraca klawiatura nożycowa i fizyczny klawisz Escape.',
@@ -1664,6 +1797,7 @@ export const devices: Device[] = [
     line: 'AirPods Pro',
     thumbnail: 'airpods',
     announcedAt: '2019-10-28',
+    url: 'https://support.apple.com/en-us/111861',
     highlight: {
       en: 'In-ear design with Active Noise Cancellation and Transparency mode.',
       pl: 'Konstrukcja dokanałowa z aktywną redukcją szumów i trybem kontaktu.',
@@ -1676,6 +1810,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-notch',
     announcedAt: '2019-09-10',
+    url: 'https://support.apple.com/en-us/111865',
     event: 'By Innovation Only',
     highlight: {
       en: 'Dual camera with Night mode and the A13 Bionic at $699.',
@@ -1689,6 +1824,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro',
     thumbnail: 'iphone-notch',
     announcedAt: '2019-09-10',
+    url: 'https://support.apple.com/en-us/111879',
     event: 'By Innovation Only',
     highlight: {
       en: 'First Pro iPhone, with a triple camera.',
@@ -1702,6 +1838,7 @@ export const devices: Device[] = [
     line: 'iPhone Pro Max',
     thumbnail: 'iphone-notch',
     announcedAt: '2019-09-10',
+    url: 'https://support.apple.com/en-us/111878',
     event: 'By Innovation Only',
     highlight: {
       en: 'Large Pro with the longest iPhone battery life to date.',
@@ -1715,6 +1852,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Series',
     thumbnail: 'watch',
     announcedAt: '2019-09-10',
+    url: 'https://support.apple.com/en-us/118453',
     event: 'By Innovation Only',
     highlight: {
       en: 'Always-on Retina display and a built-in compass.',
@@ -1728,6 +1866,7 @@ export const devices: Device[] = [
     line: 'iPad',
     thumbnail: 'ipad-home',
     announcedAt: '2019-09-10',
+    url: 'https://support.apple.com/en-us/111911',
     event: 'By Innovation Only',
     highlight: {
       en: 'Bigger 10.2-inch display and Smart Keyboard support.',
@@ -1741,6 +1880,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2019-07-09',
+    url: 'https://support.apple.com/en-us/111948',
     highlight: {
       en: 'True Tone display and a $1,099 price.',
       pl: 'Ekran True Tone i cena 1099 dolarów.',
@@ -1753,6 +1893,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2019-07-09',
+    url: 'https://support.apple.com/en-us/111945',
     highlight: {
       en: 'Touch Bar and Touch ID come to the entry-level Pro.',
       pl: 'Touch Bar i Touch ID trafiają do podstawowego Pro.',
@@ -1765,6 +1906,7 @@ export const devices: Device[] = [
     line: 'Mac Pro',
     thumbnail: 'mac-pro',
     announcedAt: '2019-06-03',
+    url: 'https://support.apple.com/en-us/118461',
     event: 'WWDC 2019',
     highlight: {
       en: 'Modular tower with up to 28 Xeon cores; released 10 December 2019.',
@@ -1778,6 +1920,7 @@ export const devices: Device[] = [
     line: 'Pro Display XDR',
     thumbnail: 'display',
     announcedAt: '2019-06-03',
+    url: 'https://support.apple.com/en-us/111892',
     event: 'WWDC 2019',
     highlight: {
       en: '32-inch 6K display with 1600 nits peak brightness; released 10 December 2019.',
@@ -1791,6 +1934,7 @@ export const devices: Device[] = [
     line: 'iPod touch',
     thumbnail: 'iphone-home',
     announcedAt: '2019-05-28',
+    url: 'https://support.apple.com/en-us/111961',
     highlight: {
       en: 'Last iPod, with the A10 Fusion; discontinued in May 2022.',
       pl: 'Ostatni iPod, z czipem A10 Fusion; wycofany w maju 2022.',
@@ -1803,6 +1947,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2019-05-21',
+    url: 'https://support.apple.com/en-us/111941',
     highlight: {
       en: 'First 8-core MacBook Pro and a revised butterfly keyboard.',
       pl: 'Pierwszy 8-rdzeniowy MacBook Pro i poprawiona klawiatura motylkowa.',
@@ -1815,6 +1960,7 @@ export const devices: Device[] = [
     line: 'AirPods',
     thumbnail: 'airpods',
     announcedAt: '2019-03-20',
+    url: 'https://support.apple.com/en-us/111856',
     highlight: {
       en: 'H1 chip, hands-free Siri and an optional wireless charging case.',
       pl: 'Czip H1, Siri bez użycia rąk i opcjonalne etui z ładowaniem bezprzewodowym.',
@@ -1827,6 +1973,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2019-03-19',
+    url: 'https://support.apple.com/en-us/111998',
     highlight: {
       en: 'Up to 8-core Intel chips and Radeon Pro Vega graphics.',
       pl: 'Procesory Intel do 8 rdzeni i grafika Radeon Pro Vega.',
@@ -1839,6 +1986,7 @@ export const devices: Device[] = [
     line: 'iPad Air',
     thumbnail: 'ipad-home',
     announcedAt: '2019-03-18',
+    url: 'https://support.apple.com/en-us/111939',
     highlight: {
       en: 'Return of the Air name with a 10.5-inch display and the A12.',
       pl: 'Powrót nazwy Air z ekranem 10,5 cala i czipem A12.',
@@ -1851,6 +1999,7 @@ export const devices: Device[] = [
     line: 'iPad mini',
     thumbnail: 'ipad-home',
     announcedAt: '2019-03-18',
+    url: 'https://support.apple.com/en-us/111904',
     highlight: {
       en: 'First mini update since 2015, with Apple Pencil support.',
       pl: 'Pierwsza aktualizacja mini od 2015 roku, ze wsparciem Apple Pencil.',
@@ -1864,6 +2013,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad',
     announcedAt: '2018-10-30',
+    url: 'https://support.apple.com/en-us/111974',
     event: 'There’s More in the Making',
     highlight: {
       en: 'All-screen design with Face ID, USB-C and the A12X.',
@@ -1877,6 +2027,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad',
     announcedAt: '2018-10-30',
+    url: 'https://support.apple.com/en-us/111979',
     event: 'There’s More in the Making',
     highlight: {
       en: 'Large Pro shrinks to a much smaller body.',
@@ -1890,6 +2041,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2018-10-30',
+    url: 'https://support.apple.com/en-us/111933',
     event: 'There’s More in the Making',
     highlight: {
       en: 'First Retina Air, with Touch ID and USB-C.',
@@ -1903,6 +2055,7 @@ export const devices: Device[] = [
     line: 'Mac mini',
     thumbnail: 'mac-mini',
     announcedAt: '2018-10-30',
+    url: 'https://support.apple.com/en-us/111912',
     event: 'There’s More in the Making',
     highlight: {
       en: 'First update in four years, in space gray with up to 6 cores.',
@@ -1916,6 +2069,7 @@ export const devices: Device[] = [
     line: 'Apple Pencil',
     thumbnail: 'pencil',
     announcedAt: '2018-10-30',
+    url: 'https://support.apple.com/en-us/111889',
     event: 'There’s More in the Making',
     highlight: {
       en: 'Magnetic attachment, wireless charging and a double-tap gesture.',
@@ -1929,6 +2083,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-notch',
     announcedAt: '2018-09-12',
+    url: 'https://support.apple.com/en-us/111881',
     event: 'Gather Round',
     highlight: {
       en: 'A12 Bionic, Apple’s first 7-nanometer chip.',
@@ -1942,6 +2097,7 @@ export const devices: Device[] = [
     line: 'iPhone Max',
     thumbnail: 'iphone-notch',
     announcedAt: '2018-09-12',
+    url: 'https://support.apple.com/en-us/111880',
     event: 'Gather Round',
     highlight: {
       en: 'First 6.5-inch iPhone.',
@@ -1955,6 +2111,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-notch',
     announcedAt: '2018-09-12',
+    url: 'https://support.apple.com/en-us/111868',
     event: 'Gather Round',
     highlight: {
       en: 'Lower-cost Face ID phone with a Liquid Retina LCD in six colors.',
@@ -1968,6 +2125,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Series',
     thumbnail: 'watch',
     announcedAt: '2018-09-12',
+    url: 'https://support.apple.com/en-us/111984',
     event: 'Gather Round',
     highlight: {
       en: 'Larger display, ECG app and fall detection.',
@@ -1981,6 +2139,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2018-07-12',
+    url: 'https://support.apple.com/en-us/111949',
     highlight: {
       en: 'Up to 6-core Intel chips, 32 GB of memory and the T2 chip.',
       pl: 'Procesory Intel do 6 rdzeni, 32 GB pamięci i czip T2.',
@@ -1993,6 +2152,7 @@ export const devices: Device[] = [
     line: 'iPad',
     thumbnail: 'ipad-home',
     announcedAt: '2018-03-27',
+    url: 'https://support.apple.com/en-us/111957',
     event: 'Let’s Take a Field Trip',
     highlight: {
       en: 'Apple Pencil support comes to the $329 iPad.',
@@ -2007,6 +2167,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-home',
     announcedAt: '2017-09-12',
+    url: 'https://support.apple.com/en-us/111976',
     event: 'Let’s Meet at Our Place',
     highlight: {
       en: 'Glass back with wireless charging and the A11 Bionic.',
@@ -2020,6 +2181,7 @@ export const devices: Device[] = [
     line: 'iPhone Plus',
     thumbnail: 'iphone-home',
     announcedAt: '2017-09-12',
+    url: 'https://support.apple.com/en-us/111950',
     event: 'Let’s Meet at Our Place',
     highlight: {
       en: 'Portrait Lighting on the dual camera.',
@@ -2033,6 +2195,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-notch',
     announcedAt: '2017-09-12',
+    url: 'https://support.apple.com/en-us/111864',
     event: 'Let’s Meet at Our Place',
     highlight: {
       en: 'Face ID, edge-to-edge OLED and no Home button; released 3 November.',
@@ -2046,6 +2209,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Series',
     thumbnail: 'watch',
     announcedAt: '2017-09-12',
+    url: 'https://support.apple.com/en-us/111891',
     event: 'Let’s Meet at Our Place',
     highlight: {
       en: 'First Apple Watch with cellular.',
@@ -2059,6 +2223,7 @@ export const devices: Device[] = [
     line: 'Apple TV',
     thumbnail: 'apple-tv',
     announcedAt: '2017-09-12',
+    url: 'https://support.apple.com/en-us/111929',
     event: 'Let’s Meet at Our Place',
     highlight: {
       en: '4K HDR playback with the A10X Fusion.',
@@ -2072,6 +2237,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad-home',
     announcedAt: '2017-06-05',
+    url: 'https://support.apple.com/en-us/111927',
     event: 'WWDC 2017',
     highlight: {
       en: 'First ProMotion 120 Hz display and the A10X.',
@@ -2085,6 +2251,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad-home',
     announcedAt: '2017-06-05',
+    url: 'https://support.apple.com/en-us/111964',
     event: 'WWDC 2017',
     highlight: {
       en: 'ProMotion comes to the large Pro.',
@@ -2098,6 +2265,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2017-06-05',
+    url: 'https://support.apple.com/en-us/111969',
     event: 'WWDC 2017',
     highlight: {
       en: 'Kaby Lake chips, brighter displays and Thunderbolt 3.',
@@ -2111,6 +2279,7 @@ export const devices: Device[] = [
     line: 'iMac Pro',
     thumbnail: 'imac',
     announcedAt: '2017-06-05',
+    url: 'https://support.apple.com/en-us/111995',
     event: 'WWDC 2017',
     highlight: {
       en: 'Space gray workstation with up to 18 Xeon cores; released 14 December 2017.',
@@ -2124,6 +2293,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2017-06-05',
+    url: 'https://support.apple.com/en-us/111947',
     event: 'WWDC 2017',
     highlight: {
       en: 'Kaby Lake refresh of the Touch Bar design.',
@@ -2137,6 +2307,7 @@ export const devices: Device[] = [
     line: 'MacBook',
     thumbnail: 'macbook',
     announcedAt: '2017-06-05',
+    url: 'https://support.apple.com/en-us/111986',
     event: 'WWDC 2017',
     highlight: {
       en: 'Last update to the 12-inch MacBook.',
@@ -2150,6 +2321,7 @@ export const devices: Device[] = [
     line: 'HomePod',
     thumbnail: 'homepod',
     announcedAt: '2017-06-05',
+    url: 'https://support.apple.com/en-us/111994',
     event: 'WWDC 2017',
     highlight: {
       en: 'Siri smart speaker with the A8 chip; released 9 February 2018.',
@@ -2163,6 +2335,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2017-06-05',
+    url: 'https://support.apple.com/en-us/111924',
     event: 'WWDC 2017',
     highlight: {
       en: '1.8 GHz processor bump; the last Air without a Retina display.',
@@ -2176,6 +2349,7 @@ export const devices: Device[] = [
     line: 'iPad',
     thumbnail: 'ipad-home',
     announcedAt: '2017-03-21',
+    url: 'https://support.apple.com/en-us/111960',
     highlight: {
       en: 'The plain “iPad” name returns at $329 with the A9.',
       pl: 'Powrót zwykłej nazwy „iPad” w cenie 329 dolarów, z czipem A9.',
@@ -2189,6 +2363,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2016-10-27',
+    url: 'https://support.apple.com/en-us/112003',
     event: 'Hello Again',
     highlight: {
       en: 'Thinner design with USB-C only and an optional Touch Bar.',
@@ -2202,6 +2377,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2016-10-27',
+    url: 'https://support.apple.com/en-us/111975',
     event: 'Hello Again',
     highlight: {
       en: 'Touch Bar and Touch ID on every 15-inch model.',
@@ -2215,6 +2391,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-home',
     announcedAt: '2016-09-07',
+    url: 'https://support.apple.com/en-us/111943',
     event: 'See You on the 7th',
     highlight: {
       en: 'Water resistance, a solid-state Home button and no headphone jack.',
@@ -2228,6 +2405,7 @@ export const devices: Device[] = [
     line: 'iPhone Plus',
     thumbnail: 'iphone-home',
     announcedAt: '2016-09-07',
+    url: 'https://support.apple.com/en-us/111953',
     event: 'See You on the 7th',
     highlight: {
       en: 'First dual-camera iPhone with Portrait mode.',
@@ -2241,6 +2419,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Series',
     thumbnail: 'watch',
     announcedAt: '2016-09-07',
+    url: 'https://support.apple.com/en-us/112022',
     event: 'See You on the 7th',
     highlight: {
       en: 'Built-in GPS and swim-proof water resistance.',
@@ -2254,6 +2433,7 @@ export const devices: Device[] = [
     line: 'Apple Watch Series',
     thumbnail: 'watch',
     announcedAt: '2016-09-07',
+    url: 'https://support.apple.com/en-us/111985',
     event: 'See You on the 7th',
     highlight: {
       en: 'Original design with the faster S1P dual-core chip.',
@@ -2267,6 +2447,7 @@ export const devices: Device[] = [
     line: 'AirPods',
     thumbnail: 'airpods',
     announcedAt: '2016-09-07',
+    url: 'https://support.apple.com/en-us/111855',
     event: 'See You on the 7th',
     highlight: {
       en: 'First wireless earbuds with the W1 chip; released 13 December.',
@@ -2280,6 +2461,7 @@ export const devices: Device[] = [
     line: 'MacBook',
     thumbnail: 'macbook',
     announcedAt: '2016-04-19',
+    url: 'https://support.apple.com/en-us/112033',
     highlight: {
       en: 'Skylake Core m chips and a rose gold finish.',
       pl: 'Procesory Skylake Core m i wykończenie w kolorze różowego złota.',
@@ -2292,6 +2474,7 @@ export const devices: Device[] = [
     line: 'iPhone SE',
     thumbnail: 'iphone-home',
     announcedAt: '2016-03-21',
+    url: 'https://support.apple.com/en-us/112005',
     event: 'Let Us Loop You In',
     highlight: {
       en: '4-inch phone with the A9 from the iPhone 6s for $399.',
@@ -2305,6 +2488,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad-home',
     announcedAt: '2016-03-21',
+    url: 'https://support.apple.com/en-us/111965',
     event: 'Let Us Loop You In',
     highlight: {
       en: 'First True Tone display.',
@@ -2319,6 +2503,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2015-10-13',
+    url: 'https://support.apple.com/en-us/112035',
     highlight: {
       en: 'Retina 4K arrives on the 21.5-inch model and every 27-inch iMac goes 5K.',
       pl: 'Retina 4K trafia do modelu 21,5 cala, a każdy 27-calowy iMac przechodzi na 5K.',
@@ -2331,6 +2516,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-home',
     announcedAt: '2015-09-09',
+    url: 'https://support.apple.com/en-us/111952',
     event: 'Hey Siri, Give Us a Hint',
     highlight: {
       en: '3D Touch, a 12 MP camera and the A9 chip.',
@@ -2344,6 +2530,7 @@ export const devices: Device[] = [
     line: 'iPhone Plus',
     thumbnail: 'iphone-home',
     announcedAt: '2015-09-09',
+    url: 'https://support.apple.com/en-us/111996',
     event: 'Hey Siri, Give Us a Hint',
     highlight: {
       en: 'Large model with optical image stabilization.',
@@ -2357,6 +2544,7 @@ export const devices: Device[] = [
     line: 'iPad Pro',
     thumbnail: 'ipad-home',
     announcedAt: '2015-09-09',
+    url: 'https://support.apple.com/en-us/112024',
     event: 'Hey Siri, Give Us a Hint',
     highlight: {
       en: 'First iPad Pro, with the A9X and Apple Pencil support.',
@@ -2370,6 +2558,7 @@ export const devices: Device[] = [
     line: 'iPad mini',
     thumbnail: 'ipad-home',
     announcedAt: '2015-09-09',
+    url: 'https://support.apple.com/en-us/112002',
     event: 'Hey Siri, Give Us a Hint',
     highlight: {
       en: 'Thinner mini with the A8 and a laminated display.',
@@ -2383,6 +2572,7 @@ export const devices: Device[] = [
     line: 'Apple TV',
     thumbnail: 'apple-tv',
     announcedAt: '2015-09-09',
+    url: 'https://support.apple.com/en-us/111928',
     event: 'Hey Siri, Give Us a Hint',
     highlight: {
       en: 'tvOS, an App Store and the Siri Remote with a touch surface.',
@@ -2396,6 +2586,7 @@ export const devices: Device[] = [
     line: 'Apple Pencil',
     thumbnail: 'pencil',
     announcedAt: '2015-09-09',
+    url: 'https://support.apple.com/en-us/111920',
     event: 'Hey Siri, Give Us a Hint',
     highlight: {
       en: 'Pressure- and tilt-sensitive stylus for the iPad Pro.',
@@ -2409,6 +2600,7 @@ export const devices: Device[] = [
     line: 'iPod touch',
     thumbnail: 'iphone-home',
     announcedAt: '2015-07-15',
+    url: 'https://support.apple.com/en-us/112023',
     highlight: {
       en: 'A8 chip and an 8 MP camera in the 2012 design.',
       pl: 'Czip A8 i aparat 8 MP w obudowie z 2012 roku.',
@@ -2421,6 +2613,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2015-05-19',
+    url: 'https://support.apple.com/en-us/111955',
     highlight: {
       en: 'Force Touch trackpad and faster flash storage.',
       pl: 'Gładzik Force Touch i szybsza pamięć flash.',
@@ -2433,6 +2626,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2015-05-19',
+    url: 'https://support.apple.com/en-us/112434',
     highlight: {
       en: 'Lower-cost $1,999 5K model joins the line.',
       pl: 'Do oferty dochodzi tańszy model 5K za 1999 dolarów.',
@@ -2445,6 +2639,7 @@ export const devices: Device[] = [
     line: 'MacBook',
     thumbnail: 'macbook',
     announcedAt: '2015-03-09',
+    url: 'https://support.apple.com/en-us/112442',
     event: 'Spring Forward',
     highlight: {
       en: 'Fanless 0.9 kg laptop with a single USB-C port, butterfly keyboard and Force Touch trackpad.',
@@ -2458,6 +2653,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2015-03-09',
+    url: 'https://support.apple.com/en-us/111956',
     event: 'Spring Forward',
     highlight: {
       en: 'Broadwell chips and Thunderbolt 2.',
@@ -2471,6 +2667,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2015-03-09',
+    url: 'https://support.apple.com/en-us/111959',
     event: 'Spring Forward',
     highlight: {
       en: 'First Mac to ship with the Force Touch trackpad, a month ahead of the 12-inch MacBook.',
@@ -2485,6 +2682,7 @@ export const devices: Device[] = [
     line: 'iPad Air',
     thumbnail: 'ipad-home',
     announcedAt: '2014-10-16',
+    url: 'https://support.apple.com/en-us/112017',
     event: 'It’s Been Way Too Long',
     highlight: {
       en: 'Touch ID and the A8X in a 6.1 mm body.',
@@ -2498,6 +2696,7 @@ export const devices: Device[] = [
     line: 'iPad mini',
     thumbnail: 'ipad-home',
     announcedAt: '2014-10-16',
+    url: 'https://support.apple.com/en-us/112018',
     event: 'It’s Been Way Too Long',
     highlight: {
       en: 'Touch ID and a gold finish; otherwise the mini 2.',
@@ -2511,6 +2710,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2014-10-16',
+    url: 'https://support.apple.com/en-us/112436',
     event: 'It’s Been Way Too Long',
     highlight: {
       en: 'First 5K display in a consumer computer.',
@@ -2524,6 +2724,7 @@ export const devices: Device[] = [
     line: 'Mac mini',
     thumbnail: 'mac-mini',
     announcedAt: '2014-10-16',
+    url: 'https://support.apple.com/en-us/111931',
     event: 'It’s Been Way Too Long',
     highlight: {
       en: 'Haswell chips and soldered memory; last update for four years.',
@@ -2537,6 +2738,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-home',
     announcedAt: '2014-09-09',
+    url: 'https://support.apple.com/en-us/111954',
     event: 'Wish We Could Say More',
     highlight: {
       en: 'Larger 4.7-inch display, rounded design and Apple Pay.',
@@ -2550,6 +2752,7 @@ export const devices: Device[] = [
     line: 'iPhone Plus',
     thumbnail: 'iphone-home',
     announcedAt: '2014-09-09',
+    url: 'https://support.apple.com/en-us/111940',
     event: 'Wish We Could Say More',
     highlight: {
       en: 'First 5.5-inch iPhone with optical image stabilization.',
@@ -2563,6 +2766,7 @@ export const devices: Device[] = [
     line: 'Apple Watch',
     thumbnail: 'watch',
     announcedAt: '2014-09-09',
+    url: 'https://support.apple.com/en-us/112009',
     event: 'Wish We Could Say More',
     highlight: {
       en: 'Apple’s first wearable, with the Digital Crown and Taptic Engine; released 24 April 2015.',
@@ -2576,6 +2780,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2014-07-29',
+    url: 'https://support.apple.com/en-us/111935',
     highlight: {
       en: 'Faster chips and more memory at lower prices.',
       pl: 'Szybsze procesory i więcej pamięci w niższych cenach.',
@@ -2588,6 +2793,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2014-06-18',
+    url: 'https://support.apple.com/en-us/112031',
     highlight: {
       en: 'New $1,099 entry-level model with a dual-core chip.',
       pl: 'Nowy podstawowy model za 1099 dolarów z dwurdzeniowym procesorem.',
@@ -2600,6 +2806,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2014-04-29',
+    url: 'https://support.apple.com/en-us/111944',
     highlight: {
       en: 'Starting price drops to $899.',
       pl: 'Cena startowa spada do 899 dolarów.',
@@ -2613,6 +2820,7 @@ export const devices: Device[] = [
     line: 'iPad Air',
     thumbnail: 'ipad-home',
     announcedAt: '2013-10-22',
+    url: 'https://support.apple.com/en-us/112020',
     event: 'We Still Have a Lot to Cover',
     highlight: {
       en: 'Thinner, lighter full-size iPad with the A7.',
@@ -2626,6 +2834,7 @@ export const devices: Device[] = [
     line: 'iPad mini',
     thumbnail: 'ipad-home',
     announcedAt: '2013-10-22',
+    url: 'https://support.apple.com/en-us/112019',
     event: 'We Still Have a Lot to Cover',
     highlight: {
       en: 'Retina display comes to the mini.',
@@ -2639,6 +2848,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2013-10-22',
+    url: 'https://support.apple.com/en-us/111971',
     event: 'We Still Have a Lot to Cover',
     highlight: {
       en: 'Haswell chips, Thunderbolt 2 and all-day battery.',
@@ -2652,6 +2862,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2013-09-24',
+    url: 'https://support.apple.com/en-us/111970',
     highlight: {
       en: 'Haswell chips, 802.11ac Wi-Fi and PCIe flash.',
       pl: 'Procesory Haswell, Wi-Fi 802.11ac i pamięć flash PCIe.',
@@ -2664,6 +2875,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-home',
     announcedAt: '2013-09-10',
+    url: 'https://support.apple.com/en-us/111973',
     event: 'This Should Brighten Everyone’s Day',
     highlight: {
       en: 'Touch ID and the 64-bit A7 chip.',
@@ -2677,6 +2889,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-home',
     announcedAt: '2013-09-10',
+    url: 'https://support.apple.com/en-us/111917',
     event: 'This Should Brighten Everyone’s Day',
     highlight: {
       en: 'iPhone 5 internals in a colorful polycarbonate body.',
@@ -2690,6 +2903,7 @@ export const devices: Device[] = [
     line: 'Mac Pro',
     thumbnail: 'mac-pro-cylinder',
     announcedAt: '2013-06-10',
+    url: 'https://support.apple.com/en-us/112025',
     event: 'WWDC 2013',
     highlight: {
       en: 'Cylindrical redesign with dual GPUs; released 19 December 2013.',
@@ -2703,6 +2917,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2013-06-10',
+    url: 'https://support.apple.com/en-us/111938',
     event: 'WWDC 2013',
     highlight: {
       en: 'Haswell brings all-day battery life, up to 12 hours.',
@@ -2716,6 +2931,7 @@ export const devices: Device[] = [
     line: 'AirPort Extreme',
     thumbnail: 'airport',
     announcedAt: '2013-06-10',
+    url: 'https://support.apple.com/en-us/112419',
     event: 'WWDC 2013',
     highlight: {
       en: 'Tall redesign with 802.11ac and beamforming; the last AirPort Extreme.',
@@ -2729,6 +2945,7 @@ export const devices: Device[] = [
     line: 'Time Capsule',
     thumbnail: 'airport',
     announcedAt: '2013-06-10',
+    url: 'https://support.apple.com/en-us/112420',
     event: 'WWDC 2013',
     highlight: {
       en: 'Time Capsule takes the AirPort name and the 802.11ac tower design, with 2 TB or 3 TB; the last Time Capsule.',
@@ -2742,6 +2959,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2013-02-13',
+    url: 'https://support.apple.com/en-us/118465',
     highlight: {
       en: 'Faster chips and lower prices; the 13-inch Retina model drops to $1,499.',
       pl: 'Szybsze procesory i niższe ceny; 13-calowy model Retina tanieje do 1499 dolarów.',
@@ -2755,6 +2973,7 @@ export const devices: Device[] = [
     line: 'iPad mini',
     thumbnail: 'ipad-home',
     announcedAt: '2012-10-23',
+    url: 'https://support.apple.com/en-us/111978',
     event: 'We’ve Got a Little More to Show You',
     highlight: {
       en: 'First 7.9-inch iPad.',
@@ -2768,6 +2987,7 @@ export const devices: Device[] = [
     line: 'iPad',
     thumbnail: 'ipad-home',
     announcedAt: '2012-10-23',
+    url: 'https://support.apple.com/en-us/111993',
     event: 'We’ve Got a Little More to Show You',
     highlight: {
       en: 'A6X chip and Lightning connector seven months after the 3rd generation.',
@@ -2781,6 +3001,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2012-10-23',
+    url: 'https://support.apple.com/en-us/118463',
     event: 'We’ve Got a Little More to Show You',
     highlight: {
       en: 'Retina display comes to the 13-inch Pro.',
@@ -2794,6 +3015,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2012-10-23',
+    url: 'https://support.apple.com/en-us/112433',
     event: 'We’ve Got a Little More to Show You',
     highlight: {
       en: '5 mm edge redesign, Fusion Drive and no optical drive.',
@@ -2807,6 +3029,7 @@ export const devices: Device[] = [
     line: 'Mac mini',
     thumbnail: 'mac-mini',
     announcedAt: '2012-10-23',
+    url: 'https://support.apple.com/en-us/111926',
     event: 'We’ve Got a Little More to Show You',
     highlight: {
       en: 'Ivy Bridge chips and USB 3.',
@@ -2820,6 +3043,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-home',
     announcedAt: '2012-09-12',
+    url: 'https://support.apple.com/en-us/112016',
     event: 'It’s Almost Here',
     highlight: {
       en: '4-inch display, LTE, Lightning connector and the A6.',
@@ -2833,6 +3057,7 @@ export const devices: Device[] = [
     line: 'iPod touch',
     thumbnail: 'iphone-home',
     announcedAt: '2012-09-12',
+    url: 'https://support.apple.com/en-us/112021',
     event: 'It’s Almost Here',
     highlight: {
       en: '4-inch display, colors and the Lightning connector.',
@@ -2846,6 +3071,7 @@ export const devices: Device[] = [
     line: 'iPod nano',
     thumbnail: 'ipod-nano',
     announcedAt: '2012-09-12',
+    url: 'https://support.apple.com/en-us/112039',
     event: 'It’s Almost Here',
     highlight: {
       en: 'Last iPod nano, with a 2.5-inch multi-touch display.',
@@ -2859,6 +3085,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2012-06-11',
+    url: 'https://support.apple.com/en-us/112576',
     event: 'WWDC 2012',
     highlight: {
       en: 'First Retina Mac: 15-inch 2880×1800, no optical drive.',
@@ -2872,6 +3099,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2012-06-11',
+    url: 'https://support.apple.com/en-us/111966',
     event: 'WWDC 2012',
     highlight: {
       en: 'Ivy Bridge, USB 3 and a 720p camera.',
@@ -2885,6 +3113,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2012-06-11',
+    url: 'https://support.apple.com/en-us/112568',
     event: 'WWDC 2012',
     highlight: {
       en: 'Ivy Bridge and USB 3 in the unibody design; the last MacBook Pro with an optical drive.',
@@ -2898,6 +3127,7 @@ export const devices: Device[] = [
     line: 'AirPort Express',
     thumbnail: 'airport-express',
     announcedAt: '2012-06-11',
+    url: 'https://support.apple.com/en-us/112421',
     event: 'WWDC 2012',
     highlight: {
       en: 'Redesigned in the Apple TV’s shape with simultaneous dual-band Wi-Fi and an Ethernet LAN port.',
@@ -2911,6 +3141,7 @@ export const devices: Device[] = [
     line: 'iPad',
     thumbnail: 'ipad-home',
     announcedAt: '2012-03-07',
+    url: 'https://support.apple.com/en-us/111992',
     event: 'We Have Something You Really Have to See. And Touch.',
     highlight: {
       en: 'First Retina display on an iPad, with the A5X and LTE.',
@@ -2924,6 +3155,7 @@ export const devices: Device[] = [
     line: 'Apple TV',
     thumbnail: 'apple-tv',
     announcedAt: '2012-03-07',
+    url: 'https://support.apple.com/en-us/112429',
     event: 'We Have Something You Really Have to See. And Touch.',
     highlight: {
       en: '1080p playback.',
@@ -2938,6 +3170,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2011-10-24',
+    url: 'https://support.apple.com/en-us/112586',
     highlight: {
       en: 'Faster chips and graphics in the unibody design.',
       pl: 'Szybsze procesory i grafika w konstrukcji unibody.',
@@ -2950,6 +3183,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-home',
     announcedAt: '2011-10-04',
+    url: 'https://support.apple.com/en-us/112004',
     event: 'Let’s Talk iPhone',
     highlight: {
       en: 'Siri, the A5 and an 8 MP camera; announced the day before Steve Jobs died.',
@@ -2963,6 +3197,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2011-07-20',
+    url: 'https://support.apple.com/en-us/112038',
     highlight: {
       en: 'Sandy Bridge, Thunderbolt and a backlit keyboard; replaces the white MacBook.',
       pl: 'Sandy Bridge, Thunderbolt i podświetlana klawiatura; zastępuje białego MacBooka.',
@@ -2975,6 +3210,7 @@ export const devices: Device[] = [
     line: 'Mac mini',
     thumbnail: 'mac-mini',
     announcedAt: '2011-07-20',
+    url: 'https://support.apple.com/en-us/112007',
     highlight: {
       en: 'Drops the optical drive; ships with OS X Lion.',
       pl: 'Rezygnacja z napędu optycznego; w zestawie OS X Lion.',
@@ -2987,6 +3223,7 @@ export const devices: Device[] = [
     line: 'Thunderbolt Display',
     thumbnail: 'display',
     announcedAt: '2011-07-20',
+    url: 'https://support.apple.com/en-us/112597',
     highlight: {
       en: '27-inch display that doubles as a Thunderbolt docking station.',
       pl: 'Monitor 27 cali, który służy też jako stacja dokująca Thunderbolt.',
@@ -2999,6 +3236,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2011-05-03',
+    url: 'https://support.apple.com/en-us/112569',
     highlight: {
       en: 'Quad-core Sandy Bridge and Thunderbolt.',
       pl: 'Czterordzeniowy Sandy Bridge i Thunderbolt.',
@@ -3011,6 +3249,7 @@ export const devices: Device[] = [
     line: 'iPad',
     thumbnail: 'ipad-home',
     announcedAt: '2011-03-02',
+    url: 'https://support.apple.com/en-us/111990',
     event: 'Come See What 2011 Will Be the Year Of',
     highlight: {
       en: 'Thinner, with cameras and the dual-core A5.',
@@ -3024,6 +3263,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2011-02-24',
+    url: 'https://support.apple.com/en-us/112599',
     highlight: {
       en: 'First Thunderbolt port on any computer.',
       pl: 'Pierwszy port Thunderbolt w jakimkolwiek komputerze.',
@@ -3037,6 +3277,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2010-10-20',
+    url: 'https://support.apple.com/en-us/112585',
     event: 'Back to the Mac',
     highlight: {
       en: 'Wedge redesign in 11-inch and 13-inch sizes with flash storage only.',
@@ -3050,6 +3291,7 @@ export const devices: Device[] = [
     line: 'iPod touch',
     thumbnail: 'iphone-home',
     announcedAt: '2010-09-01',
+    url: 'https://support.apple.com/en-us/docs/ipod/133467',
     event: 'Apple Special Event, September 2010',
     highlight: {
       en: 'Retina display, FaceTime cameras and the A4.',
@@ -3063,6 +3305,7 @@ export const devices: Device[] = [
     line: 'iPod nano',
     thumbnail: 'ipod-nano',
     announcedAt: '2010-09-01',
+    url: 'https://support.apple.com/en-us/112432',
     event: 'Apple Special Event, September 2010',
     highlight: {
       en: 'Tiny square multi-touch design with a clip.',
@@ -3076,6 +3319,7 @@ export const devices: Device[] = [
     line: 'iPod shuffle',
     thumbnail: 'ipod-shuffle',
     announcedAt: '2010-09-01',
+    url: 'https://support.apple.com/en-us/112422',
     event: 'Apple Special Event, September 2010',
     highlight: {
       en: 'Buttons return; last iPod shuffle design.',
@@ -3089,6 +3333,7 @@ export const devices: Device[] = [
     line: 'Apple TV',
     thumbnail: 'apple-tv',
     announcedAt: '2010-09-01',
+    url: 'https://support.apple.com/en-us/112428',
     event: 'Apple Special Event, September 2010',
     highlight: {
       en: 'Tiny black $99 streaming box with the A4.',
@@ -3102,6 +3347,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2010-07-27',
+    url: 'https://support.apple.com/en-us/112566',
     highlight: {
       en: 'Core i3, i5 and i7 across the range.',
       pl: 'Core i3, i5 i i7 w całej linii.',
@@ -3114,6 +3360,7 @@ export const devices: Device[] = [
     line: 'Mac Pro',
     thumbnail: 'mac-pro',
     announcedAt: '2010-07-27',
+    url: 'https://support.apple.com/en-us/112578',
     highlight: {
       en: 'Up to 12 cores with Westmere Xeons.',
       pl: 'Do 12 rdzeni z procesorami Xeon Westmere.',
@@ -3126,6 +3373,7 @@ export const devices: Device[] = [
     line: 'LED Cinema Display',
     thumbnail: 'display',
     announcedAt: '2010-07-27',
+    url: 'https://support.apple.com/en-us/112620',
     highlight: {
       en: '2560×1440 display with Mini DisplayPort.',
       pl: 'Monitor 2560 na 1440 z Mini DisplayPort.',
@@ -3138,6 +3386,7 @@ export const devices: Device[] = [
     line: 'Mac mini',
     thumbnail: 'mac-mini',
     announcedAt: '2010-06-15',
+    url: 'https://support.apple.com/en-us/112588',
     highlight: {
       en: 'Unibody aluminum redesign with HDMI.',
       pl: 'Nowa aluminiowa konstrukcja unibody z HDMI.',
@@ -3150,6 +3399,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-home',
     announcedAt: '2010-06-07',
+    url: 'https://support.apple.com/en-us/112562',
     event: 'WWDC 2010',
     highlight: {
       en: 'Retina display, FaceTime, the A4 and a glass-and-steel design.',
@@ -3163,6 +3413,7 @@ export const devices: Device[] = [
     line: 'MacBook',
     thumbnail: 'macbook',
     announcedAt: '2010-05-18',
+    url: 'https://support.apple.com/en-us/112581',
     highlight: {
       en: 'Last white polycarbonate MacBook.',
       pl: 'Ostatni biały MacBook z poliwęglanu.',
@@ -3175,6 +3426,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2010-04-13',
+    url: 'https://support.apple.com/en-us/112605',
     highlight: {
       en: 'Core i5 and i7 with automatic graphics switching.',
       pl: 'Core i5 i i7 z automatycznym przełączaniem grafiki.',
@@ -3187,6 +3439,7 @@ export const devices: Device[] = [
     line: 'iPad',
     thumbnail: 'ipad-home',
     announcedAt: '2010-01-27',
+    url: 'https://support.apple.com/en-us/112438',
     event: 'Come See Our Latest Creation',
     highlight: {
       en: 'The first iPad, with a 9.7-inch display and the A4, from $499.',
@@ -3201,6 +3454,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2009-10-20',
+    url: 'https://support.apple.com/en-us/112564',
     highlight: {
       en: 'Unibody aluminum design and the first 27-inch iMac.',
       pl: 'Aluminiowa konstrukcja unibody i pierwszy 27-calowy iMac.',
@@ -3213,6 +3467,7 @@ export const devices: Device[] = [
     line: 'MacBook',
     thumbnail: 'macbook',
     announcedAt: '2009-10-20',
+    url: 'https://support.apple.com/en-us/112623',
     highlight: {
       en: 'White polycarbonate unibody with a built-in battery.',
       pl: 'Biały poliwęglanowy unibody z wbudowaną baterią.',
@@ -3225,6 +3480,7 @@ export const devices: Device[] = [
     line: 'Mac mini',
     thumbnail: 'mac-mini',
     announcedAt: '2009-10-20',
+    url: 'https://support.apple.com/en-us/112482',
     highlight: {
       en: 'Adds a server configuration with two drives.',
       pl: 'Dochodzi konfiguracja serwerowa z dwoma dyskami.',
@@ -3237,6 +3493,7 @@ export const devices: Device[] = [
     line: 'iPod nano',
     thumbnail: 'ipod-nano',
     announcedAt: '2009-09-09',
+    url: 'https://support.apple.com/en-us/112495',
     event: 'It’s Only Rock and Roll',
     highlight: {
       en: 'Video camera, FM radio and a larger display.',
@@ -3250,6 +3507,7 @@ export const devices: Device[] = [
     line: 'iPod touch',
     thumbnail: 'iphone-home',
     announcedAt: '2009-09-09',
+    url: 'https://support.apple.com/en-us/112461',
     event: 'It’s Only Rock and Roll',
     highlight: {
       en: 'Faster chip and up to 64 GB.',
@@ -3263,6 +3521,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-home',
     announcedAt: '2009-06-08',
+    url: 'https://support.apple.com/en-us/112307',
     event: 'WWDC 2009',
     highlight: {
       en: 'Twice the speed, video recording and a compass.',
@@ -3276,6 +3535,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2009-06-08',
+    url: 'https://support.apple.com/en-us/112474',
     event: 'WWDC 2009',
     highlight: {
       en: 'The 13-inch unibody joins the Pro line with an SD slot and built-in battery.',
@@ -3289,6 +3549,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2009-06-08',
+    url: 'https://support.apple.com/en-us/112624',
     event: 'WWDC 2009',
     highlight: {
       en: 'Built-in batteries rated for seven hours.',
@@ -3302,6 +3563,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2009-06-08',
+    url: 'https://support.apple.com/en-us/112660',
     event: 'WWDC 2009',
     highlight: {
       en: 'Faster chips and a price cut to $1,499.',
@@ -3315,6 +3577,7 @@ export const devices: Device[] = [
     line: 'Xserve',
     thumbnail: 'xserve',
     announcedAt: '2009-04-07',
+    url: 'https://support.apple.com/en-us/112625',
     highlight: {
       en: 'Nehalem Xeons and an optional SSD boot drive; the last Xserve, discontinued 31 January 2011.',
       pl: 'Xeony Nehalem i opcjonalny dysk SSD na system; ostatni Xserve, wycofany 31 stycznia 2011.',
@@ -3327,6 +3590,7 @@ export const devices: Device[] = [
     line: 'iPod shuffle',
     thumbnail: 'ipod-shuffle',
     announcedAt: '2009-03-11',
+    url: 'https://support.apple.com/en-us/112497',
     highlight: {
       en: 'Buttonless design with VoiceOver, controlled from the earphone cord.',
       pl: 'Konstrukcja bez przycisków z VoiceOver, sterowana z kabla słuchawek.',
@@ -3339,6 +3603,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2009-03-03',
+    url: 'https://support.apple.com/en-us/112427',
     highlight: {
       en: 'NVIDIA graphics and a $1,199 starting price.',
       pl: 'Grafika NVIDIA i cena startowa 1199 dolarów.',
@@ -3351,6 +3616,7 @@ export const devices: Device[] = [
     line: 'Mac mini',
     thumbnail: 'mac-mini',
     announcedAt: '2009-03-03',
+    url: 'https://support.apple.com/en-us/111345',
     highlight: {
       en: 'Five USB ports and NVIDIA GeForce 9400M graphics.',
       pl: 'Pięć portów USB i grafika NVIDIA GeForce 9400M.',
@@ -3363,6 +3629,7 @@ export const devices: Device[] = [
     line: 'Mac Pro',
     thumbnail: 'mac-pro',
     announcedAt: '2009-03-03',
+    url: 'https://support.apple.com/en-us/112590',
     highlight: {
       en: 'Nehalem Xeons and a redesigned interior.',
       pl: 'Procesory Xeon Nehalem i przeprojektowane wnętrze.',
@@ -3375,6 +3642,7 @@ export const devices: Device[] = [
     line: 'AirPort Extreme',
     thumbnail: 'airport',
     announcedAt: '2009-03-03',
+    url: 'https://support.apple.com/en-us/112460',
     highlight: {
       en: 'Simultaneous dual-band 802.11n, so 2.4 GHz and 5 GHz devices no longer slow each other down.',
       pl: 'Jednoczesna praca w dwóch pasmach 802.11n: urządzenia 2,4 GHz i 5 GHz przestają się nawzajem spowalniać.',
@@ -3387,6 +3655,7 @@ export const devices: Device[] = [
     line: 'Time Capsule',
     thumbnail: 'airport',
     announcedAt: '2009-03-03',
+    url: 'https://support.apple.com/en-us/112572',
     highlight: {
       en: 'Same simultaneous dual-band radio as the new AirPort Extreme, with 500 GB or 1 TB of storage.',
       pl: 'Ten sam dwupasmowy moduł radiowy co w nowym AirPort Extreme, z dyskiem 500 GB lub 1 TB.',
@@ -3399,6 +3668,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2009-01-06',
+    url: 'https://support.apple.com/en-us/112526',
     event: 'Macworld 2009',
     highlight: {
       en: 'Unibody 17-inch with a non-removable eight-hour battery.',
@@ -3413,6 +3683,7 @@ export const devices: Device[] = [
     line: 'MacBook',
     thumbnail: 'macbook',
     announcedAt: '2008-10-14',
+    url: 'https://support.apple.com/en-us/112512',
     event: 'The Spotlight Turns to Notebooks',
     highlight: {
       en: 'First aluminum unibody MacBook with a glass trackpad.',
@@ -3426,6 +3697,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2008-10-14',
+    url: 'https://support.apple.com/en-us/112526',
     event: 'The Spotlight Turns to Notebooks',
     highlight: {
       en: 'Unibody design with switchable NVIDIA graphics.',
@@ -3439,6 +3711,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2008-10-14',
+    url: 'https://support.apple.com/en-us/112447',
     event: 'The Spotlight Turns to Notebooks',
     highlight: {
       en: 'Faster graphics and a 128 GB SSD option.',
@@ -3452,6 +3725,7 @@ export const devices: Device[] = [
     line: 'LED Cinema Display',
     thumbnail: 'display',
     announcedAt: '2008-10-14',
+    url: 'https://support.apple.com/en-us/112472',
     event: 'The Spotlight Turns to Notebooks',
     highlight: {
       en: 'First LED-backlit Apple display, with Mini DisplayPort.',
@@ -3465,6 +3739,7 @@ export const devices: Device[] = [
     line: 'iPod nano',
     thumbnail: 'ipod-nano',
     announcedAt: '2008-09-09',
+    url: 'https://support.apple.com/en-us/112320',
     event: 'Let’s Rock',
     highlight: {
       en: 'Tall curved design in nine colors with an accelerometer.',
@@ -3478,6 +3753,7 @@ export const devices: Device[] = [
     line: 'iPod touch',
     thumbnail: 'iphone-home',
     announcedAt: '2008-09-09',
+    url: 'https://support.apple.com/en-us/112319',
     event: 'Let’s Rock',
     highlight: {
       en: 'Thinner, with a built-in speaker and volume buttons.',
@@ -3491,6 +3767,7 @@ export const devices: Device[] = [
     line: 'iPod classic',
     thumbnail: 'ipod-classic',
     announcedAt: '2008-09-09',
+    url: 'https://support.apple.com/en-us/112321',
     event: 'Let’s Rock',
     highlight: {
       en: 'Single 120 GB model replaces the 80 and 160 GB classics.',
@@ -3504,6 +3781,7 @@ export const devices: Device[] = [
     line: 'iPhone',
     thumbnail: 'iphone-home',
     announcedAt: '2008-06-09',
+    url: 'https://support.apple.com/en-us/112496',
     event: 'WWDC 2008',
     highlight: {
       en: '3G, GPS and the App Store, from $199 on contract.',
@@ -3517,6 +3795,7 @@ export const devices: Device[] = [
     line: 'iMac',
     thumbnail: 'imac',
     announcedAt: '2008-04-28',
+    url: 'https://support.apple.com/en-us/112494',
     highlight: {
       en: 'Penryn chips up to 3.06 GHz.',
       pl: 'Procesory Penryn do 3,06 GHz.',
@@ -3529,6 +3808,7 @@ export const devices: Device[] = [
     line: 'AirPort Express',
     thumbnail: 'airport-express',
     announcedAt: '2008-03-17',
+    url: 'https://support.apple.com/en-us/112477',
     highlight: {
       en: 'The plug-in base station moves to 802.11n and still streams AirTunes to speakers.',
       pl: 'Wtykana do gniazdka stacja bazowa przechodzi na 802.11n i nadal strumieniuje AirTunes do głośników.',
@@ -3541,6 +3821,7 @@ export const devices: Device[] = [
     line: 'MacBook',
     thumbnail: 'macbook',
     announcedAt: '2008-02-26',
+    url: 'https://support.apple.com/en-us/112467',
     highlight: {
       en: 'Penryn refresh of the polycarbonate MacBook.',
       pl: 'Odświeżenie poliwęglanowego MacBooka o procesory Penryn.',
@@ -3553,6 +3834,7 @@ export const devices: Device[] = [
     line: 'MacBook Pro',
     thumbnail: 'macbook',
     announcedAt: '2008-02-26',
+    url: 'https://support.apple.com/en-us/docs/mac/131896',
     highlight: {
       en: 'Penryn chips and a multi-touch trackpad.',
       pl: 'Procesory Penryn i gładzik multi-touch.',
@@ -3565,6 +3847,7 @@ export const devices: Device[] = [
     line: 'MacBook Air',
     thumbnail: 'macbook',
     announcedAt: '2008-01-15',
+    url: 'https://support.apple.com/en-us/112533',
     event: 'Macworld 2008',
     highlight: {
       en: 'The world’s thinnest notebook, pulled out of a manila envelope.',
@@ -3578,6 +3861,7 @@ export const devices: Device[] = [
     line: 'Time Capsule',
     thumbnail: 'airport',
     announcedAt: '2008-01-15',
+    url: 'https://support.apple.com/en-us/112505',
     event: 'Macworld 2008',
     highlight: {
       en: 'AirPort Extreme base station with a built-in 500 GB or 1 TB drive for Time Machine backups; released 29 February 2008.',
@@ -3591,6 +3875,7 @@ export const devices: Device[] = [
     line: 'Mac Pro',
     thumbnail: 'mac-pro',
     announcedAt: '2008-01-08',
+    url: 'https://support.apple.com/en-us/112308',
     highlight: {
       en: 'Eight-core Harpertown Xeons as standard.',
       pl: 'Ośmiordzeniowe procesory Xeon Harpertown w standardzie.',
@@ -3603,6 +3888,7 @@ export const devices: Device[] = [
     line: 'Xserve',
     thumbnail: 'xserve',
     announcedAt: '2008-01-08',
+    url: 'https://support.apple.com/en-us/112315',
     highlight: {
       en: '1U rack server with eight-core Harpertown Xeons, announced alongside the Mac Pro.',
       pl: 'Serwer 1U z ośmiordzeniowymi Xeonami Harpertown, zapowiedziany razem z Mac Pro.',

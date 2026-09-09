@@ -9,6 +9,7 @@ import {
   stripLocale,
   type Locale,
 } from '@/i18n/ui';
+import { coverage } from '@/lib/coverage';
 import { absoluteUrl, publicPath, withBase, withoutBase } from '@/lib/paths';
 import { cspHash, THEME_SCRIPT } from '@/lib/theme-script';
 
@@ -36,6 +37,8 @@ const alternates = LOCALES.map((candidate) => ({
   href: absolute(localePath(candidate, basePath)),
 }));
 const ogImage = absolute(`/og-${locale}.png`);
+const description = ui.siteDescription(coverage);
+const ogImageAlt = ui.ogImageAlt(coverage);
 // `Astro.csp` is undefined when `security.csp` is off; the inline theme
 // script must not ship without its hash, so fail the build instead.
 const csp = Astro.csp;
@@ -49,7 +52,7 @@ csp.insertScriptHash(cspHash(THEME_SCRIPT));
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
-    <meta name="description" content={ui.siteDescription} />
+    <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}
     {site && <link rel="canonical" href={canonical} />}
     {alternates.map((alternate) => (
@@ -63,21 +66,21 @@ csp.insertScriptHash(cspHash(THEME_SCRIPT));
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={ui.siteTitle} />
     <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={ui.siteDescription} />
+    <meta property="og:description" content={description} />
     {site && <meta property="og:url" content={canonical} />}
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content={ui.ogImageAlt} />
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:locale" content={ui.ogLocale} />
     {LOCALES.filter((candidate) => candidate !== locale).map((candidate) => (
       <meta property="og:locale:alternate" content={UI[candidate].ogLocale} />
     ))}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={ui.siteDescription} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-    <meta name="twitter:image:alt" content={ui.ogImageAlt} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     <link rel="icon" href={withBase('/favicon.ico')} sizes="32x32" />
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <link

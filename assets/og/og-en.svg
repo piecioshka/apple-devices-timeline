@@ -14,10 +14,10 @@
     <circle cx="40" cy="438" r="22" fill="none" stroke="#3d4754" stroke-width="10"/>
   </g>
   <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" fill="url(#silver)">
-    <text x="232" y="150" font-size="26" font-weight="700" letter-spacing="4" fill="#5aa2ff">NEWEST FIRST</text>
+    <text x="232" y="150" font-size="26" font-weight="700" letter-spacing="4" fill="#5aa2ff">{{years}}</text>
     <text x="228" y="262" font-size="96" font-weight="700" letter-spacing="-3">Apple Devices</text>
     <text x="228" y="366" font-size="96" font-weight="700" letter-spacing="-3">Timeline</text>
-    <text x="232" y="444" font-size="32" fill="#97a3b3">Every device Apple announced since 2008,</text>
+    <text x="232" y="444" font-size="32" fill="#97a3b3">Every device Apple announced from {{first}} to {{last}},</text>
     <text x="232" y="488" font-size="32" fill="#97a3b3">grouped by the day it was announced.</text>
   </g>
 </svg>

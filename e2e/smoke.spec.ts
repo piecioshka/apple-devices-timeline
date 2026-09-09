@@ -33,6 +33,20 @@ test('home page renders the timeline in English', async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
+test('every device card links to its page on apple.com', async ({ page }) => {
+  await page.goto(url('/'));
+
+  const cards = page.locator('article');
+  const links = page.locator('article a[href^="https://"]');
+  await expect(links).toHaveCount(await cards.count());
+  const hrefs = await links.evaluateAll((anchors) =>
+    anchors.map((anchor) => anchor.getAttribute('href') ?? ''),
+  );
+  const onApple = /^https:\/\/(www|support)\.apple\.com\//;
+  expect(hrefs.every((href) => onApple.test(href))).toBe(true);
+  await expect(links.first()).toHaveAccessibleName(/ on apple\.com$/);
+});
+
 test('Polish version lives under /pl and links back', async ({ page }) => {
   await page.goto(url('/pl'));
 

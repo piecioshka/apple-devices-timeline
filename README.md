@@ -10,7 +10,7 @@
 
 <!-- prettier-ignore-end -->
 
-Timeline of every device Apple announced since 2008, newest first. Devices are grouped by the day they were announced, so keynote days (with their taglines, like "Awe Dropping" or "Scary Fast") sit next to quiet press-release launches.
+Timeline of every device Apple announced from 2008 to today. Devices are grouped by the day they were announced, so keynote days (with their taglines, like "Awe Dropping" or "Scary Fast") sit next to quiet press-release launches.
 
 Live at https://piecioshka.github.io/apple-devices-timeline/ 🌐
 
@@ -24,6 +24,7 @@ Live at https://piecioshka.github.io/apple-devices-timeline/ 🌐
 - 🔮 Rumors section above the timeline with the unannounced devices the press expects next, grouped by expected window from the furthest down to the soonest, tagged and kept out of the counts (_sources named on every card_)
 - 🕒 "Last updated" date and time in the header, shown in your time zone (_UTC when JavaScript is off_), so you know how fresh the list is
 - 📦 Plain TypeScript dataset in `src/data/devices.ts` with announcement dates from Apple Newsroom
+- 🍎 Every card links to the device's page on apple.com (_its tech specs page on Apple Support, or the product page while a device has no tech specs page yet_)
 - 🌗 Light and dark themes with a switch that remembers your choice, defaulting to the system setting
 - 🇬🇧🇵🇱 English and Polish versions with a language switch (_Polish lives under `/pl`_)
 - ⚡ Fully static HTML built with Astro, no JavaScript shipped to the browser beyond the theme switch and the time-zone conversion of the update time
@@ -60,7 +61,7 @@ Coverage starts on 8 January 2008 with the Mac Pro and Xserve of that year and r
 <summary><strong>Requirements 📋</strong></summary>
 
 - Node.js 22.12 or newer (_see `.nvmrc`_)
-- `rsvg-convert` (librsvg) only if you regenerate the share images with `npm run og`
+- `rsvg-convert` (librsvg) only if you regenerate the share images with `npm run share-images`
 
 </details>
 
@@ -90,7 +91,7 @@ Then open the URL printed in the terminal.
 | `npm run typecheck` | Run `astro check` |
 | `npm run format` | Format the repository with Prettier |
 | `npm run format:check` | Verify formatting |
-| `npm run og` | Render the Open Graph images in `public/` from `assets/og/*.svg` |
+| `npm run share-images` | Render the Open Graph images (`public/og-*.png`) from the SVG templates in `assets/og/`, with the year range taken from the dataset |
 
 Before the first `npm run e2e`, install the browser once with `npx playwright install chromium`.
 
@@ -115,7 +116,7 @@ The Content Security Policy ships as a `<meta>` tag, so it works on any host. Ho
 <details>
 <summary><strong>Data 📊</strong></summary>
 
-Each entry in `src/data/devices.ts` has an `id`, `name`, `category` (_one of the slugs in `src/lib/categories.ts`_), `line` (_product line from `src/lib/lines.ts`; the index at the bottom of the page groups by it_), `thumbnail` (_pictogram key from `src/lib/thumbnails.ts`_), `announcedAt` (_ISO date of the public announcement_), an optional `event` (_keynote tagline or conference name_) and a one-line `highlight` in English and Polish.
+Each entry in `src/data/devices.ts` has an `id`, `name`, `category` (_one of the slugs in `src/lib/categories.ts`_), `line` (_product line from `src/lib/lines.ts`; the index at the bottom of the page groups by it_), `thumbnail` (_pictogram key from `src/lib/thumbnails.ts`_), `announcedAt` (_ISO date of the public announcement_), `url` (_the device's page on apple.com: its tech specs page on Apple Support, or the product page while a device has no tech specs page yet_), an optional `event` (_keynote tagline or conference name_) and a one-line `highlight` in English and Polish.
 
 To add a device, append an object and run `npm test`; the dataset tests check ids, dates, categories and lines. The timeline shows every device in the dataset, so extending it is just adding entries.
 

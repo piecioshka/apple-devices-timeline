@@ -4,9 +4,10 @@ import { DATA_UPDATED_AT } from '@/data/meta';
 import { rumors } from '@/data/rumors';
 import { UI, localePath, plural, type Locale } from '@/i18n/ui';
 import type { CategoryFilter } from '@/lib/categories';
+import { coverage } from '@/lib/coverage';
 import { absoluteUrl } from '@/lib/paths';
 import { itemList, serializeJsonLd, webSite } from '@/lib/structured-data';
-import { buildTimeline, filterByCategory, yearRange } from '@/lib/timeline';
+import { buildTimeline, filterByCategory } from '@/lib/timeline';
 import CategoryNav from './CategoryNav.astro';
 import LangSwitch from './LangSwitch.astro';
 import ProductLines from './ProductLines.astro';
@@ -24,7 +25,6 @@ interface Props {
 const { locale, filter } = Astro.props;
 const ui = UI[locale];
 const path = filter === 'all' ? '/' : `/${filter}`;
-const range = yearRange(devices);
 const filtered = filterByCategory(devices, filter);
 const years = buildTimeline(filtered);
 const deviceCount = years.reduce((sum, year) => sum + year.deviceCount, 0);
@@ -40,7 +40,7 @@ const listed = years.flatMap((year) =>
 const jsonLd = serializeJsonLd([
   webSite({
     name: ui.siteTitle,
-    description: ui.siteDescription,
+    description: ui.siteDescription(coverage),
     url: absoluteUrl(Astro.site, localePath(locale, '/')),
     locale,
   }),
@@ -67,9 +67,9 @@ const jsonLd = serializeJsonLd([
         }}
       />
     </div>
-    <p class="eyebrow">{range ? `${range.first}-${range.last}` : ''}</p>
+    <p class="eyebrow">{`${coverage.first}-${coverage.last}`}</p>
     <h1 class="title">{ui.title}</h1>
-    <p class="lede">{ui.lede(range?.first ?? 2008)}</p>
+    <p class="lede">{ui.lede(coverage.first)}</p>
     <p class="stats">
       <span class="stat">
         <strong>{deviceCount}</strong> {plural(locale, deviceCount, ui.devices)}
