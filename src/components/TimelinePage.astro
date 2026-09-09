@@ -1,0 +1,181 @@
+---
+import { devices } from '@/data/devices';
+import { UI, plural, type Locale } from '@/i18n/ui';
+import type { CategoryFilter } from '@/lib/categories';
+import { buildTimeline, filterByCategory, yearRange } from '@/lib/timeline';
+import CategoryNav from './CategoryNav.astro';
+import LangSwitch from './LangSwitch.astro';
+import ThemeSwitch from './ThemeSwitch.astro';
+import Timeline from './Timeline.astro';
+import YearNav from './YearNav.astro';
+
+interface Props {
+  locale: Locale;
+  filter: CategoryFilter;
+}
+
+const { locale, filter } = Astro.props;
+const ui = UI[locale];
+const path = filter === 'all' ? '/' : `/${filter}`;
+const range = yearRange(devices);
+const years = buildTimeline(filterByCategory(devices, filter));
+const deviceCount = years.reduce((sum, year) => sum + year.deviceCount, 0);
+const launchCount = years.reduce((sum, year) => sum + year.launches.length, 0);
+---
+
+<header class="header">
+  <div class="header-inner">
+    <div class="utility">
+      <LangSwitch locale={locale} path={path} />
+      <ThemeSwitch
+        label={ui.themeLabel}
+        options={{
+          system: ui.themeSystem,
+          light: ui.themeLight,
+          dark: ui.themeDark,
+        }}
+      />
+    </div>
+    <p class="eyebrow">{range ? `${range.first}-${range.last}` : ''}</p>
+    <h1 class="title">{ui.title}</h1>
+    <p class="lede">{ui.lede(range?.first ?? 2008)}</p>
+    <p class="stats">
+      <span class="stat">
+        <strong>{deviceCount}</strong>
+        {plural(locale, deviceCount, ui.devices)}
+      </span>
+      <span class="stat">
+        <strong>{launchCount}</strong>
+        {plural(locale, launchCount, ui.launchDays)}
+      </span>
+      <span class="stat">
+        <strong>{years.length}</strong>
+        {plural(locale, years.length, ui.years)}
+      </span>
+    </p>
+    <div class="years">
+      <YearNav label={ui.jumpToYear} years={years.map((year) => year.year)} />
+    </div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <CategoryNav locale={locale} active={filter} />
+  </div>
+</div>
+
+<main class="main">
+  {years.length > 0 ? (
+    <Timeline locale={locale} years={years} />
+  ) : (
+    <p class="empty">{ui.empty}</p>
+  )}
+</main>
+
+<footer class="footer">
+  <p>{ui.footer}</p>
+</footer>
+
+<style>
+  .header {
+    padding: 1.25rem var(--page-padding) 2rem;
+  }
+
+  .utility {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-bottom: clamp(1.5rem, 5vw, 3.5rem);
+  }
+
+  .header-inner,
+  .toolbar-inner,
+  .main,
+  .footer p {
+    max-width: var(--content-width);
+    margin-inline: auto;
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variation-settings: 'wdth' 90;
+    margin-top: 0.5rem;
+    max-width: 14ch;
+  }
+
+  .lede {
+    margin-top: 1.25rem;
+    max-width: 44ch;
+    font-size: 1.0625rem;
+    color: var(--muted);
+  }
+
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-top: 1.5rem;
+    font-size: 0.9375rem;
+    color: var(--muted);
+  }
+
+  .stat strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .years {
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(160%) blur(12px);
+    border-block: 1px solid var(--line);
+    padding-inline: var(--page-padding);
+  }
+
+  .toolbar-inner {
+    display: flex;
+    align-items: center;
+    height: var(--toolbar-height);
+  }
+
+  .main {
+    padding: 2.5rem var(--page-padding) 4rem;
+  }
+
+  .empty {
+    color: var(--muted);
+    max-width: 44ch;
+  }
+
+  .footer {
+    padding: 2rem var(--page-padding) 3rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  .footer p {
+    max-width: 60ch;
+  }
+</style>

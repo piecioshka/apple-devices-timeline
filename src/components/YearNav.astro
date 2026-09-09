@@ -1,0 +1,51 @@
+---
+interface Props {
+  label: string;
+  years: number[];
+}
+
+const { label, years } = Astro.props;
+---
+
+{years.length > 0 && (
+  <nav aria-label={label} class="nav">
+    <ul class="list">
+      {years.map((year) => (
+        <li>
+          <a href={`#year-${year}`} class="link">
+            {year}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<style>
+  .nav {
+    flex-shrink: 0;
+  }
+
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+  }
+
+  .link {
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--muted);
+    padding: 0.2rem 0;
+    border-bottom: 1px solid transparent;
+    transition:
+      color 120ms ease,
+      border-color 120ms ease;
+  }
+
+  .link:hover {
+    color: var(--ink);
+    border-color: var(--accent);
+  }
+</style>

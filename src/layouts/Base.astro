@@ -1,0 +1,97 @@
+---
+import '@fontsource-variable/bricolage-grotesque/wdth.css';
+import '@/styles/global.css';
+import {
+  DEFAULT_LOCALE,
+  LOCALES,
+  UI,
+  localePath,
+  stripLocale,
+  type Locale,
+} from '@/i18n/ui';
+import { publicPath } from '@/lib/paths';
+import { cspHash, THEME_SCRIPT } from '@/lib/theme-script';
+
+interface Props {
+  locale: Locale;
+  title?: string;
+  /** Keep the page out of search results (error pages). */
+  noindex?: boolean;
+}
+
+const { locale, title, noindex = false } = Astro.props;
+const ui = UI[locale];
+const pageTitle = title ? `${title} · ${ui.siteTitle}` : ui.siteTitle;
+
+// Absolute URLs need `site` (astro.config.mjs, set from SITE_URL). Without it
+// the page still builds, but canonical and share URLs stay relative.
+const site = Astro.site;
+const absolute = (path: string) => (site ? new URL(path, site).href : path);
+const pathname = publicPath(Astro.url.pathname);
+const basePath = stripLocale(pathname);
+const canonical = absolute(pathname);
+const alternates = LOCALES.map((candidate) => ({
+  locale: candidate,
+  href: absolute(localePath(candidate, basePath)),
+}));
+const ogImage = absolute(`/og-${locale}.png`);
+Astro.csp.insertScriptHash(cspHash(THEME_SCRIPT));
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={ui.siteDescription} />
+    {noindex && <meta name="robots" content="noindex" />}
+    {site && <link rel="canonical" href={canonical} />}
+    {alternates.map((alternate) => (
+      <link rel="alternate" hreflang={alternate.locale} href={alternate.href} />
+    ))}
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={absolute(localePath(DEFAULT_LOCALE, basePath))}
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={ui.siteTitle} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={ui.siteDescription} />
+    {site && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ui.ogImageAlt} />
+    <meta property="og:locale" content={ui.ogLocale} />
+    {LOCALES.filter((candidate) => candidate !== locale).map((candidate) => (
+      <meta property="og:locale:alternate" content={UI[candidate].ogLocale} />
+    ))}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={ui.siteDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ui.ogImageAlt} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta
+      name="theme-color"
+      content="#f3f4f6"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#0c0c0e"
+      media="(prefers-color-scheme: dark)"
+    />
+    <script is:inline set:html={THEME_SCRIPT}></script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

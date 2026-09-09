@@ -1,0 +1,172 @@
+---
+import { UI, plural, type Locale } from '@/i18n/ui';
+import { formatLaunchDate, type TimelineYear } from '@/lib/timeline';
+import DeviceCard from './DeviceCard.astro';
+
+interface Props {
+  locale: Locale;
+  years: TimelineYear[];
+}
+
+const { locale, years } = Astro.props;
+const ui = UI[locale];
+---
+
+<ol class="years">
+  {years.map((year) => (
+    <li id={`year-${year.year}`} class="year">
+      <div class="rail">
+        <h2 class="numeral">{year.year}</h2>
+        <p class="count">
+          {year.deviceCount} {plural(locale, year.deviceCount, ui.devices)}
+        </p>
+      </div>
+
+      <ol class="launches">
+        {year.launches.map((launch) => (
+          <li class:list={['launch', { keynote: Boolean(launch.event) }]}>
+            <h3 class="launch-heading">
+              <time datetime={launch.date} class="date">
+                {formatLaunchDate(launch.date, ui.dateLocale)}
+              </time>
+              <span class="event">{launch.event ?? ui.pressRelease}</span>
+            </h3>
+            <ul class="grid">
+              {launch.devices.map((device) => (
+                <li>
+                  <DeviceCard locale={locale} device={device} />
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ol>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .years {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+  }
+
+  .year {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    gap: 2rem;
+    scroll-margin-top: calc(var(--toolbar-height) + 1rem);
+  }
+
+  .rail {
+    position: sticky;
+    top: calc(var(--toolbar-height) + 1.25rem);
+    align-self: start;
+  }
+
+  .numeral {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    font-variation-settings: 'wdth' 80;
+  }
+
+  .count {
+    margin-top: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  .launches {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+    padding-left: 1.75rem;
+    border-left: 1px solid var(--line-strong);
+  }
+
+  .launch {
+    position: relative;
+  }
+
+  .launch::before {
+    content: '';
+    position: absolute;
+    left: calc(-1.75rem - 6px);
+    top: 0.45rem;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+
+  .keynote::before {
+    background: var(--accent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
+  }
+
+  .launch-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .date {
+    color: var(--muted);
+  }
+
+  .event {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 720px) {
+    .year {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .rail {
+      top: var(--toolbar-height);
+      z-index: 1;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding: 0.5rem 0;
+      background: var(--bg);
+    }
+
+    .numeral {
+      font-size: 2.5rem;
+    }
+
+    .count {
+      margin-top: 0;
+    }
+
+    .launches {
+      padding-left: 1.25rem;
+    }
+
+    .launch::before {
+      left: calc(-1.25rem - 6px);
+    }
+  }
+</style>

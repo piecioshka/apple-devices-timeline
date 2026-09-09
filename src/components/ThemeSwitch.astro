@@ -1,0 +1,119 @@
+---
+interface Props {
+  label: string;
+  options: { system: string; light: string; dark: string };
+}
+
+const { label, options } = Astro.props;
+const choices = [
+  { value: 'system', text: options.system },
+  { value: 'light', text: options.light },
+  { value: 'dark', text: options.dark },
+];
+---
+
+<div class="switch" role="group" aria-label={label} data-theme-switch>
+  {choices.map((choice) => (
+    <button
+      type="button"
+      class="option"
+      data-theme-choice={choice.value}
+      aria-pressed={choice.value === 'system' ? 'true' : 'false'}
+    >
+      {choice.text}
+    </button>
+  ))}
+</div>
+
+<script>
+  const STORAGE_KEY = 'theme';
+  const root = document.documentElement;
+
+  function readStored(): string | null {
+    try {
+      return localStorage.getItem(STORAGE_KEY);
+    } catch {
+      return null;
+    }
+  }
+
+  function writeStored(value: string | null) {
+    try {
+      if (value === null) localStorage.removeItem(STORAGE_KEY);
+      else localStorage.setItem(STORAGE_KEY, value);
+    } catch {
+      // Private mode or blocked storage: the choice still applies to this page.
+    }
+  }
+
+  for (const group of document.querySelectorAll('[data-theme-switch]')) {
+    const buttons = Array.from(
+      group.querySelectorAll<HTMLButtonElement>('[data-theme-choice]'),
+    );
+
+    const reflect = (choice: string) => {
+      for (const button of buttons) {
+        button.setAttribute(
+          'aria-pressed',
+          String(button.dataset.themeChoice === choice),
+        );
+      }
+    };
+
+    const apply = (choice: string) => {
+      if (choice === 'light' || choice === 'dark') {
+        root.dataset.theme = choice;
+        writeStored(choice);
+      } else {
+        delete root.dataset.theme;
+        writeStored(null);
+      }
+      reflect(choice);
+    };
+
+    for (const button of buttons) {
+      button.addEventListener('click', () => {
+        apply(button.dataset.themeChoice ?? 'system');
+      });
+    }
+
+    reflect(readStored() ?? 'system');
+  }
+</script>
+
+<style>
+  .switch {
+    display: inline-flex;
+    padding: 2px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--surface);
+  }
+
+  .option {
+    appearance: none;
+    border: 0;
+    margin: 0;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.4;
+    cursor: pointer;
+    transition:
+      background-color 120ms ease,
+      color 120ms ease;
+  }
+
+  .option:hover {
+    color: var(--ink);
+  }
+
+  .option[aria-pressed='true'] {
+    background: var(--ink);
+    color: var(--bg);
+  }
+</style>

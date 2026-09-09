@@ -1,0 +1,65 @@
+---
+import { LOCALES, UI, localePath, type Locale } from '@/i18n/ui';
+
+interface Props {
+  locale: Locale;
+  /** Locale-independent path of the current page, e.g. "/" or "/mac". */
+  path: string;
+}
+
+const { locale, path } = Astro.props;
+---
+
+<nav aria-label={UI[locale].languageLabel} class="switch">
+  <ul class="list">
+    {LOCALES.map((candidate) => (
+      <li>
+        <a
+          href={localePath(candidate, path)}
+          class="option"
+          lang={candidate}
+          hreflang={candidate}
+          aria-current={candidate === locale ? 'page' : undefined}
+        >
+          {UI[candidate].languageName}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .switch {
+    display: inline-flex;
+  }
+
+  .list {
+    display: inline-flex;
+    padding: 2px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: var(--surface);
+  }
+
+  .option {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    line-height: 1.4;
+    transition:
+      background-color 120ms ease,
+      color 120ms ease;
+  }
+
+  .option:hover {
+    color: var(--ink);
+  }
+
+  .option[aria-current='page'] {
+    background: var(--ink);
+    color: var(--bg);
+  }
+</style>

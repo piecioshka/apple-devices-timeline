@@ -1,0 +1,19 @@
+---
+import Base from '@/layouts/Base.astro';
+import TimelinePage from '@/components/TimelinePage.astro';
+import { UI } from '@/i18n/ui';
+import { CATEGORY_SLUGS, isCategorySlug } from '@/lib/categories';
+
+export function getStaticPaths() {
+  return CATEGORY_SLUGS.map((category) => ({ params: { category } }));
+}
+
+const { category } = Astro.params;
+if (!isCategorySlug(category)) {
+  throw new Error(`Unknown category: ${category}`);
+}
+---
+
+<Base locale="pl" title={UI.pl.categories[category]}>
+  <TimelinePage locale="pl" filter={category} />
+</Base>

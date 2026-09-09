@@ -1,0 +1,59 @@
+---
+import Base from '@/layouts/Base.astro';
+import { UI } from '@/i18n/ui';
+
+// Hosts serve a single /404.html, so this page carries both languages.
+---
+
+<Base locale="en" title={UI.en.notFoundTitle} noindex>
+  <main class="main">
+    <p class="eyebrow">404</p>
+    <h1 class="title">{UI.en.notFoundTitle}</h1>
+    <p class="lede">
+      {UI.en.notFoundBody} <a href="/">{UI.en.notFoundLink}</a>
+    </p>
+    <p class="lede" lang="pl">
+      {UI.pl.notFoundBody} <a href="/pl">{UI.pl.notFoundLink}</a>
+    </p>
+  </main>
+</Base>
+
+<style>
+  .main {
+    max-width: var(--content-width);
+    margin-inline: auto;
+    padding: clamp(3rem, 12vh, 8rem) var(--page-padding) 4rem;
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variation-settings: 'wdth' 90;
+    margin-top: 0.5rem;
+    max-width: 14ch;
+  }
+
+  .lede {
+    margin-top: 1.25rem;
+    max-width: 44ch;
+    font-size: 1.0625rem;
+    color: var(--muted);
+  }
+
+  .lede a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+</style>
