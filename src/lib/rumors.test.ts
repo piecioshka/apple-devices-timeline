@@ -14,6 +14,7 @@ function rumor(id: string, expectedAt: string): Rumor {
     id,
     name: id,
     category: 'mac',
+    line: 'MacBook',
     thumbnail: 'macbook',
     expectedAt,
     summary: { en: '', pl: '' },

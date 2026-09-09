@@ -46,6 +46,8 @@ interface Dictionary {
   lines: PluralForms;
   linesIntro: string;
   models: PluralForms;
+  /** Compact count of rumored models in the product-line index. */
+  rumorsShort: PluralForms;
   footer: string;
   themeLabel: string;
   themeSystem: string;
@@ -103,8 +105,9 @@ export const UI: Record<Locale, Dictionary> = {
     linesTitle: 'Product lines',
     lines: ['product line', 'product lines'],
     linesIntro:
-      'Every product line on this page, ordered by its latest announcement. Open a line to see its models.',
+      'Every product line on this page: lines with nothing announced yet first, then by latest announcement. Open a line to see its models; rumored ones are tagged.',
     models: ['model', 'models'],
+    rumorsShort: ['rumor', 'rumors'],
     footer:
       'Announcement dates follow Apple Newsroom. Devices announced on the same day are listed together; a filled marker means a keynote, a hollow one a press release.',
     themeLabel: 'Theme',
@@ -165,8 +168,9 @@ export const UI: Record<Locale, Dictionary> = {
     linesTitle: 'Linie produktów',
     lines: ['linia produktów', 'linie produktów', 'linii produktów'],
     linesIntro:
-      'Wszystkie linie produktów z tej strony, od tej z najnowszą zapowiedzią. Rozwiń linię, żeby zobaczyć jej modele.',
+      'Wszystkie linie produktów z tej strony: najpierw te bez żadnej zapowiedzi, potem od tej z najnowszą zapowiedzią. Rozwiń linię, żeby zobaczyć jej modele; plotki są oznaczone.',
     models: ['model', 'modele', 'modeli'],
+    rumorsShort: ['plotka', 'plotki', 'plotek'],
     footer:
       'Daty zapowiedzi pochodzą z Apple Newsroom. Urządzenia zapowiedziane tego samego dnia są zebrane razem; pełny znacznik oznacza keynote, pusty komunikat prasowy.',
     themeLabel: 'Motyw',

@@ -259,5 +259,20 @@ test('home page groups the product lines by category', async ({ page }) => {
   ]);
   const summaries = index.locator('summary');
   await expect(summaries.filter({ hasText: /^iPad Pro/ })).toHaveCount(1);
-  await expect(summaries.first()).toContainText(/\d+ model/);
+  await expect(summaries.filter({ hasText: /^iPad Pro/ })).toContainText(
+    /\d+ modeli/,
+  );
+
+  // A line with nothing announced yet comes from the rumors and says so.
+  const rumored = index.locator('details.rumored').first();
+  await expect(rumored.locator('summary')).toContainText(/\d+ plot/);
+  await rumored.locator('summary').click();
+  const entry = rumored.locator('.model').first();
+  await expect(entry).toContainText('Plotka');
+  const href = await entry.getByRole('link').getAttribute('href');
+  expect(href).toMatch(/^#/);
+  await entry.getByRole('link').click();
+  await expect(
+    page.getByRole('region', { name: 'Plotki' }).locator(href ?? ''),
+  ).toBeInViewport();
 });

@@ -16,7 +16,7 @@ const ui = UI[locale];
   A <div>, not an <article>: the ItemList structured data and the tests count
   <article> elements as announced devices, and a rumor is not one.
 -->
-<div class="card">
+<div id={rumor.id} class="card">
   <Pictogram thumbnail={rumor.thumbnail} />
   <div class="body">
     <p class="category">
@@ -42,6 +42,7 @@ const ui = UI[locale];
     background: color-mix(in srgb, var(--surface) 60%, transparent);
     border: 1px dashed var(--line-strong);
     border-radius: var(--radius);
+    scroll-margin-top: calc(var(--toolbar-height) + 1rem);
     transition:
       border-color 120ms ease,
       transform 120ms ease;

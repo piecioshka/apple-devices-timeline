@@ -113,10 +113,11 @@ const jsonLd = serializeJsonLd([
   ) : (
     <p class="empty">{ui.empty}</p>
   )}
-  {filtered.length > 0 && (
+  {(filtered.length > 0 || expected.length > 0) && (
     <ProductLines
       locale={locale}
       devices={filtered}
+      rumors={expected}
       byCategory={filter === 'all'}
     />
   )}

@@ -1,10 +1,11 @@
 ---
 import type { Device } from '@/data/devices';
+import type { Rumor } from '@/data/rumors';
 import { UI, plural, type Locale } from '@/i18n/ui';
 import {
   groupLinesByCategory,
   summarizeLines,
-  type ProductLineSummary,
+  type YearSpan,
 } from '@/lib/lines';
 import { announcementYear } from '@/lib/timeline';
 import Pictogram from './Pictogram.astro';
@@ -13,13 +14,15 @@ interface Props {
   locale: Locale;
   /** Devices shown on the page, already filtered by category. */
   devices: Device[];
+  /** Rumors shown on the page, already filtered by category. */
+  rumors?: Rumor[];
   /** Split the lines by category, for the page that lists every category. */
   byCategory?: boolean;
 }
 
-const { locale, devices, byCategory = false } = Astro.props;
+const { locale, devices, rumors = [], byCategory = false } = Astro.props;
 const ui = UI[locale];
-const lines = summarizeLines(devices);
+const lines = summarizeLines(devices, rumors);
 const groups = byCategory
   ? groupLinesByCategory(lines).map((group) => ({
       heading: ui.categories[group.category],
@@ -27,10 +30,8 @@ const groups = byCategory
     }))
   : [{ heading: undefined, lines }];
 
-function years(line: ProductLineSummary): string {
-  return line.firstYear === line.lastYear
-    ? String(line.firstYear)
-    : `${line.firstYear}-${line.lastYear}`;
+function years({ first, last }: YearSpan): string {
+  return first === last ? String(first) : `${first}-${last}`;
 }
 ---
 
@@ -52,14 +53,24 @@ function years(line: ProductLineSummary): string {
         <ul class="list">
           {group.lines.map((line) => (
             <li>
-              <details class="line">
+              <details class:list={['line', { rumored: !line.years }]}>
                 <summary class="summary">
                   <Pictogram thumbnail={line.thumbnail} size={28} />
                   <span class="name">{line.line}</span>
                   <span class="meta">
-                    {line.devices.length}{' '}
-                    {plural(locale, line.devices.length, ui.models)} ·{' '}
-                    {years(line)}
+                    {line.years && (
+                      <span>
+                        {line.devices.length}{' '}
+                        {plural(locale, line.devices.length, ui.models)} ·{' '}
+                        {years(line.years)}
+                      </span>
+                    )}
+                    {line.rumors.length > 0 && (
+                      <span class="tag">
+                        {line.rumors.length}{' '}
+                        {plural(locale, line.rumors.length, ui.rumorsShort)}
+                      </span>
+                    )}
                   </span>
                   <svg
                     class="chevron"
@@ -77,6 +88,17 @@ function years(line: ProductLineSummary): string {
                   </svg>
                 </summary>
                 <ol class="models">
+                  {line.rumors.map((rumor) => (
+                    <li class="model">
+                      <a href={`#${rumor.id}`} class="model-link">
+                        {rumor.name}
+                      </a>
+                      <span class="model-year">
+                        <span class="tag">{ui.rumorTag}</span>
+                        {rumor.expectedAt.slice(0, 4)}
+                      </span>
+                    </li>
+                  ))}
                   {line.devices.map((device) => (
                     <li class="model">
                       <a href={`#${device.id}`} class="model-link">
@@ -168,6 +190,18 @@ function years(line: ProductLineSummary): string {
     border-color: var(--line-strong);
   }
 
+  /* Nothing announced yet: the same dashed look as the rumor cards. */
+  .rumored {
+    background: color-mix(in srgb, var(--surface) 60%, transparent);
+    border-style: dashed;
+    border-color: var(--line-strong);
+  }
+
+  .rumored:hover,
+  .rumored[open] {
+    border-color: var(--accent);
+  }
+
   .summary {
     display: grid;
     grid-template-columns: 1.75rem minmax(0, 1fr) auto 1rem;
@@ -189,9 +223,24 @@ function years(line: ProductLineSummary): string {
   }
 
   .meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 0.8125rem;
     color: var(--muted);
     white-space: nowrap;
+  }
+
+  /* The one cue that says "not announced", as on the rumor cards. */
+  .tag {
+    padding: 0.05rem 0.45rem;
+    border: 1px dashed var(--accent);
+    border-radius: 999px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
   }
 
   .chevron {
@@ -230,6 +279,9 @@ function years(line: ProductLineSummary): string {
   }
 
   .model-year {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.375rem;
     flex-shrink: 0;
     color: var(--muted);
   }

@@ -1,5 +1,6 @@
 import type { LocalizedText } from './devices';
 import type { CategorySlug } from '@/lib/categories';
+import type { ProductLine } from '@/lib/lines';
 import type { ThumbnailKey } from '@/lib/thumbnails';
 
 export interface Rumor {
@@ -8,6 +9,8 @@ export interface Rumor {
   /** Rumored name; a working name when the press has not settled on one. */
   name: string;
   category: CategorySlug;
+  /** Product line from `src/lib/lines.ts`; the index at the bottom of the page lists the rumor under it. */
+  line: ProductLine;
   /** Pictogram key from `src/lib/thumbnails.ts`. */
   thumbnail: ThumbnailKey;
   /**
@@ -37,6 +40,7 @@ export const rumors: Rumor[] = [
     id: 'tabletop-robot',
     name: 'Tabletop robot',
     category: 'home',
+    line: 'Tabletop robot',
     thumbnail: 'robot',
     expectedAt: '2028',
     summary: {
@@ -50,6 +54,7 @@ export const rumors: Rumor[] = [
     id: 'ipad-pro-m6',
     name: 'iPad Pro (M6)',
     category: 'ipad',
+    line: 'iPad Pro',
     thumbnail: 'ipad',
     expectedAt: '2027',
     summary: {
@@ -62,6 +67,7 @@ export const rumors: Rumor[] = [
     id: 'macbook-neo-2',
     name: 'MacBook Neo (A19 Pro)',
     category: 'mac',
+    line: 'MacBook Neo',
     thumbnail: 'macbook',
     expectedAt: '2027',
     summary: {
@@ -74,6 +80,7 @@ export const rumors: Rumor[] = [
     id: 'airpods-pro-camera',
     name: 'AirPods Pro with cameras',
     category: 'audio',
+    line: 'AirPods Pro',
     thumbnail: 'airpods',
     expectedAt: '2027',
     summary: {
@@ -87,6 +94,7 @@ export const rumors: Rumor[] = [
     id: 'iphone-20',
     name: '20th-anniversary iPhone',
     category: 'iphone',
+    line: 'iPhone',
     thumbnail: 'iphone-island',
     expectedAt: '2027-H2',
     summary: {
@@ -99,6 +107,7 @@ export const rumors: Rumor[] = [
     id: 'apple-glasses',
     name: 'Apple smart glasses',
     category: 'vision',
+    line: 'Smart glasses',
     thumbnail: 'glasses',
     expectedAt: '2027-H2',
     summary: {
@@ -112,6 +121,7 @@ export const rumors: Rumor[] = [
     id: 'macbook-pro-oled',
     name: 'MacBook Pro (OLED, touchscreen)',
     category: 'mac',
+    line: 'MacBook Pro',
     thumbnail: 'macbook',
     expectedAt: '2027-H1',
     summary: {
@@ -124,6 +134,7 @@ export const rumors: Rumor[] = [
     id: 'iphone-18',
     name: 'iPhone 18',
     category: 'iphone',
+    line: 'iPhone',
     thumbnail: 'iphone-island',
     expectedAt: '2027-H1',
     summary: {
@@ -136,6 +147,7 @@ export const rumors: Rumor[] = [
     id: 'iphone-18e',
     name: 'iPhone 18e',
     category: 'iphone',
+    line: 'iPhone e',
     thumbnail: 'iphone-island',
     expectedAt: '2027-H1',
     summary: {
@@ -148,6 +160,7 @@ export const rumors: Rumor[] = [
     id: 'iphone-air-2',
     name: 'iPhone Air 2',
     category: 'iphone',
+    line: 'iPhone Air',
     thumbnail: 'iphone-island',
     expectedAt: '2027-H1',
     summary: {
@@ -160,6 +173,7 @@ export const rumors: Rumor[] = [
     id: 'ipad-12',
     name: 'iPad (12th generation)',
     category: 'ipad',
+    line: 'iPad',
     thumbnail: 'ipad',
     expectedAt: '2027-H1',
     summary: {
@@ -172,6 +186,7 @@ export const rumors: Rumor[] = [
     id: 'macbook-air-m6',
     name: 'MacBook Air 13-inch and 15-inch (M6)',
     category: 'mac',
+    line: 'MacBook Air',
     thumbnail: 'macbook',
     expectedAt: '2027-H1',
     summary: {
@@ -185,6 +200,7 @@ export const rumors: Rumor[] = [
     id: 'homepod-mini-2',
     name: 'HomePod mini (2nd generation)',
     category: 'home',
+    line: 'HomePod mini',
     thumbnail: 'homepod-mini',
     expectedAt: '2026-H2',
     summary: {
@@ -197,6 +213,7 @@ export const rumors: Rumor[] = [
     id: 'apple-tv-2026',
     name: 'Apple TV 4K (2026)',
     category: 'home',
+    line: 'Apple TV',
     thumbnail: 'apple-tv',
     expectedAt: '2026-H2',
     summary: {
@@ -210,6 +227,7 @@ export const rumors: Rumor[] = [
     id: 'ipad-mini-8',
     name: 'iPad mini (OLED)',
     category: 'ipad',
+    line: 'iPad mini',
     thumbnail: 'ipad',
     expectedAt: '2026-10',
     summary: {
@@ -222,6 +240,7 @@ export const rumors: Rumor[] = [
     id: 'macbook-pro-14-m6',
     name: 'MacBook Pro 14-inch (M6)',
     category: 'mac',
+    line: 'MacBook Pro',
     thumbnail: 'macbook',
     expectedAt: '2026-10',
     summary: {
@@ -234,6 +253,7 @@ export const rumors: Rumor[] = [
     id: 'imac-m6',
     name: 'iMac 24-inch (M6)',
     category: 'mac',
+    line: 'iMac',
     thumbnail: 'imac',
     expectedAt: '2026-10',
     summary: {
@@ -246,6 +266,7 @@ export const rumors: Rumor[] = [
     id: 'home-hub',
     name: 'Home hub (HomePad)',
     category: 'home',
+    line: 'Home hub',
     thumbnail: 'home-hub',
     expectedAt: '2026-10',
     summary: {
@@ -259,6 +280,7 @@ export const rumors: Rumor[] = [
     id: 'iphone-18-pro',
     name: 'iPhone 18 Pro / 18 Pro Max',
     category: 'iphone',
+    line: 'iPhone Pro',
     thumbnail: 'iphone-island',
     expectedAt: '2026-09',
     summary: {
@@ -271,6 +293,7 @@ export const rumors: Rumor[] = [
     id: 'iphone-fold',
     name: 'Foldable iPhone (iPhone Ultra or iPhone Fold)',
     category: 'iphone',
+    line: 'Foldable iPhone',
     thumbnail: 'iphone-fold',
     expectedAt: '2026-09',
     summary: {
@@ -283,6 +306,7 @@ export const rumors: Rumor[] = [
     id: 'apple-watch-series-12',
     name: 'Apple Watch Series 12',
     category: 'watch',
+    line: 'Apple Watch Series',
     thumbnail: 'watch',
     expectedAt: '2026-09',
     summary: {
@@ -295,6 +319,7 @@ export const rumors: Rumor[] = [
     id: 'apple-watch-ultra-4',
     name: 'Apple Watch Ultra 4',
     category: 'watch',
+    line: 'Apple Watch Ultra',
     thumbnail: 'watch',
     expectedAt: '2026-09',
     summary: {
@@ -307,6 +332,7 @@ export const rumors: Rumor[] = [
     id: 'airpods-5',
     name: 'AirPods 5',
     category: 'audio',
+    line: 'AirPods',
     thumbnail: 'airpods',
     expectedAt: '2026-09',
     summary: {
