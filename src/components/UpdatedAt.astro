@@ -1,0 +1,47 @@
+---
+import { formatDateTime } from '@/lib/timeline';
+
+interface Props {
+  /** Text before the date, e.g. "Last updated". */
+  label: string;
+  /** ISO instant in UTC (`DATA_UPDATED_AT`). */
+  instant: string;
+  /** BCP 47 locale of the date, e.g. "en-GB". */
+  dateLocale: string;
+}
+
+const { label, instant, dateLocale } = Astro.props;
+---
+
+<p class="updated">
+  {label}:{' '}
+  <time datetime={instant} data-local-time data-locale={dateLocale}>
+    {formatDateTime(instant, dateLocale)}
+  </time>
+</p>
+
+<script>
+  import { formatDateTime } from '@/lib/timeline';
+
+  // The build renders the time in UTC; show it in the visitor's own zone.
+  // Without JavaScript the UTC text stays, and `datetime` keeps the instant.
+  for (const time of document.querySelectorAll<HTMLTimeElement>(
+    'time[data-local-time]',
+  )) {
+    const locale = time.dataset.locale;
+    if (!time.dateTime || !locale) continue;
+    time.textContent = formatDateTime(time.dateTime, locale, null);
+  }
+</script>
+
+<style>
+  .updated {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  .updated time {
+    color: var(--ink);
+  }
+</style>

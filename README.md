@@ -22,11 +22,11 @@ Live at https://piecioshka.github.io/apple-devices-timeline/ 🌐
 - ⏩ Year links to jump straight to any year
 - 📚 Product lines index at the bottom of every page: each line on the page (_iPad, iPad mini, iPad Air, iPad Pro on the iPad page_) with its model count and years, expandable to the list of its models; rumored models sit in their line too, tagged, and a line with nothing announced yet shows up as a rumor
 - 🔮 Rumors section above the timeline with the unannounced devices the press expects next, grouped by expected window from the furthest down to the soonest, tagged and kept out of the counts (_sources named on every card_)
-- 🕒 "Last updated" date and time (_UTC_) in the header, so you know how fresh the list is
+- 🕒 "Last updated" date and time in the header, shown in your time zone (_UTC when JavaScript is off_), so you know how fresh the list is
 - 📦 Plain TypeScript dataset in `src/data/devices.ts` with announcement dates from Apple Newsroom
 - 🌗 Light and dark themes with a switch that remembers your choice, defaulting to the system setting
 - 🇬🇧🇵🇱 English and Polish versions with a language switch (_Polish lives under `/pl`_)
-- ⚡ Fully static HTML built with Astro, no JavaScript shipped to the browser beyond the theme switch
+- ⚡ Fully static HTML built with Astro, no JavaScript shipped to the browser beyond the theme switch and the time-zone conversion of the update time
 - 🔗 Canonical and `hreflang` links, Open Graph and Twitter cards with a share image per language, JSON-LD structured data, sitemap and `robots.txt`
 - 🛡️ Content Security Policy generated at build time, with hashes for every inline script and style
 - ♿ WCAG 2.1 AA checked by axe-core in both themes on every CI run
@@ -121,7 +121,7 @@ To add a device, append an object and run `npm test`; the dataset tests check id
 
 Rumored devices sit in `src/data/rumors.ts` with the same `id`, `name`, `category`, `line` and `thumbnail` fields, plus `expectedAt` (_a month like `2026-10`, a half-year like `2027-H1` or a year like `2028`_), a one-line `summary` per language and a list of `sources`. When Apple announces one, move it to `devices.ts` under the same id (_or a new one when Apple's name differs from the working name_) and delete the rumor; the tests reject ids present in both files and windows that have already passed.
 
-`src/data/meta.ts` holds `DATA_UPDATED_AT`, an ISO instant in UTC shown as "last updated" in the header (_with the time of day_) and, as a calendar day, as the "as of" date of the rumors section. Bump it with every data change; a test checks it is not older than the latest announcement.
+`src/data/meta.ts` holds `DATA_UPDATED_AT`, an ISO instant in UTC shown as "last updated" in the header (_with the time of day, converted to the visitor's time zone in the browser_) and, as a calendar day, as the "as of" date of the rumors section. Bump it with every data change; a test checks it is not older than the latest announcement.
 
 </details>
 

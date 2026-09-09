@@ -124,6 +124,22 @@ describe('formatDateTime', () => {
       '9 September 2026, 23:30 UTC',
     );
   });
+
+  it('shifts the date and the time into the given zone', () => {
+    expect(formatDateTime('2026-09-09T22:10:00Z', 'en-GB', 'Asia/Tokyo')).toBe(
+      '10 September 2026, 07:10 GMT+9',
+    );
+    expect(formatDateTime('2026-09-09T14:10:00Z', 'pl', 'Europe/Warsaw')).toBe(
+      '9 września 2026, 16:10 CEST',
+    );
+  });
+
+  it('uses the local zone of the runtime when the zone is null', () => {
+    const local = new Intl.DateTimeFormat().resolvedOptions().timeZone;
+    expect(formatDateTime('2026-09-09T14:10:00Z', 'en-GB', null)).toBe(
+      formatDateTime('2026-09-09T14:10:00Z', 'en-GB', local),
+    );
+  });
 });
 
 describe('formatLaunchDate', () => {

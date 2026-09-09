@@ -6,18 +6,14 @@ import { UI, localePath, plural, type Locale } from '@/i18n/ui';
 import type { CategoryFilter } from '@/lib/categories';
 import { absoluteUrl } from '@/lib/paths';
 import { itemList, serializeJsonLd, webSite } from '@/lib/structured-data';
-import {
-  buildTimeline,
-  filterByCategory,
-  formatDateTime,
-  yearRange,
-} from '@/lib/timeline';
+import { buildTimeline, filterByCategory, yearRange } from '@/lib/timeline';
 import CategoryNav from './CategoryNav.astro';
 import LangSwitch from './LangSwitch.astro';
 import ProductLines from './ProductLines.astro';
 import Rumors from './Rumors.astro';
 import ThemeSwitch from './ThemeSwitch.astro';
 import Timeline from './Timeline.astro';
+import UpdatedAt from './UpdatedAt.astro';
 import YearNav from './YearNav.astro';
 
 interface Props {
@@ -76,24 +72,21 @@ const jsonLd = serializeJsonLd([
     <p class="lede">{ui.lede(range?.first ?? 2008)}</p>
     <p class="stats">
       <span class="stat">
-        <strong>{deviceCount}</strong>
-        {plural(locale, deviceCount, ui.devices)}
+        <strong>{deviceCount}</strong> {plural(locale, deviceCount, ui.devices)}
       </span>
       <span class="stat">
         <strong>{launchCount}</strong>
         {plural(locale, launchCount, ui.launchDays)}
       </span>
       <span class="stat">
-        <strong>{years.length}</strong>
-        {plural(locale, years.length, ui.years)}
+        <strong>{years.length}</strong> {plural(locale, years.length, ui.years)}
       </span>
     </p>
-    <p class="updated">
-      {ui.updatedLabel}:{' '}
-      <time datetime={DATA_UPDATED_AT}>
-        {formatDateTime(DATA_UPDATED_AT, ui.dateLocale)}
-      </time>
-    </p>
+    <UpdatedAt
+      label={ui.updatedLabel}
+      instant={DATA_UPDATED_AT}
+      dateLocale={ui.dateLocale}
+    />
     <div class="years">
       <YearNav label={ui.jumpToYear} years={years.map((year) => year.year)} />
     </div>
@@ -185,16 +178,6 @@ const jsonLd = serializeJsonLd([
   .stat strong {
     color: var(--ink);
     font-weight: 600;
-  }
-
-  .updated {
-    margin-top: 0.75rem;
-    font-size: 0.875rem;
-    color: var(--muted);
-  }
-
-  .updated time {
-    color: var(--ink);
   }
 
   .years {

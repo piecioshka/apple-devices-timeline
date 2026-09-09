@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { formatDateTime } from '../src/lib/timeline';
 import { absolute, url } from './site';
 
 function collectConsoleErrors(page: Page): string[] {
@@ -169,7 +170,7 @@ test('home page dates the list and previews rumored devices', async ({
     /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/,
   );
   await expect(updated).toHaveText(
-    /^\d{1,2} [A-Z][a-z]+ \d{4}, \d{2}:\d{2} UTC$/,
+    /^\d{1,2} [A-Z][a-z]+ \d{4}, \d{2}:\d{2} [A-Z][A-Za-z+-]*\d*$/,
   );
 
   const rumors = page.getByRole('region', { name: 'Rumors' });
@@ -275,4 +276,33 @@ test('home page groups the product lines by category', async ({ page }) => {
   await expect(
     page.getByRole('region', { name: 'Plotki' }).locator(href ?? ''),
   ).toBeInViewport();
+});
+
+test.describe('in a visitor time zone', () => {
+  test.use({ timezoneId: 'Europe/Warsaw' });
+
+  test('header shows the update time in the visitor zone', async ({ page }) => {
+    await page.goto(url('/pl'));
+
+    const updated = page.locator('header time');
+    const instant = await updated.getAttribute('datetime');
+    expect(instant).not.toBeNull();
+    await expect(updated).toHaveText(
+      formatDateTime(instant ?? '', 'pl', 'Europe/Warsaw'),
+    );
+    await expect(updated).not.toHaveText(/UTC$/);
+  });
+});
+
+test.describe('without JavaScript', () => {
+  test.use({ javaScriptEnabled: false, timezoneId: 'Europe/Warsaw' });
+
+  test('header keeps the update time in UTC', async ({ page }) => {
+    await page.goto(url('/'));
+
+    const updated = page.locator('header time');
+    const instant = await updated.getAttribute('datetime');
+    await expect(updated).toHaveText(formatDateTime(instant ?? '', 'en-GB'));
+    await expect(updated).toHaveText(/UTC$/);
+  });
 });
