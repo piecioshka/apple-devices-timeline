@@ -51,7 +51,7 @@ export const UI: Record<Locale, Dictionary> = {
     siteTitle: 'Apple Devices Timeline',
     siteDescription:
       'Every device Apple announced since 2008, newest first, grouped by launch day.',
-    title: 'Apple hardware, newest first',
+    title: 'Apple Devices Timeline',
     lede: (firstYear) =>
       `Every device Apple announced since ${firstYear}, grouped by the day it was announced. Keynote taglines name the days that had one.`,
     devices: ['device', 'devices'],
@@ -87,14 +87,14 @@ export const UI: Record<Locale, Dictionary> = {
     notFoundLink: 'Back to the timeline',
     ogLocale: 'en_GB',
     ogImageAlt:
-      'Apple hardware, newest first. Every device Apple announced since 2008, grouped by the day it was announced.',
+      'Apple Devices Timeline. Every device Apple announced since 2008, grouped by the day it was announced.',
   },
   pl: {
     languageName: 'Polski',
     siteTitle: 'Oś czasu urządzeń Apple',
     siteDescription:
       'Każde urządzenie zapowiedziane przez Apple od 2008 roku, od najnowszych, pogrupowane według dnia premiery.',
-    title: 'Sprzęt Apple, od najnowszych',
+    title: 'Kalendarium Sprzętu Apple',
     lede: (firstYear) =>
       `Każde urządzenie zapowiedziane przez Apple od ${firstYear} roku, pogrupowane według dnia zapowiedzi. Dni z keynote'em noszą jego hasło.`,
     devices: ['urządzenie', 'urządzenia', 'urządzeń'],
@@ -131,7 +131,7 @@ export const UI: Record<Locale, Dictionary> = {
     notFoundLink: 'Wróć do osi czasu',
     ogLocale: 'pl_PL',
     ogImageAlt:
-      'Sprzęt Apple, od najnowszych. Każde urządzenie zapowiedziane przez Apple od 2008 roku, pogrupowane według dnia zapowiedzi.',
+      'Kalendarium Sprzętu Apple. Każde urządzenie zapowiedziane przez Apple od 2008 roku, pogrupowane według dnia zapowiedzi.',
   },
 };
 

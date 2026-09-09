@@ -18,7 +18,7 @@ test('home page renders the timeline in English', async ({ page }) => {
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
   await expect(page).toHaveTitle('Apple Devices Timeline');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(
-    'Apple hardware, newest first',
+    'Apple Devices Timeline',
   );
   await expect(
     page
@@ -37,7 +37,7 @@ test('Polish version lives under /pl and links back', async ({ page }) => {
 
   await expect(page.locator('html')).toHaveAttribute('lang', 'pl');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(
-    'Sprzęt Apple, od najnowszych',
+    'Kalendarium Sprzętu Apple',
   );
   const languages = page.getByRole('navigation', { name: 'Język' });
   await expect(languages.getByRole('link', { name: 'Polski' })).toHaveAttribute(
