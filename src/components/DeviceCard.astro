@@ -11,7 +11,7 @@ interface Props {
 const { locale, device } = Astro.props;
 ---
 
-<article class="card">
+<article id={device.id} class="card">
   <svg
     class="icon"
     viewBox="0 0 48 48"
@@ -43,6 +43,7 @@ const { locale, device } = Astro.props;
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--radius);
+    scroll-margin-top: calc(var(--toolbar-height) + 1rem);
     transition:
       border-color 120ms ease,
       transform 120ms ease;

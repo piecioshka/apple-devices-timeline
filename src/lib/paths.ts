@@ -39,3 +39,13 @@ export function withBase(path: string): string {
 export function withoutBase(pathname: string): string {
   return stripBase(import.meta.env.BASE_URL, pathname);
 }
+
+/**
+ * Absolute URL of a site-relative path when the public origin (`site` in
+ * astro.config.mjs) is known; otherwise the served path, so the site still
+ * builds without `SITE_URL`.
+ */
+export function absoluteUrl(site: URL | string | undefined, path: string) {
+  const served = withBase(path);
+  return site ? new URL(served, site).href : served;
+}

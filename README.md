@@ -24,7 +24,7 @@ Live at https://piecioshka.github.io/apple-devices-timeline/ 🌐
 - 🌗 Light and dark themes with a switch that remembers your choice, defaulting to the system setting
 - 🇬🇧🇵🇱 English and Polish versions with a language switch (_Polish lives under `/pl`_)
 - ⚡ Fully static HTML built with Astro, no JavaScript shipped to the browser beyond the theme switch
-- 🔗 Canonical and `hreflang` links, Open Graph and Twitter cards with a share image per language, sitemap and `robots.txt`
+- 🔗 Canonical and `hreflang` links, Open Graph and Twitter cards with a share image per language, JSON-LD structured data, sitemap and `robots.txt`
 - 🛡️ Content Security Policy generated at build time, with hashes for every inline script and style
 - ♿ WCAG 2.1 AA checked by axe-core in both themes on every CI run
 

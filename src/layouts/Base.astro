@@ -9,7 +9,7 @@ import {
   stripLocale,
   type Locale,
 } from '@/i18n/ui';
-import { publicPath, withBase, withoutBase } from '@/lib/paths';
+import { absoluteUrl, publicPath, withBase, withoutBase } from '@/lib/paths';
 import { cspHash, THEME_SCRIPT } from '@/lib/theme-script';
 
 interface Props {
@@ -27,8 +27,7 @@ const pageTitle = title ? `${title} · ${ui.siteTitle}` : ui.siteTitle;
 // the page still builds, but canonical and share URLs stay relative. Every
 // href goes through `withBase`, so the site also works from a subdirectory.
 const site = Astro.site;
-const absolute = (path: string) =>
-  site ? new URL(withBase(path), site).href : withBase(path);
+const absolute = (path: string) => absoluteUrl(site, path);
 const pathname = publicPath(withoutBase(Astro.url.pathname));
 const basePath = stripLocale(pathname);
 const canonical = absolute(pathname);

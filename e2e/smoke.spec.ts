@@ -148,9 +148,39 @@ test('Content Security Policy allows the inline theme script', async ({
   await page.evaluate(() => localStorage.setItem('theme', 'dark'));
   await page.goto(url('/pl'));
 
-  await expect(
-    page.locator('meta[http-equiv="content-security-policy"]'),
-  ).toHaveCount(1);
+  const policy = page.locator('meta[http-equiv="content-security-policy"]');
+  await expect(policy).toHaveCount(1);
+  const content = await policy.getAttribute('content');
+  expect(content).toContain("object-src 'none'");
+  expect(content).toContain("base-uri 'self'");
+  expect(content).not.toContain('unsafe-inline');
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   expect(errors).toEqual([]);
+});
+
+test('pages carry WebSite and ItemList structured data', async ({ page }) => {
+  await page.goto(url('/pl/mac'));
+
+  const blocks = page.locator('script[type="application/ld+json"]');
+  await expect(blocks).toHaveCount(1);
+  const [website, list] = JSON.parse((await blocks.textContent()) ?? '');
+
+  expect(website).toMatchObject({
+    '@type': 'WebSite',
+    url: absolute('/pl'),
+    inLanguage: 'pl',
+  });
+  const cards = page.locator('article');
+  expect(list).toMatchObject({
+    '@type': 'ItemList',
+    url: absolute('/pl/mac'),
+    numberOfItems: await cards.count(),
+  });
+  const firstId = await cards.first().getAttribute('id');
+  expect(list.itemListElement[0]).toMatchObject({
+    position: 1,
+    name: await cards.first().getByRole('heading').textContent(),
+    url: `${absolute('/pl/mac')}#${firstId}`,
+  });
+  await expect(page.locator(`#${firstId}`)).toHaveCount(1);
 });

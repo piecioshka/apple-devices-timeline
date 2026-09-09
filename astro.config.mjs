@@ -37,6 +37,9 @@ export default defineConfig({
   security: {
     // Emits a Content-Security-Policy meta tag with hashes of the bundled
     // scripts and styles; the inline theme script adds its own hash.
-    csp: true,
+    csp: {
+      // No plugins, and no <base> that could redirect relative URLs.
+      directives: ["object-src 'none'", "base-uri 'self'"],
+    },
   },
 });

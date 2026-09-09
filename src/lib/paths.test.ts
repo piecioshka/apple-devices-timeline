@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { joinBase, publicPath, stripBase } from './paths';
+import { absoluteUrl, joinBase, publicPath, stripBase } from './paths';
 
 describe('publicPath', () => {
   it('maps build-time file names to served paths', () => {
@@ -52,5 +52,20 @@ describe('stripBase', () => {
   it('does not touch pathnames outside the base', () => {
     expect(stripBase('/repo', '/repository/x')).toBe('/repository/x');
     expect(stripBase('/repo', '/other')).toBe('/other');
+  });
+});
+
+describe('absoluteUrl', () => {
+  it('resolves paths against the site origin', () => {
+    expect(absoluteUrl('https://example.com', '/')).toBe(
+      'https://example.com/',
+    );
+    expect(absoluteUrl(new URL('https://example.com'), '/pl/mac')).toBe(
+      'https://example.com/pl/mac',
+    );
+  });
+
+  it('falls back to the served path without a site', () => {
+    expect(absoluteUrl(undefined, '/pl/mac')).toBe('/pl/mac');
   });
 });

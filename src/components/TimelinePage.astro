@@ -1,7 +1,9 @@
 ---
 import { devices } from '@/data/devices';
-import { UI, plural, type Locale } from '@/i18n/ui';
+import { UI, localePath, plural, type Locale } from '@/i18n/ui';
 import type { CategoryFilter } from '@/lib/categories';
+import { absoluteUrl } from '@/lib/paths';
+import { itemList, serializeJsonLd, webSite } from '@/lib/structured-data';
 import { buildTimeline, filterByCategory, yearRange } from '@/lib/timeline';
 import CategoryNav from './CategoryNav.astro';
 import LangSwitch from './LangSwitch.astro';
@@ -21,8 +23,29 @@ const range = yearRange(devices);
 const years = buildTimeline(filterByCategory(devices, filter));
 const deviceCount = years.reduce((sum, year) => sum + year.deviceCount, 0);
 const launchCount = years.reduce((sum, year) => sum + year.launches.length, 0);
+
+// Structured data: the site itself plus the devices this page lists, in the
+// order they appear.
+const listed = years.flatMap((year) =>
+  year.launches.flatMap((launch) => launch.devices),
+);
+const jsonLd = serializeJsonLd([
+  webSite({
+    name: ui.siteTitle,
+    description: ui.siteDescription,
+    url: absoluteUrl(Astro.site, localePath(locale, '/')),
+    locale,
+  }),
+  itemList({
+    name:
+      filter === 'all' ? ui.title : `${ui.categories[filter]} · ${ui.title}`,
+    url: absoluteUrl(Astro.site, localePath(locale, path)),
+    devices: listed,
+  }),
+]);
 ---
 
+<script type="application/ld+json" is:inline set:html={jsonLd}></script>
 <header class="header">
   <div class="header-inner">
     <div class="utility">

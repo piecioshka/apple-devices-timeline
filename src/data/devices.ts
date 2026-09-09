@@ -5,7 +5,7 @@ import type { ThumbnailKey } from '@/lib/thumbnails';
 export type LocalizedText = Record<Locale, string>;
 
 export interface Device {
-  /** Stable slug used as a React key and anchor. */
+  /** Stable slug, unique in the dataset; anchors the card as `#<id>`. */
   id: string;
   name: string;
   category: CategorySlug;
