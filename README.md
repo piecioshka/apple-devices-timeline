@@ -22,7 +22,7 @@ Live at https://piecioshka.github.io/apple-devices-timeline/ 🌐
 - ⏩ Year links to jump straight to any year
 - 📚 Product lines index at the bottom of every page: each line on the page (_iPad, iPad mini, iPad Air, iPad Pro on the iPad page_) with its model count and years, expandable to the list of its models
 - 🔮 Rumors section above the timeline with the unannounced devices the press expects next, grouped by expected window from the furthest down to the soonest, tagged and kept out of the counts (_sources named on every card_)
-- 🕒 "Last updated" date in the header, so you know how fresh the list is
+- 🕒 "Last updated" date and time (_UTC_) in the header, so you know how fresh the list is
 - 📦 Plain TypeScript dataset in `src/data/devices.ts` with announcement dates from Apple Newsroom
 - 🌗 Light and dark themes with a switch that remembers your choice, defaulting to the system setting
 - 🇬🇧🇵🇱 English and Polish versions with a language switch (_Polish lives under `/pl`_)
@@ -121,7 +121,7 @@ To add a device, append an object and run `npm test`; the dataset tests check id
 
 Rumored devices sit in `src/data/rumors.ts` with the same `id`, `name`, `category` and `thumbnail` fields, plus `expectedAt` (_a month like `2026-10`, a half-year like `2027-H1` or a year like `2028`_), a one-line `summary` per language and a list of `sources`. When Apple announces one, move it to `devices.ts` under the same id and delete the rumor; the tests reject ids present in both files and windows that have already passed.
 
-`src/data/meta.ts` holds `DATA_UPDATED_AT`, the date shown as "last updated" in the header and as the "as of" date of the rumors section. Bump it with every data change; a test checks it is not older than the latest announcement.
+`src/data/meta.ts` holds `DATA_UPDATED_AT`, an ISO instant in UTC shown as "last updated" in the header (_with the time of day_) and, as a calendar day, as the "as of" date of the rumors section. Bump it with every data change; a test checks it is not older than the latest announcement.
 
 </details>
 

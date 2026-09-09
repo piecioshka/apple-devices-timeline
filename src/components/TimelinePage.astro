@@ -9,7 +9,7 @@ import { itemList, serializeJsonLd, webSite } from '@/lib/structured-data';
 import {
   buildTimeline,
   filterByCategory,
-  formatFullDate,
+  formatDateTime,
   yearRange,
 } from '@/lib/timeline';
 import CategoryNav from './CategoryNav.astro';
@@ -91,7 +91,7 @@ const jsonLd = serializeJsonLd([
     <p class="updated">
       {ui.updatedLabel}:{' '}
       <time datetime={DATA_UPDATED_AT}>
-        {formatFullDate(DATA_UPDATED_AT, ui.dateLocale)}
+        {formatDateTime(DATA_UPDATED_AT, ui.dateLocale)}
       </time>
     </p>
     <div class="years">

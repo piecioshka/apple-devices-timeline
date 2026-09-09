@@ -4,7 +4,7 @@ import { CATEGORY_SLUGS } from '@/lib/categories';
 import { isExpectedWindow, windowEnd, windowOrder } from '@/lib/rumors';
 import { isThumbnailKey } from '@/lib/thumbnails';
 import { devices } from './devices';
-import { DATA_UPDATED_AT } from './meta';
+import { DATA_UPDATED_ON } from './meta';
 import { rumors } from './rumors';
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -31,7 +31,7 @@ describe('rumors dataset', () => {
   it('has no window that ended before the last data update', () => {
     for (const r of rumors)
       expect(
-        windowEnd(r.expectedAt).localeCompare(DATA_UPDATED_AT),
+        windowEnd(r.expectedAt).localeCompare(DATA_UPDATED_ON),
         `${r.id}: ${r.expectedAt}`,
       ).toBeGreaterThanOrEqual(0);
   });

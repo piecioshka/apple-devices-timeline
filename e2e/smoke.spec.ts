@@ -164,8 +164,13 @@ test('home page dates the list and previews rumored devices', async ({
   await page.goto(url('/'));
 
   const updated = page.locator('header time');
-  await expect(updated).toHaveAttribute('datetime', /^\d{4}-\d{2}-\d{2}$/);
-  await expect(updated).toHaveText(/^\d{1,2} [A-Z][a-z]+ \d{4}$/);
+  await expect(updated).toHaveAttribute(
+    'datetime',
+    /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/,
+  );
+  await expect(updated).toHaveText(
+    /^\d{1,2} [A-Z][a-z]+ \d{4}, \d{2}:\d{2} UTC$/,
+  );
 
   const rumors = page.getByRole('region', { name: 'Rumors' });
   await expect(rumors).toBeVisible();

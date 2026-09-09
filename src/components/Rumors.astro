@@ -1,5 +1,5 @@
 ---
-import { DATA_UPDATED_AT } from '@/data/meta';
+import { DATA_UPDATED_ON } from '@/data/meta';
 import type { Rumor } from '@/data/rumors';
 import { UI, plural, type Locale } from '@/i18n/ui';
 import { formatWindow, groupByWindow } from '@/lib/rumors';
@@ -28,7 +28,7 @@ const groups = groupByWindow(rumors);
 
   <div class="content">
     <p class="intro">
-      {ui.rumorsIntro(formatFullDate(DATA_UPDATED_AT, ui.dateLocale))}
+      {ui.rumorsIntro(formatFullDate(DATA_UPDATED_ON, ui.dateLocale))}
     </p>
     <ol class="windows">
       {groups.map((group) => (

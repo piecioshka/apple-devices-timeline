@@ -106,3 +106,30 @@ function fullDateFormat(locale: string): Intl.DateTimeFormat {
 export function formatFullDate(isoDate: string, locale = 'en-GB'): string {
   return fullDateFormat(locale).format(new Date(`${isoDate}T00:00:00Z`));
 }
+
+const timeFormats = new Map<string, Intl.DateTimeFormat>();
+
+function timeFormat(locale: string): Intl.DateTimeFormat {
+  let format = timeFormats.get(locale);
+  if (!format) {
+    format = new Intl.DateTimeFormat(locale, {
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23',
+      timeZone: 'UTC',
+      timeZoneName: 'short',
+    });
+    timeFormats.set(locale, format);
+  }
+  return format;
+}
+
+/**
+ * Full date and the time of day, in UTC, of an ISO instant in the given
+ * BCP 47 locale, e.g. "9 September 2026, 14:10 UTC".
+ */
+export function formatDateTime(isoInstant: string, locale = 'en-GB'): string {
+  const instant = new Date(isoInstant);
+  const day = instant.toISOString().slice(0, 10);
+  return `${formatFullDate(day, locale)}, ${timeFormat(locale).format(instant)}`;
+}

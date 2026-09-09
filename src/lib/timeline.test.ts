@@ -3,6 +3,7 @@ import type { Device } from '@/data/devices';
 import {
   buildTimeline,
   filterByCategory,
+  formatDateTime,
   formatFullDate,
   formatLaunchDate,
   sortNewestFirst,
@@ -105,6 +106,23 @@ describe('formatFullDate', () => {
   it('formats an ISO date with day, month name and year', () => {
     expect(formatFullDate('2026-09-09')).toBe('9 September 2026');
     expect(formatFullDate('2026-09-09', 'pl')).toBe('9 września 2026');
+  });
+});
+
+describe('formatDateTime', () => {
+  it('formats an ISO instant as a full date and the time in UTC', () => {
+    expect(formatDateTime('2026-09-09T14:10:00Z')).toBe(
+      '9 September 2026, 14:10 UTC',
+    );
+    expect(formatDateTime('2026-09-09T14:10:00Z', 'pl')).toBe(
+      '9 września 2026, 14:10 UTC',
+    );
+  });
+
+  it('shows the UTC calendar day, whatever the offset of the input', () => {
+    expect(formatDateTime('2026-09-10T01:30:00+02:00')).toBe(
+      '9 September 2026, 23:30 UTC',
+    );
   });
 });
 
