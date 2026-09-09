@@ -18,6 +18,7 @@ function device(
     category: 'mac',
     line: 'MacBook',
     thumbnail: 'macbook',
+    url: `https://support.apple.com/en-us/${overrides.id}`,
     highlight: { en: '', pl: '' },
     ...overrides,
   };

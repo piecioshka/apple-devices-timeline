@@ -9,6 +9,7 @@ const device = (id: string, name: string): Device => ({
   line: 'Mac mini',
   thumbnail: 'mac-mini',
   announcedAt: '2026-08-25',
+  url: `https://support.apple.com/en-us/${id}`,
   highlight: { en: '', pl: '' },
 });
 

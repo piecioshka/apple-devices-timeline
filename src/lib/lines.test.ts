@@ -10,6 +10,7 @@ function device(
     name: overrides.id,
     category: 'ipad',
     thumbnail: 'ipad',
+    url: `https://support.apple.com/en-us/${overrides.id}`,
     highlight: { en: '', pl: '' },
     ...overrides,
   };
