@@ -23,6 +23,7 @@ export const PRODUCT_LINES = [
   'iPhone SE',
   'iPhone Air',
   'iPhone e',
+  'iPhone Duo',
   // iPad
   'iPad',
   'iPad mini',
@@ -73,7 +74,6 @@ export const PRODUCT_LINES = [
   'AirTag',
   // Rumored lines with no announced model yet, under the working names the
   // press uses (see `src/data/rumors.ts`).
-  'Foldable iPhone',
   'Home hub',
   'Tabletop robot',
   'Smart glasses',

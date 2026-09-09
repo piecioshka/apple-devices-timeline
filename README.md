@@ -37,7 +37,7 @@ Coverage starts on 8 January 2008 with the Mac Pro and Xserve of that year and r
 
 | Category | Product lines |
 | --- | --- |
-| iPhone | Every iPhone, including the SE, mini, Plus, Pro, Pro Max, Air and "e" models |
+| iPhone | Every iPhone, including the SE, mini, Plus, Pro, Pro Max, Air, "e" and Duo models |
 | iPad | iPad, iPad mini, iPad Air, iPad Pro |
 | Mac | MacBook, MacBook Neo, MacBook Air, MacBook Pro, iMac, iMac Pro, Mac mini, Mac Studio, Mac Pro, Xserve |
 | Apple Watch | Apple Watch, Series, SE, Ultra |
@@ -119,7 +119,7 @@ Each entry in `src/data/devices.ts` has an `id`, `name`, `category` (_one of the
 
 To add a device, append an object and run `npm test`; the dataset tests check ids, dates, categories and lines. The timeline shows every device in the dataset, so extending it is just adding entries.
 
-Rumored devices sit in `src/data/rumors.ts` with the same `id`, `name`, `category`, `line` and `thumbnail` fields, plus `expectedAt` (_a month like `2026-10`, a half-year like `2027-H1` or a year like `2028`_), a one-line `summary` per language and a list of `sources`. When Apple announces one, move it to `devices.ts` under the same id and delete the rumor; the tests reject ids present in both files and windows that have already passed.
+Rumored devices sit in `src/data/rumors.ts` with the same `id`, `name`, `category`, `line` and `thumbnail` fields, plus `expectedAt` (_a month like `2026-10`, a half-year like `2027-H1` or a year like `2028`_), a one-line `summary` per language and a list of `sources`. When Apple announces one, move it to `devices.ts` under the same id (_or a new one when Apple's name differs from the working name_) and delete the rumor; the tests reject ids present in both files and windows that have already passed.
 
 `src/data/meta.ts` holds `DATA_UPDATED_AT`, an ISO instant in UTC shown as "last updated" in the header (_with the time of day_) and, as a calendar day, as the "as of" date of the rumors section. Bump it with every data change; a test checks it is not older than the latest announcement.
 
