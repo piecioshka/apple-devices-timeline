@@ -1,14 +1,14 @@
 :root {
   color-scheme: light dark;
 
-  --bg: light-dark(#f3f4f6, #0c0c0e);
-  --surface: light-dark(#ffffff, #17171a);
-  --ink: light-dark(#111114, #f2f2f4);
-  --muted: light-dark(#6b6b72, #9a9aa3);
-  --line: light-dark(#d9dadf, #2a2a30);
-  --line-strong: light-dark(#b9bac2, #46464f);
-  --accent: light-dark(#c2410c, #ff7a45);
-  --accent-ink: light-dark(#ffffff, #141414);
+  --bg: light-dark(#eef1f5, #0b0e13);
+  --surface: light-dark(#ffffff, #151a22);
+  --ink: light-dark(#0f1419, #e8ecf1);
+  --muted: light-dark(#5f6b7a, #97a3b3);
+  --line: light-dark(#cfd6df, #262d38);
+  --line-strong: light-dark(#a9b3c0, #3d4754);
+  --accent: light-dark(#1d5fd1, #5aa2ff);
+  --accent-ink: light-dark(#ffffff, #0b0e13);
 
   --font-body:
     -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue',
