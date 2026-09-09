@@ -4,7 +4,7 @@ import {
   formatWindow,
   groupByWindow,
   isExpectedWindow,
-  sortSoonestFirst,
+  sortFurthestFirst,
   windowEnd,
   windowOrder,
 } from './rumors';
@@ -79,15 +79,15 @@ describe('windowEnd', () => {
   });
 });
 
-describe('sortSoonestFirst', () => {
-  it('sorts by window and keeps input order for ties', () => {
+describe('sortFurthestFirst', () => {
+  it('sorts by window descending and keeps input order for ties', () => {
     const input = [
-      rumor('a', '2027'),
+      rumor('a', '2026-09'),
       rumor('b', '2026-10'),
       rumor('c', '2026-10'),
-      rumor('d', '2026-09'),
+      rumor('d', '2027'),
     ];
-    expect(sortSoonestFirst(input).map((r) => r.id)).toEqual([
+    expect(sortFurthestFirst(input).map((r) => r.id)).toEqual([
       'd',
       'b',
       'c',
@@ -98,14 +98,14 @@ describe('sortSoonestFirst', () => {
 });
 
 describe('groupByWindow', () => {
-  it('groups rumors sharing a window, soonest first', () => {
+  it('groups rumors sharing a window, furthest first', () => {
     const groups = groupByWindow([
-      rumor('a', '2027'),
-      rumor('b', '2026-10'),
+      rumor('a', '2026-10'),
+      rumor('b', '2027'),
       rumor('c', '2026-10'),
     ]);
-    expect(groups.map((g) => g.window)).toEqual(['2026-10', '2027']);
-    expect(groups[0].rumors.map((r) => r.id)).toEqual(['b', 'c']);
+    expect(groups.map((g) => g.window)).toEqual(['2027', '2026-10']);
+    expect(groups[1].rumors.map((r) => r.id)).toEqual(['a', 'c']);
   });
 
   it('returns an empty list for no rumors', () => {

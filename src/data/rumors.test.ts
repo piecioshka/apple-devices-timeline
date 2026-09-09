@@ -61,9 +61,9 @@ describe('rumors dataset', () => {
     }
   });
 
-  it('is ordered soonest first in the file', () => {
+  it('is ordered furthest window first in the file, like devices.ts', () => {
     const order = rumors.map((r) => windowOrder(r.expectedAt));
-    expect(order).toEqual([...order].sort((a, b) => a - b));
+    expect(order).toEqual([...order].sort((a, b) => b - a));
   });
 
   it('contains no Cyrillic characters or dashes other than the hyphen', () => {

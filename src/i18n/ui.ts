@@ -34,6 +34,8 @@ interface Dictionary {
   /** Heading of the section with unannounced, rumored devices. */
   rumorsTitle: string;
   rumors: PluralForms;
+  /** Short tag on every rumor card, next to the category. */
+  rumorTag: string;
   /** Disclaimer of the rumors section; `date` is the formatted "as of" date. */
   rumorsIntro: (date: string) => string;
   sources: string;
@@ -87,6 +89,7 @@ export const UI: Record<Locale, Dictionary> = {
     updatedLabel: 'Last updated',
     rumorsTitle: 'Rumors',
     rumors: ['rumored device', 'rumored devices'],
+    rumorTag: 'Rumor',
     rumorsIntro: (date) =>
       `Not announced by Apple. Devices the press expects next, based on reports from Bloomberg, MacRumors and analysts, as of ${date}. They stay out of the counts above.`,
     sources: 'Sources',
@@ -143,6 +146,7 @@ export const UI: Record<Locale, Dictionary> = {
       'plotkowane urządzenia',
       'plotkowanych urządzeń',
     ],
+    rumorTag: 'Plotka',
     rumorsIntro: (date) =>
       `Niezapowiedziane przez Apple. Urządzenia, których spodziewa się prasa według doniesień Bloomberga, MacRumors i analityków, stan na ${date}. Nie wliczają się do liczb powyżej.`,
     sources: 'Źródła',

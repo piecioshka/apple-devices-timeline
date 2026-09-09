@@ -19,7 +19,10 @@ const ui = UI[locale];
 <div class="card">
   <Pictogram thumbnail={rumor.thumbnail} />
   <div class="body">
-    <p class="category">{ui.categories[rumor.category]}</p>
+    <p class="category">
+      {ui.categories[rumor.category]}
+      <span class="tag">{ui.rumorTag}</span>
+    </p>
     <h4 class="name">{rumor.name}</h4>
     <p class="summary">{rumor.summary[locale]}</p>
     <p class="sources">
@@ -50,11 +53,23 @@ const ui = UI[locale];
   }
 
   .category {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
     font-size: 0.6875rem;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--muted);
+  }
+
+  /* The one cue that says "not announced" even when the card is read alone. */
+  .tag {
+    padding: 0.1rem 0.45rem;
+    border: 1px dashed var(--accent);
+    border-radius: 999px;
+    color: var(--accent);
   }
 
   .name {

@@ -47,9 +47,13 @@ export function windowEnd(window: string): string {
   return end.toISOString().slice(0, 10);
 }
 
-export function sortSoonestFirst(rumors: Rumor[]): Rumor[] {
+/**
+ * Furthest window first, so the section reads like the timeline below it:
+ * time runs backwards down the page, from 2028 to the latest announcement.
+ */
+export function sortFurthestFirst(rumors: Rumor[]): Rumor[] {
   return [...rumors].sort(
-    (a, b) => windowOrder(a.expectedAt) - windowOrder(b.expectedAt),
+    (a, b) => windowOrder(b.expectedAt) - windowOrder(a.expectedAt),
   );
 }
 
@@ -58,10 +62,10 @@ export interface RumorGroup {
   rumors: Rumor[];
 }
 
-/** Rumors grouped by expected window, soonest first; input order within a window. */
+/** Rumors grouped by expected window, furthest first; input order within a window. */
 export function groupByWindow(rumors: Rumor[]): RumorGroup[] {
   const groups: RumorGroup[] = [];
-  for (const rumor of sortSoonestFirst(rumors)) {
+  for (const rumor of sortFurthestFirst(rumors)) {
     let group = groups.at(-1);
     if (!group || group.window !== rumor.expectedAt) {
       group = { window: rumor.expectedAt, rumors: [] };

@@ -20,7 +20,7 @@ Live at https://piecioshka.github.io/apple-devices-timeline/ 🌐
 - 🏷️ Keynote taglines name the launch days that had a keynote (_filled marker_); press-release launches get a hollow marker
 - 🔍 Category pages for iPhone, iPad, Mac, Apple Watch, audio, home & TV, displays, Vision, networking and accessories (_each has its own URL_)
 - ⏩ Year links to jump straight to any year
-- 🔮 Rumors section above the timeline with the unannounced devices the press expects next, grouped by expected window and kept out of the counts (_sources named on every card_)
+- 🔮 Rumors section above the timeline with the unannounced devices the press expects next, grouped by expected window from the furthest down to the soonest, tagged and kept out of the counts (_sources named on every card_)
 - 🕒 "Last updated" date in the header, so you know how fresh the list is
 - 📦 Plain TypeScript dataset in `src/data/devices.ts` with announcement dates from Apple Newsroom
 - 🌗 Light and dark themes with a switch that remembers your choice, defaulting to the system setting
