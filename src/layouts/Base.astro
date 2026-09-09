@@ -9,7 +9,7 @@ import {
   stripLocale,
   type Locale,
 } from '@/i18n/ui';
-import { publicPath } from '@/lib/paths';
+import { publicPath, withBase, withoutBase } from '@/lib/paths';
 import { cspHash, THEME_SCRIPT } from '@/lib/theme-script';
 
 interface Props {
@@ -24,10 +24,12 @@ const ui = UI[locale];
 const pageTitle = title ? `${title} · ${ui.siteTitle}` : ui.siteTitle;
 
 // Absolute URLs need `site` (astro.config.mjs, set from SITE_URL). Without it
-// the page still builds, but canonical and share URLs stay relative.
+// the page still builds, but canonical and share URLs stay relative. Every
+// href goes through `withBase`, so the site also works from a subdirectory.
 const site = Astro.site;
-const absolute = (path: string) => (site ? new URL(path, site).href : path);
-const pathname = publicPath(Astro.url.pathname);
+const absolute = (path: string) =>
+  site ? new URL(withBase(path), site).href : withBase(path);
+const pathname = publicPath(withoutBase(Astro.url.pathname));
 const basePath = stripLocale(pathname);
 const canonical = absolute(pathname);
 const alternates = LOCALES.map((candidate) => ({
@@ -77,12 +79,22 @@ csp.insertScriptHash(cspHash(THEME_SCRIPT));
     <meta name="twitter:description" content={ui.siteDescription} />
     <meta name="twitter:image" content={ogImage} />
     <meta name="twitter:image:alt" content={ui.ogImageAlt} />
-    <link rel="icon" href="/favicon.ico" sizes="32x32" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
-    <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href={withBase('/favicon.ico')} sizes="32x32" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <link
+      rel="icon"
+      href={withBase('/favicon-32x32.png')}
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="icon"
+      href={withBase('/favicon-16x16.png')}
+      type="image/png"
+      sizes="16x16"
+    />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+    <link rel="manifest" href={withBase('/manifest.webmanifest')} />
     <meta
       name="theme-color"
       content="#f3f4f6"

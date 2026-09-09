@@ -5,10 +5,15 @@ import { defineConfig } from 'astro/config';
 // Public origin of the deployed site. Canonical URLs, Open Graph tags, the
 // sitemap and robots.txt are built from it; without it they fall back to
 // relative paths and the sitemap is skipped.
-const site = process.env.SITE_URL;
+const site = process.env.SITE_URL || undefined;
+
+// Path prefix when the site lives in a subdirectory of its origin, such as
+// "/apple-devices-timeline" on GitHub Pages. Leave unset to serve from "/".
+const base = process.env.BASE_PATH || undefined;
 
 export default defineConfig({
   site,
+  base,
   output: 'static',
   trailingSlash: 'never',
   build: {

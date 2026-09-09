@@ -1,6 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-
-const SITE_URL = process.env.SITE_URL ?? 'https://example.com';
+import { absolute, url } from './site';
 
 function collectConsoleErrors(page: Page): string[] {
   const errors: string[] = [];
@@ -13,7 +12,7 @@ function collectConsoleErrors(page: Page): string[] {
 
 test('home page renders the timeline in English', async ({ page }) => {
   const errors = collectConsoleErrors(page);
-  const response = await page.goto('/');
+  const response = await page.goto(url('/'));
 
   expect(response?.status()).toBe(200);
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
@@ -34,7 +33,7 @@ test('home page renders the timeline in English', async ({ page }) => {
 });
 
 test('Polish version lives under /pl and links back', async ({ page }) => {
-  await page.goto('/pl');
+  await page.goto(url('/pl'));
 
   await expect(page.locator('html')).toHaveAttribute('lang', 'pl');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(
@@ -47,11 +46,11 @@ test('Polish version lives under /pl and links back', async ({ page }) => {
   );
   await expect(
     languages.getByRole('link', { name: 'English' }),
-  ).toHaveAttribute('href', '/');
+  ).toHaveAttribute('href', url('/'));
 });
 
 test('category page filters devices and keeps the locale', async ({ page }) => {
-  await page.goto('/pl/mac');
+  await page.goto(url('/pl/mac'));
 
   const categories = page.getByRole('navigation', {
     name: 'Kategorie urządzeń',
@@ -66,7 +65,7 @@ test('category page filters devices and keeps the locale', async ({ page }) => {
 });
 
 test('theme switch applies and remembers the choice', async ({ page }) => {
-  await page.goto('/');
+  await page.goto(url('/'));
   const html = page.locator('html');
   const theme = page.getByRole('group', { name: 'Theme' });
 
@@ -89,15 +88,15 @@ test('pages carry canonical, hreflang and Open Graph metadata', async ({
   page,
   request,
 }) => {
-  await page.goto('/pl/mac');
+  await page.goto(url('/pl/mac'));
 
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     'href',
-    `${SITE_URL}/pl/mac`,
+    absolute('/pl/mac'),
   );
   await expect(
     page.locator('link[rel="alternate"][hreflang="en"]'),
-  ).toHaveAttribute('href', `${SITE_URL}/mac`);
+  ).toHaveAttribute('href', absolute('/mac'));
   await expect(page.locator('meta[property="og:locale"]')).toHaveAttribute(
     'content',
     'pl_PL',
@@ -105,8 +104,8 @@ test('pages carry canonical, hreflang and Open Graph metadata', async ({
   const image = await page
     .locator('meta[property="og:image"]')
     .getAttribute('content');
-  expect(image).toBe(`${SITE_URL}/og-pl.png`);
-  const response = await request.get('/og-pl.png');
+  expect(image).toBe(absolute('/og-pl.png'));
+  const response = await request.get(url('/og-pl.png'));
   expect(response.status()).toBe(200);
   expect(response.headers()['content-type']).toContain('image/png');
 });
@@ -115,15 +114,15 @@ test('serves robots.txt, the sitemap, icons and a 404 page', async ({
   page,
   request,
 }) => {
-  const robots = await request.get('/robots.txt');
+  const robots = await request.get(url('/robots.txt'));
   expect(robots.status()).toBe(200);
   expect(await robots.text()).toContain(
-    `Sitemap: ${SITE_URL}/sitemap-index.xml`,
+    `Sitemap: ${absolute('/sitemap-index.xml')}`,
   );
 
-  const sitemap = await request.get('/sitemap-0.xml');
+  const sitemap = await request.get(url('/sitemap-0.xml'));
   expect(sitemap.status()).toBe(200);
-  expect(await sitemap.text()).toContain(`<loc>${SITE_URL}/pl/mac</loc>`);
+  expect(await sitemap.text()).toContain(`<loc>${absolute('/pl/mac')}</loc>`);
 
   for (const path of [
     '/favicon.ico',
@@ -131,10 +130,10 @@ test('serves robots.txt, the sitemap, icons and a 404 page', async ({
     '/apple-touch-icon.png',
     '/manifest.webmanifest',
   ]) {
-    expect((await request.get(path)).status(), path).toBe(200);
+    expect((await request.get(url(path))).status(), path).toBe(200);
   }
 
-  const missing = await page.goto('/no-such-page');
+  const missing = await page.goto(url('/no-such-page'));
   expect(missing?.status()).toBe(404);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(
     'Page not found',
@@ -145,9 +144,9 @@ test('Content Security Policy allows the inline theme script', async ({
   page,
 }) => {
   const errors = collectConsoleErrors(page);
-  await page.goto('/');
+  await page.goto(url('/'));
   await page.evaluate(() => localStorage.setItem('theme', 'dark'));
-  await page.goto('/pl');
+  await page.goto(url('/pl'));
 
   await expect(
     page.locator('meta[http-equiv="content-security-policy"]'),

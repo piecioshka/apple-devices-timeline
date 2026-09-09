@@ -1,5 +1,6 @@
 ---
 import { LOCALES, UI, localePath, type Locale } from '@/i18n/ui';
+import { withBase } from '@/lib/paths';
 
 interface Props {
   locale: Locale;
@@ -15,7 +16,7 @@ const { locale, path } = Astro.props;
     {LOCALES.map((candidate) => (
       <li>
         <a
-          href={localePath(candidate, path)}
+          href={withBase(localePath(candidate, path))}
           class="option"
           lang={candidate}
           hreflang={candidate}

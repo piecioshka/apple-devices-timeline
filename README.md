@@ -12,6 +12,8 @@
 
 Timeline of every device Apple announced since 2008, newest first. Devices are grouped by the day they were announced, so keynote days (with their taglines, like "Awe Dropping" or "Scary Fast") sit next to quiet press-release launches.
 
+Live at https://piecioshka.github.io/apple-devices-timeline/ 🌐
+
 ## Features ✨
 
 - 🗓️ Newest-first timeline grouped by year and by announcement day
@@ -59,7 +61,14 @@ Before the first `npm run e2e`, install the browser once with `npx playwright in
 
 ## Deployment 🚢
 
-The build is static: upload `dist/` to any static host. Set the `SITE_URL` environment variable to the public origin of the site (_for example `https://timeline.example.com`_) before `npm run build`. It feeds canonical URLs, `hreflang` links, Open Graph URLs, the sitemap and `robots.txt`; without it those fall back to relative paths and the sitemap is skipped.
+Every push to `main` publishes the site to GitHub Pages at https://piecioshka.github.io/apple-devices-timeline/ through [pages.yml](.github/workflows/pages.yml). The workflow reads the origin and the path prefix from the repository's Pages settings, so a fork or a custom domain needs no changes to it.
+
+The build is static, so `dist/` also works on any other static host. Two environment variables shape the URLs when set before `npm run build`:
+
+| Variable | What it sets |
+| --- | --- |
+| `SITE_URL` | Public origin, for example `https://timeline.example.com`. It feeds canonical URLs, `hreflang` links, Open Graph URLs, the sitemap and `robots.txt`; without it those fall back to relative paths and the sitemap is skipped. |
+| `BASE_PATH` | Path prefix when the site lives in a subdirectory of the origin, for example `/apple-devices-timeline`. Leave it unset to serve from the root. |
 
 The Content Security Policy ships as a `<meta>` tag, so it works on any host. Hosts that let you set response headers can add `Strict-Transport-Security` on top.
 

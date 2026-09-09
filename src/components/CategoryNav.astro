@@ -1,6 +1,7 @@
 ---
 import { UI, localePath, type Locale } from '@/i18n/ui';
 import { CATEGORY_SLUGS, type CategoryFilter } from '@/lib/categories';
+import { withBase } from '@/lib/paths';
 
 interface Props {
   locale: Locale;
@@ -10,9 +11,9 @@ interface Props {
 const { locale, active } = Astro.props;
 const ui = UI[locale];
 const entries = [
-  { href: localePath(locale, '/'), slug: 'all', label: ui.all },
+  { href: withBase(localePath(locale, '/')), slug: 'all', label: ui.all },
   ...CATEGORY_SLUGS.map((slug) => ({
-    href: localePath(locale, `/${slug}`),
+    href: withBase(localePath(locale, `/${slug}`)),
     slug,
     label: ui.categories[slug],
   })),

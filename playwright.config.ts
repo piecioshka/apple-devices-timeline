@@ -2,6 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 const PORT = 4321;
 const SITE_URL = process.env.SITE_URL ?? 'https://example.com';
+const BASE_PATH = process.env.BASE_PATH ?? '';
 
 export default defineConfig({
   testDir: './e2e',
@@ -19,11 +20,13 @@ export default defineConfig({
     // keeps this instance independent from any preview server the developer
     // already has running.
     command: `npx astro build && npx astro preview --port ${PORT} --ignore-lock`,
-    url: `http://localhost:${PORT}/`,
+    // Under a base path the root answers 404, so probe the home page itself.
+    url: `http://localhost:${PORT}${BASE_PATH}/`,
     reuseExistingServer: false,
     timeout: 120_000,
     env: {
       SITE_URL,
+      BASE_PATH,
       // Astro 7 daemonizes `astro preview` when it detects an AI coding agent
       // in the environment; Playwright needs the server in the foreground.
       ASTRO_PREVIEW_BACKGROUND: '1',

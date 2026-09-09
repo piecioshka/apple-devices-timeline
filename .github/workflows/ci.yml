@@ -11,6 +11,12 @@ concurrency:
 permissions:
   contents: read
 
+# Same values as the GitHub Pages deployment (pages.yml), so the build and the
+# tests check the URLs that actually ship.
+env:
+  SITE_URL: https://piecioshka.github.io
+  BASE_PATH: /apple-devices-timeline
+
 jobs:
   build:
     runs-on: ubuntu-latest

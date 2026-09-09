@@ -1,6 +1,7 @@
 ---
 import Base from '@/layouts/Base.astro';
 import { UI } from '@/i18n/ui';
+import { withBase } from '@/lib/paths';
 
 // Hosts serve a single /404.html, so this page carries both languages.
 ---
@@ -10,10 +11,10 @@ import { UI } from '@/i18n/ui';
     <p class="eyebrow">404</p>
     <h1 class="title">{UI.en.notFoundTitle}</h1>
     <p class="lede">
-      {UI.en.notFoundBody} <a href="/">{UI.en.notFoundLink}</a>
+      {UI.en.notFoundBody} <a href={withBase('/')}>{UI.en.notFoundLink}</a>
     </p>
     <p class="lede" lang="pl">
-      {UI.pl.notFoundBody} <a href="/pl">{UI.pl.notFoundLink}</a>
+      {UI.pl.notFoundBody} <a href={withBase('/pl')}>{UI.pl.notFoundLink}</a>
     </p>
   </main>
 </Base>
