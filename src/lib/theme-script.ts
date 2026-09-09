@@ -12,6 +12,6 @@ export const THEME_SCRIPT = `try {
 } catch (_) {}`;
 
 /** CSP source expression ("sha256-...") for an inline script or style. */
-export function cspHash(content: string): string {
+export function cspHash(content: string): `sha256-${string}` {
   return `sha256-${createHash('sha256').update(content).digest('base64')}`;
 }

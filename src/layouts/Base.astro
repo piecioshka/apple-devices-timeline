@@ -35,7 +35,11 @@ const alternates = LOCALES.map((candidate) => ({
   href: absolute(localePath(candidate, basePath)),
 }));
 const ogImage = absolute(`/og-${locale}.png`);
-Astro.csp.insertScriptHash(cspHash(THEME_SCRIPT));
+// `Astro.csp` is undefined when `security.csp` is off; the inline theme
+// script must not ship without its hash, so fail the build instead.
+const csp = Astro.csp;
+if (!csp) throw new Error('Enable security.csp in astro.config.mjs');
+csp.insertScriptHash(cspHash(THEME_SCRIPT));
 ---
 
 <!doctype html>
