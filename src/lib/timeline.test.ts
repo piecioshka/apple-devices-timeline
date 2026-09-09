@@ -15,6 +15,7 @@ function device(
   return {
     name: overrides.id,
     category: 'mac',
+    line: 'MacBook',
     thumbnail: 'macbook',
     highlight: { en: '', pl: '' },
     ...overrides,

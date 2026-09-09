@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { LOCALES } from '@/i18n/ui';
 import { CATEGORY_SLUGS } from '@/lib/categories';
+import { PRODUCT_LINES } from '@/lib/lines';
 import { isThumbnailKey } from '@/lib/thumbnails';
 import { devices } from './devices';
 
@@ -25,6 +26,20 @@ describe('devices dataset', () => {
     const known = new Set<string>(CATEGORY_SLUGS);
     for (const d of devices)
       expect(known.has(d.category), `${d.id}: ${d.category}`).toBe(true);
+  });
+
+  it('keeps every product line within one category', () => {
+    const categoryOfLine = new Map<string, string>();
+    for (const d of devices) {
+      const seen = categoryOfLine.get(d.line);
+      if (seen) expect(seen, `${d.id}: ${d.line}`).toBe(d.category);
+      else categoryOfLine.set(d.line, d.category);
+    }
+  });
+
+  it('uses every product line at least once', () => {
+    const used = new Set<string>(devices.map((d) => d.line));
+    for (const line of PRODUCT_LINES) expect(used.has(line), line).toBe(true);
   });
 
   it('references an existing pictogram for every device', () => {

@@ -207,3 +207,52 @@ test('pages carry WebSite and ItemList structured data', async ({ page }) => {
   });
   await expect(page.locator(`#${firstId}`)).toHaveCount(1);
 });
+
+test('category page indexes its product lines at the bottom', async ({
+  page,
+}) => {
+  await page.goto(url('/ipad'));
+
+  const index = page.getByRole('region', { name: 'Product lines' });
+  await expect(index).toBeVisible();
+  // A single category needs no category headings.
+  await expect(index.getByRole('heading', { level: 3 })).toHaveCount(0);
+  const names = await index.locator('summary .name').allTextContents();
+  expect([...names].sort()).toEqual([
+    'iPad',
+    'iPad Air',
+    'iPad Pro',
+    'iPad mini',
+  ]);
+  await expect(index.locator('details[open]')).toHaveCount(0);
+
+  const mini = index.locator('details', { hasText: 'iPad mini' });
+  await mini.locator('summary').click();
+  const oldest = mini.getByRole('link').last();
+  await expect(oldest).toHaveText('iPad mini');
+  const href = await oldest.getAttribute('href');
+  expect(href).toMatch(/^#/);
+  await oldest.click();
+  await expect(page.locator(`article${href}`)).toBeInViewport();
+});
+
+test('home page groups the product lines by category', async ({ page }) => {
+  await page.goto(url('/pl'));
+
+  const index = page.getByRole('region', { name: 'Linie produktów' });
+  await expect(index.getByRole('heading', { level: 3 })).toHaveText([
+    'iPhone',
+    'iPad',
+    'Mac',
+    'Apple Watch',
+    'Audio',
+    'Dom i TV',
+    'Monitory',
+    'Vision',
+    'Sieć',
+    'Akcesoria',
+  ]);
+  const summaries = index.locator('summary');
+  await expect(summaries.filter({ hasText: /^iPad Pro/ })).toHaveCount(1);
+  await expect(summaries.first()).toContainText(/\d+ model/);
+});

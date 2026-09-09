@@ -41,6 +41,11 @@ interface Dictionary {
   sources: string;
   /** "First half of 2027" and the like, for rumor windows without a month. */
   halfYear: (half: 1 | 2, year: number) => string;
+  /** Heading of the product-line index at the bottom of the page. */
+  linesTitle: string;
+  lines: PluralForms;
+  linesIntro: string;
+  models: PluralForms;
   footer: string;
   themeLabel: string;
   themeSystem: string;
@@ -95,6 +100,11 @@ export const UI: Record<Locale, Dictionary> = {
     sources: 'Sources',
     halfYear: (half, year) =>
       half === 1 ? `First half of ${year}` : `Second half of ${year}`,
+    linesTitle: 'Product lines',
+    lines: ['product line', 'product lines'],
+    linesIntro:
+      'Every product line on this page, ordered by its latest announcement. Open a line to see its models.',
+    models: ['model', 'models'],
     footer:
       'Announcement dates follow Apple Newsroom. Devices announced on the same day are listed together; a filled marker means a keynote, a hollow one a press release.',
     themeLabel: 'Theme',
@@ -152,6 +162,11 @@ export const UI: Record<Locale, Dictionary> = {
     sources: 'Źródła',
     halfYear: (half, year) =>
       half === 1 ? `Pierwsza połowa ${year}` : `Druga połowa ${year}`,
+    linesTitle: 'Linie produktów',
+    lines: ['linia produktów', 'linie produktów', 'linii produktów'],
+    linesIntro:
+      'Wszystkie linie produktów z tej strony, od tej z najnowszą zapowiedzią. Rozwiń linię, żeby zobaczyć jej modele.',
+    models: ['model', 'modele', 'modeli'],
     footer:
       'Daty zapowiedzi pochodzą z Apple Newsroom. Urządzenia zapowiedziane tego samego dnia są zebrane razem; pełny znacznik oznacza keynote, pusty komunikat prasowy.',
     themeLabel: 'Motyw',

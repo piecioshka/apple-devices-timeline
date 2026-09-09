@@ -6,6 +6,7 @@ const device = (id: string, name: string): Device => ({
   id,
   name,
   category: 'mac',
+  line: 'Mac mini',
   thumbnail: 'mac-mini',
   announcedAt: '2026-08-25',
   highlight: { en: '', pl: '' },

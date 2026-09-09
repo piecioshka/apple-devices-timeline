@@ -14,6 +14,7 @@ import {
 } from '@/lib/timeline';
 import CategoryNav from './CategoryNav.astro';
 import LangSwitch from './LangSwitch.astro';
+import ProductLines from './ProductLines.astro';
 import Rumors from './Rumors.astro';
 import ThemeSwitch from './ThemeSwitch.astro';
 import Timeline from './Timeline.astro';
@@ -28,7 +29,8 @@ const { locale, filter } = Astro.props;
 const ui = UI[locale];
 const path = filter === 'all' ? '/' : `/${filter}`;
 const range = yearRange(devices);
-const years = buildTimeline(filterByCategory(devices, filter));
+const filtered = filterByCategory(devices, filter);
+const years = buildTimeline(filtered);
 const deviceCount = years.reduce((sum, year) => sum + year.deviceCount, 0);
 const launchCount = years.reduce((sum, year) => sum + year.launches.length, 0);
 // Unannounced devices sit above the timeline and outside the counts.
@@ -110,6 +112,13 @@ const jsonLd = serializeJsonLd([
     <Timeline locale={locale} years={years} />
   ) : (
     <p class="empty">{ui.empty}</p>
+  )}
+  {filtered.length > 0 && (
+    <ProductLines
+      locale={locale}
+      devices={filtered}
+      byCategory={filter === 'all'}
+    />
   )}
 </main>
 

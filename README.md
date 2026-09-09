@@ -20,6 +20,7 @@ Live at https://piecioshka.github.io/apple-devices-timeline/ 🌐
 - 🏷️ Keynote taglines name the launch days that had a keynote (_filled marker_); press-release launches get a hollow marker
 - 🔍 Category pages for iPhone, iPad, Mac, Apple Watch, audio, home & TV, displays, Vision, networking and accessories (_each has its own URL_)
 - ⏩ Year links to jump straight to any year
+- 📚 Product lines index at the bottom of every page: each line on the page (_iPad, iPad mini, iPad Air, iPad Pro on the iPad page_) with its model count and years, expandable to the list of its models
 - 🔮 Rumors section above the timeline with the unannounced devices the press expects next, grouped by expected window from the furthest down to the soonest, tagged and kept out of the counts (_sources named on every card_)
 - 🕒 "Last updated" date in the header, so you know how fresh the list is
 - 📦 Plain TypeScript dataset in `src/data/devices.ts` with announcement dates from Apple Newsroom
@@ -114,9 +115,9 @@ The Content Security Policy ships as a `<meta>` tag, so it works on any host. Ho
 <details>
 <summary><strong>Data 📊</strong></summary>
 
-Each entry in `src/data/devices.ts` has an `id`, `name`, `category` (_one of the slugs in `src/lib/categories.ts`_), `thumbnail` (_pictogram key from `src/lib/thumbnails.ts`_), `announcedAt` (_ISO date of the public announcement_), an optional `event` (_keynote tagline or conference name_) and a one-line `highlight` in English and Polish.
+Each entry in `src/data/devices.ts` has an `id`, `name`, `category` (_one of the slugs in `src/lib/categories.ts`_), `line` (_product line from `src/lib/lines.ts`; the index at the bottom of the page groups by it_), `thumbnail` (_pictogram key from `src/lib/thumbnails.ts`_), `announcedAt` (_ISO date of the public announcement_), an optional `event` (_keynote tagline or conference name_) and a one-line `highlight` in English and Polish.
 
-To add a device, append an object and run `npm test`; the dataset tests check ids, dates and categories. The timeline shows every device in the dataset, so extending it is just adding entries.
+To add a device, append an object and run `npm test`; the dataset tests check ids, dates, categories and lines. The timeline shows every device in the dataset, so extending it is just adding entries.
 
 Rumored devices sit in `src/data/rumors.ts` with the same `id`, `name`, `category` and `thumbnail` fields, plus `expectedAt` (_a month like `2026-10`, a half-year like `2027-H1` or a year like `2028`_), a one-line `summary` per language and a list of `sources`. When Apple announces one, move it to `devices.ts` under the same id and delete the rumor; the tests reject ids present in both files and windows that have already passed.
 
