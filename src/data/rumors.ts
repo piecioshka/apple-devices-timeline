@@ -118,19 +118,6 @@ export const rumors: Rumor[] = [
   },
   // First half of 2027
   {
-    id: 'macbook-pro-oled',
-    name: 'MacBook Pro (OLED, touchscreen)',
-    category: 'mac',
-    line: 'MacBook Pro',
-    thumbnail: 'macbook',
-    expectedAt: '2027-H1',
-    summary: {
-      en: 'First OLED MacBook Pro with a touchscreen, a thinner body and a hole-punch camera; reports put it between late 2026 and early 2027 on M5 Pro and M5 Max, with an M7 redesign to follow.',
-      pl: 'Pierwszy MacBook Pro z ekranem OLED i dotykiem, cieńszy, z kamerą w otworze zamiast wcięcia; raporty wskazują koniec 2026 lub początek 2027 na czipach M5 Pro i M5 Max, a potem przeprojektowany model z M7.',
-    },
-    sources: ['Bloomberg', 'DigiTimes', 'The Elec'],
-  },
-  {
     id: 'iphone-18',
     name: 'iPhone 18',
     category: 'iphone',
@@ -195,46 +182,20 @@ export const rumors: Rumor[] = [
     },
     sources: ['Bloomberg'],
   },
-  // Second half of 2026
+  // October 2026: Bloomberg expects a Mac and iPad launch on or around
+  // 27 October, two weeks after the home products
   {
-    id: 'homepod-mini-2',
-    name: 'HomePod mini (2nd generation)',
-    category: 'home',
-    line: 'HomePod mini',
-    thumbnail: 'homepod-mini',
-    expectedAt: '2026-H2',
-    summary: {
-      en: 'N1 wireless chip with Wi-Fi 7, a newer S-series chip for the new Siri, better sound and a red color; said to be ready and waiting for the Siri overhaul.',
-      pl: 'Czip N1 z Wi-Fi 7, nowszy czip z serii S pod nową Siri, lepszy dźwięk i czerwona wersja; podobno gotowy i czeka na przebudowaną Siri.',
-    },
-    sources: ['Bloomberg'],
-  },
-  {
-    id: 'apple-tv-2026',
-    name: 'Apple TV 4K (2026)',
-    category: 'home',
-    line: 'Apple TV',
-    thumbnail: 'apple-tv',
-    expectedAt: '2026-H2',
-    summary: {
-      en: 'A17 Pro and the N1 wireless chip for the new Siri and Apple Intelligence, same box; a new Siri Remote is also rumored.',
-      pl: 'A17 Pro i czip N1 pod nową Siri i Apple Intelligence, w tej samej obudowie; plotki mówią też o nowym pilocie Siri Remote.',
-    },
-    sources: ['Bloomberg'],
-  },
-  // October 2026
-  {
-    id: 'ipad-mini-8',
-    name: 'iPad mini (OLED)',
-    category: 'ipad',
-    line: 'iPad mini',
-    thumbnail: 'ipad',
+    id: 'macbook-pro-oled',
+    name: 'MacBook Pro (OLED, touchscreen)',
+    category: 'mac',
+    line: 'MacBook Pro',
+    thumbnail: 'macbook',
     expectedAt: '2026-10',
     summary: {
-      en: 'First OLED iPad mini at 8.4 inches, an A20-class chip, better water resistance and speakers that vibrate the display instead of using grilles.',
-      pl: 'Pierwszy iPad mini z ekranem OLED 8,4 cala, czip klasy A20, lepsza wodoodporność i głośniki wprawiające w drgania ekran zamiast kratek.',
+      en: 'First OLED MacBook Pro with a touchscreen, 14 and 16 inches, M5 Pro and M5 Max, a Dynamic Island around the camera and a significantly lighter body; Bloomberg expects it on or around 27 October.',
+      pl: 'Pierwszy MacBook Pro z ekranem OLED i dotykiem, 14 i 16 cali, M5 Pro i M5 Max, Dynamic Island wokół kamery i wyraźnie lżejsza obudowa; Bloomberg spodziewa się go około 27 października.',
     },
-    sources: ['Bloomberg', 'MacRumors'],
+    sources: ['Bloomberg', 'DigiTimes', 'The Elec'],
   },
   {
     id: 'macbook-pro-14-m6',
@@ -244,8 +205,8 @@ export const rumors: Rumor[] = [
     thumbnail: 'macbook',
     expectedAt: '2026-10',
     summary: {
-      en: 'Entry model with the 2 nm M6 in the current chassis; no M6 Pro or M6 Max is planned.',
-      pl: 'Podstawowy model z M6 w 2 nm w obecnej obudowie; M6 Pro i M6 Max nie są planowane.',
+      en: 'Entry model with the 2 nm M6 in the current chassis, sold below the OLED models; no M6 Pro or M6 Max is planned.',
+      pl: 'Podstawowy model z M6 w 2 nm w obecnej obudowie, tańszy od modeli OLED; M6 Pro i M6 Max nie są planowane.',
     },
     sources: ['Bloomberg'],
   },
@@ -257,11 +218,25 @@ export const rumors: Rumor[] = [
     thumbnail: 'imac',
     expectedAt: '2026-10',
     summary: {
-      en: 'Chip refresh only, the design stays.',
-      pl: 'Tylko nowy czip, wygląd bez zmian.',
+      en: 'M6 chip and new colors, the design stays.',
+      pl: 'Czip M6 i nowe kolory, wygląd bez zmian.',
     },
     sources: ['Bloomberg'],
   },
+  {
+    id: 'ipad-mini-8',
+    name: 'iPad mini (OLED)',
+    category: 'ipad',
+    line: 'iPad mini',
+    thumbnail: 'ipad',
+    expectedAt: '2026-10',
+    summary: {
+      en: 'First OLED iPad mini at 8.4 inches, the A20 Pro, a front camera on the landscape edge, better water resistance and a redesigned speaker system.',
+      pl: 'Pierwszy iPad mini z ekranem OLED 8,4 cala, A20 Pro, przednia kamera na dłuższej krawędzi, lepsza wodoodporność i przeprojektowane głośniki.',
+    },
+    sources: ['Bloomberg', 'MacRumors'],
+  },
+  // October 2026: Apple's "Welcome home" launch on 13 October
   {
     id: 'home-hub',
     name: 'Home hub (HomePad)',
@@ -270,8 +245,34 @@ export const rumors: Rumor[] = [
     thumbnail: 'home-hub',
     expectedAt: '2026-10',
     summary: {
-      en: '7-inch display on a HomePod-style base or a wall mount, a camera for FaceTime and intercom, and the new Siri; expected between October 2026 and early 2027 at around $350.',
-      pl: '7-calowy ekran na podstawie w stylu HomePoda albo na ścianie, kamera do FaceTime i interkomu oraz nowa Siri; spodziewany między październikiem 2026 a początkiem 2027, około 350 dolarów.',
+      en: 'Square 7-inch display on a countertop base or a wall mount, a FaceTime camera, intercom and the new Siri; Bloomberg expects it at Apple’s “Welcome home” launch on 13 October.',
+      pl: 'Kwadratowy 7-calowy ekran na podstawie albo na ścianie, kamera do FaceTime, interkom i nowa Siri; Bloomberg spodziewa się go na premierze „Welcome home” 13 października.',
+    },
+    sources: ['Bloomberg', 'MacRumors'],
+  },
+  {
+    id: 'homepod-mini-2',
+    name: 'HomePod mini (2nd generation)',
+    category: 'home',
+    line: 'HomePod mini',
+    thumbnail: 'homepod-mini',
+    expectedAt: '2026-10',
+    summary: {
+      en: 'N1 wireless chip with Wi-Fi 7, a second-generation Ultra Wideband chip, a newer chip for the new Siri, better sound and new colors including pink and green; expected on 13 October.',
+      pl: 'Czip N1 z Wi-Fi 7, druga generacja czipu Ultra Wideband, nowszy czip pod nową Siri, lepszy dźwięk i nowe kolory, w tym różowy i zielony; spodziewany 13 października.',
+    },
+    sources: ['Bloomberg', 'MacRumors'],
+  },
+  {
+    id: 'apple-tv-2026',
+    name: 'Apple TV 4K (2026)',
+    category: 'home',
+    line: 'Apple TV',
+    thumbnail: 'apple-tv',
+    expectedAt: '2026-10',
+    summary: {
+      en: 'A newer A-series chip and the N1 wireless chip for the new Siri and Apple Intelligence, in the same box, plus an updated Siri Remote; expected on 13 October.',
+      pl: 'Nowszy czip z serii A i czip N1 pod nową Siri i Apple Intelligence, w tej samej obudowie, do tego odświeżony pilot Siri Remote; spodziewany 13 października.',
     },
     sources: ['Bloomberg', 'MacRumors'],
   },
