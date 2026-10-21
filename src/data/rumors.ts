@@ -182,8 +182,8 @@ export const rumors: Rumor[] = [
     },
     sources: ['Bloomberg'],
   },
-  // October 2026: Bloomberg expects a Mac and iPad launch on or around
-  // 27 October, two weeks after the home products
+  // October 2026: Apple invited media to a launch experience in Los Angeles
+  // on 28 October; Bloomberg expects the Macs and the iPad mini that week
   {
     id: 'macbook-pro-oled',
     name: 'MacBook Pro (OLED, touchscreen)',
@@ -192,8 +192,8 @@ export const rumors: Rumor[] = [
     thumbnail: 'macbook',
     expectedAt: '2026-10',
     summary: {
-      en: 'First OLED MacBook Pro with a touchscreen, 14 and 16 inches, M5 Pro and M5 Max, a Dynamic Island around the camera and a significantly lighter body; Bloomberg expects it on or around 27 October.',
-      pl: 'Pierwszy MacBook Pro z ekranem OLED i dotykiem, 14 i 16 cali, M5 Pro i M5 Max, Dynamic Island wokół kamery i wyraźnie lżejsza obudowa; Bloomberg spodziewa się go około 27 października.',
+      en: 'First OLED MacBook Pro with a touchscreen, 14 and 16 inches, M5 Pro and M5 Max, a Dynamic Island around the camera and a significantly lighter body; Apple invited media to a launch experience in Los Angeles on 28 October.',
+      pl: 'Pierwszy MacBook Pro z ekranem OLED i dotykiem, 14 i 16 cali, M5 Pro i M5 Max, Dynamic Island wokół kamery i wyraźnie lżejsza obudowa; Apple zaprosiło media na pokaz w Los Angeles 28 października.',
     },
     sources: ['Bloomberg', 'DigiTimes', 'The Elec'],
   },
@@ -233,46 +233,6 @@ export const rumors: Rumor[] = [
     summary: {
       en: 'First OLED iPad mini at 8.4 inches, the A20 Pro, a front camera on the landscape edge, better water resistance and a redesigned speaker system.',
       pl: 'Pierwszy iPad mini z ekranem OLED 8,4 cala, A20 Pro, przednia kamera na dłuższej krawędzi, lepsza wodoodporność i przeprojektowane głośniki.',
-    },
-    sources: ['Bloomberg', 'MacRumors'],
-  },
-  // October 2026: Apple's "Welcome home" launch on 13 October
-  {
-    id: 'home-hub',
-    name: 'Home hub (HomePad)',
-    category: 'home',
-    line: 'Home hub',
-    thumbnail: 'home-hub',
-    expectedAt: '2026-10',
-    summary: {
-      en: 'Square 7-inch display on a countertop base or a wall mount, a FaceTime camera, intercom and the new Siri; Bloomberg expects it at Apple’s “Welcome home” launch on 13 October.',
-      pl: 'Kwadratowy 7-calowy ekran na podstawie albo na ścianie, kamera do FaceTime, interkom i nowa Siri; Bloomberg spodziewa się go na premierze „Welcome home” 13 października.',
-    },
-    sources: ['Bloomberg', 'MacRumors'],
-  },
-  {
-    id: 'homepod-mini-2',
-    name: 'HomePod mini (2nd generation)',
-    category: 'home',
-    line: 'HomePod mini',
-    thumbnail: 'homepod-mini',
-    expectedAt: '2026-10',
-    summary: {
-      en: 'N1 wireless chip with Wi-Fi 7, a second-generation Ultra Wideband chip, a newer chip for the new Siri, better sound and new colors including pink and green; expected on 13 October.',
-      pl: 'Czip N1 z Wi-Fi 7, druga generacja czipu Ultra Wideband, nowszy czip pod nową Siri, lepszy dźwięk i nowe kolory, w tym różowy i zielony; spodziewany 13 października.',
-    },
-    sources: ['Bloomberg', 'MacRumors'],
-  },
-  {
-    id: 'apple-tv-2026',
-    name: 'Apple TV 4K (2026)',
-    category: 'home',
-    line: 'Apple TV',
-    thumbnail: 'apple-tv',
-    expectedAt: '2026-10',
-    summary: {
-      en: 'A newer A-series chip and the N1 wireless chip for the new Siri and Apple Intelligence, in the same box, plus an updated Siri Remote; expected on 13 October.',
-      pl: 'Nowszy czip z serii A i czip N1 pod nową Siri i Apple Intelligence, w tej samej obudowie, do tego odświeżony pilot Siri Remote; spodziewany 13 października.',
     },
     sources: ['Bloomberg', 'MacRumors'],
   },

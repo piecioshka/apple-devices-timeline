@@ -57,6 +57,7 @@ export const PRODUCT_LINES = [
   'Apple TV',
   'HomePod',
   'HomePod mini',
+  'HomeView',
   // Displays
   'LED Cinema Display',
   'Thunderbolt Display',
@@ -74,7 +75,6 @@ export const PRODUCT_LINES = [
   'AirTag',
   // Rumored lines with no announced model yet, under the working names the
   // press uses (see `src/data/rumors.ts`).
-  'Home hub',
   'Tabletop robot',
   'Smart glasses',
 ] as const;

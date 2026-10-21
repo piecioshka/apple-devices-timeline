@@ -58,7 +58,7 @@ const rumorsFixture: Rumor[] = [
   rumor({
     id: 'home-hub',
     expectedAt: '2026-10',
-    line: 'Home hub',
+    line: 'HomeView',
     category: 'home',
     thumbnail: 'home-hub',
   }),
@@ -101,7 +101,7 @@ describe('summarizeLines', () => {
     const lines = summarizeLines(devicesFixture, rumorsFixture);
     expect(lines.map((line) => line.line)).toEqual([
       'Tabletop robot',
-      'Home hub',
+      'HomeView',
       'MacBook Neo',
       'iPad',
       'iPad mini',
@@ -153,7 +153,7 @@ describe('groupLinesByCategory', () => {
     ]);
     expect(groups[2]?.lines.map((line) => line.line)).toEqual([
       'Tabletop robot',
-      'Home hub',
+      'HomeView',
     ]);
   });
 });

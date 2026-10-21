@@ -41,6 +41,45 @@ export interface Device {
 export const devices: Device[] = [
   // 2026
   {
+    id: 'apple-homeview',
+    name: 'Apple HomeView',
+    category: 'home',
+    line: 'HomeView',
+    thumbnail: 'home-hub',
+    announcedAt: '2026-10-13',
+    url: 'https://www.apple.com/apple-homeview/',
+    highlight: {
+      en: 'Apple’s first home hub: a 7-inch display on a tabletop stand or a wall mount, A18, Siri AI and face recognition for up to six people; $299, ships 13 November 2026, not sold in the EU.',
+      pl: 'Pierwszy domowy hub Apple: ekran 7 cali na podstawce albo na ścianie, A18, Siri AI i rozpoznawanie twarzy do sześciu osób; 299 dolarów, w sprzedaży od 13 listopada 2026, poza UE.',
+    },
+  },
+  {
+    id: 'homepod-mini-2',
+    name: 'HomePod mini 2',
+    category: 'home',
+    line: 'HomePod mini',
+    thumbnail: 'homepod-mini',
+    announcedAt: '2026-10-13',
+    url: 'https://www.apple.com/homepod-mini/',
+    highlight: {
+      en: 'S10 chip, a Sound Glow top that lights up with the music, five new colors and four-speaker surround with Apple TV; Siri AI comes in a later update.',
+      pl: 'Czip S10, podświetlana góra Sound Glow pulsująca z muzyką, pięć nowych kolorów i dźwięk przestrzenny z czterech głośników z Apple TV; Siri AI przyjdzie w późniejszej aktualizacji.',
+    },
+  },
+  {
+    id: 'apple-tv-4k-4',
+    name: 'Apple TV 4K (4th generation)',
+    category: 'home',
+    line: 'Apple TV',
+    thumbnail: 'apple-tv',
+    announcedAt: '2026-10-13',
+    url: 'https://www.apple.com/apple-tv-4k/',
+    highlight: {
+      en: 'A19 chip, far-field microphones for hands-free Siri AI, an AV1 decoder and a Siri Remote you can find with Find My.',
+      pl: 'Czip A19, mikrofony dalekiego zasięgu do Siri AI bez pilota, dekoder AV1 i pilot Siri Remote do odnalezienia w Find My.',
+    },
+  },
+  {
     id: 'iphone-18-pro',
     name: 'iPhone 18 Pro',
     category: 'iphone',
