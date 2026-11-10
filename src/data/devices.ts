@@ -41,6 +41,71 @@ export interface Device {
 export const devices: Device[] = [
   // 2026
   {
+    id: 'macbook-pro-14-proled',
+    name: 'MacBook Pro 14-inch (PROLED XDR, M5 Pro / M5 Max)',
+    category: 'mac',
+    line: 'MacBook Pro',
+    thumbnail: 'macbook',
+    announcedAt: '2026-10-28',
+    url: 'https://support.apple.com/en-us/148301',
+    highlight: {
+      en: 'First Mac with a touchscreen: a tandem OLED PROLED XDR display at up to 2000 nits and 120 Hz, a Dynamic Island and a 3 lb body; from $2,899, ships 6 November 2026.',
+      pl: 'Pierwszy Mac z ekranem dotykowym: tandemowy OLED PROLED XDR do 2000 nitów i 120 Hz, Dynamic Island i obudowa ważąca 1,4 kg; od 2899 dolarów, w sprzedaży od 6 listopada 2026.',
+    },
+  },
+  {
+    id: 'macbook-pro-16-proled',
+    name: 'MacBook Pro 16-inch (PROLED XDR, M5 Pro / M5 Max)',
+    category: 'mac',
+    line: 'MacBook Pro',
+    thumbnail: 'macbook',
+    announcedAt: '2026-10-28',
+    url: 'https://support.apple.com/en-us/148302',
+    highlight: {
+      en: 'The big OLED touchscreen model, 0.7 lb lighter and nearly 1 mm thinner than the mini-LED 16-inch, with up to 16 TB of storage; from $3,399.',
+      pl: 'Duży model z dotykowym OLED, lżejszy o 0,3 kg i cieńszy o prawie 1 mm od 16-calowego z mini-LED, z pamięcią do 16 TB; od 3399 dolarów.',
+    },
+  },
+  {
+    id: 'macbook-pro-14-m6',
+    name: 'MacBook Pro 14-inch (M6)',
+    category: 'mac',
+    line: 'MacBook Pro',
+    thumbnail: 'macbook',
+    announcedAt: '2026-10-27',
+    url: 'https://support.apple.com/en-us/148300',
+    highlight: {
+      en: 'Entry MacBook Pro with the M6, up to 30% faster graphics than the M5 model, Wi-Fi 7 and the mini-LED display; $1,999.',
+      pl: 'Podstawowy MacBook Pro z M6, grafika do 30% szybsza niż w modelu z M5, Wi-Fi 7 i ekran mini-LED; 1999 dolarów.',
+    },
+  },
+  {
+    id: 'imac-m6',
+    name: 'iMac 24-inch (M6)',
+    category: 'mac',
+    line: 'iMac',
+    thumbnail: 'imac',
+    announcedAt: '2026-10-27',
+    url: 'https://support.apple.com/en-us/148299',
+    highlight: {
+      en: 'M6 with up to twice the graphics of the M4 model and optional 2.5 Gigabit Ethernet, in the same design and seven colors; from $1,499.',
+      pl: 'M6 z grafiką do dwóch razy szybszą niż w modelu z M4 i opcjonalnym Ethernetem 2,5 Gb/s, w tej samej obudowie i siedmiu kolorach; od 1499 dolarów.',
+    },
+  },
+  {
+    id: 'ipad-mini-a20-pro',
+    name: 'iPad mini (A20 Pro)',
+    category: 'ipad',
+    line: 'iPad mini',
+    thumbnail: 'ipad',
+    announcedAt: '2026-10-26',
+    url: 'https://support.apple.com/en-us/149482',
+    highlight: {
+      en: 'First OLED iPad mini: an 8.5-inch display, the 2 nm A20 Pro and IP67, making it the first iPad rated for water and dust; from $699.',
+      pl: 'Pierwszy iPad mini z OLED: ekran 8,5 cala, A20 Pro w 2 nm i IP67, czyli pierwszy iPad z certyfikatem wodo- i pyłoszczelności; od 699 dolarów.',
+    },
+  },
+  {
     id: 'apple-homeview',
     name: 'Apple HomeView',
     category: 'home',
