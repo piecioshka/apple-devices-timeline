@@ -37,7 +37,7 @@ test('every device card links to its page on apple.com', async ({ page }) => {
   await page.goto(url('/'));
 
   const cards = page.locator('article');
-  const links = page.locator('article a[href^="https://"]');
+  const links = page.locator('article a.link-apple');
   await expect(links).toHaveCount(await cards.count());
   const hrefs = await links.evaluateAll((anchors) =>
     anchors.map((anchor) => anchor.getAttribute('href') ?? ''),
@@ -45,6 +45,19 @@ test('every device card links to its page on apple.com', async ({ page }) => {
   const onApple = /^https:\/\/(www|support)\.apple\.com\//;
   expect(hrefs.every((href) => onApple.test(href))).toBe(true);
   await expect(links.first()).toHaveAccessibleName(/ on apple\.com$/);
+});
+
+test('cards Apple compares link to apple.com compare with the predecessor', async ({
+  page,
+}) => {
+  await page.goto(url('/'));
+
+  const card = page.locator('article#ipad-mini-a20-pro');
+  await expect(card.getByRole('link', { name: /^Compare / })).toHaveAttribute(
+    'href',
+    'https://www.apple.com/ipad/compare/?modelList=ipad-mini-a20pro,ipad-mini-a17pro',
+  );
+  await expect(page.locator('article#iphone-5s a.link-compare')).toHaveCount(0);
 });
 
 test('Polish version lives under /pl and links back', async ({ page }) => {

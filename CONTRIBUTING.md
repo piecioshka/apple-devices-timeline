@@ -77,6 +77,8 @@ Each entry in `src/data/devices.ts` has an `id`, `name`, `category` (_one of the
 
 To add a device, append an object and run `npm test`; the dataset tests check ids, dates, categories and lines. The timeline shows every device in the dataset, so extending it is just adding entries.
 
+The "Compare" link on a card comes from `src/data/apple-compare.ts`: it maps a device id to the model key of the compare page on apple.com (`/iphone/compare/`, `/ipad/compare/`, `/mac/compare/`, `/watch/compare/`, `/airpods/compare/`). The page reads up to three keys from `?modelList=` and writes the key of any model you pick back into that parameter, so the key of a new model is in the URL after selecting it there. `src/lib/compare.ts` builds the link with the device and the models of its line announced on the latest earlier day. Devices without a key get no link.
+
 Rumored devices sit in `src/data/rumors.ts` with the same `id`, `name`, `category`, `line` and `thumbnail` fields, plus `expectedAt` (_a month like `2026-10`, a half-year like `2027-H1` or a year like `2028`_), a one-line `summary` per language and a list of `sources`. When Apple announces one, move it to `devices.ts` under the same id (_or a new one when Apple's name differs from the working name_) and delete the rumor; the tests reject ids present in both files and windows that have already passed.
 
 `src/data/meta.ts` holds `DATA_UPDATED_AT`, an ISO instant in UTC shown as "last updated" in the header (_with the time of day, converted to the visitor's time zone in the browser_) and, as a calendar day, as the "as of" date of the rumors section. Bump it with every data change; a test checks it is not older than the latest announcement.

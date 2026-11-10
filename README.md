@@ -25,6 +25,7 @@ Live at https://piecioshka.github.io/apple-devices-timeline/ 🌐
 - 🕒 "Last updated" date and time in the header, shown in your time zone (_UTC when JavaScript is off_), so you know how fresh the list is
 - 📦 Plain TypeScript dataset in `src/data/devices.ts` with announcement dates from Apple Newsroom
 - 🍎 Every card links to the device's page on apple.com (_its tech specs page on Apple Support, or the product page while a device has no tech specs page yet_)
+- ⚖️ "Compare" link on every iPhone, iPad, Mac, Apple Watch and AirPods model that Apple's compare tool covers, opening apple.com/compare with the model and its predecessor already picked (_swap in any older model there_)
 - 🌗 Light and dark themes with a switch that remembers your choice, defaulting to the system setting
 - 🇬🇧🇵🇱 English and Polish versions with a language switch (_Polish lives under `/pl`_)
 - ⚡ Fully static HTML built with Astro, no JavaScript shipped to the browser beyond the theme switch and the time-zone conversion of the update time

@@ -1,6 +1,7 @@
 ---
 import type { Device } from '@/data/devices';
 import { UI, type Locale } from '@/i18n/ui';
+import { compareUrl } from '@/lib/compare';
 import Pictogram from './Pictogram.astro';
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const { locale, device } = Astro.props;
+const compareHref = compareUrl(device, locale);
 ---
 
 <article id={device.id} class="card">
@@ -17,17 +19,32 @@ const { locale, device } = Astro.props;
     <p class="category">{UI[locale].categories[device.category]}</p>
     <h4 class="name">{device.name}</h4>
     <p class="highlight">{device.highlight[locale]}</p>
-    <a
-      class="link"
-      href={device.url}
-      rel="noopener"
-      aria-label={UI[locale].appleLink(device.name)}
-    >
-      apple.com
-      <svg class="link-icon" viewBox="0 0 12 12" aria-hidden="true">
-        <path d="M3.5 2.5h6v6M9.5 2.5 2.5 9.5" />
-      </svg>
-    </a>
+    <div class="links">
+      <a
+        class="link link-apple"
+        href={device.url}
+        rel="noopener"
+        aria-label={UI[locale].appleLink(device.name)}
+      >
+        apple.com
+        <svg class="link-icon" viewBox="0 0 12 12" aria-hidden="true">
+          <path d="M3.5 2.5h6v6M9.5 2.5 2.5 9.5" />
+        </svg>
+      </a>
+      {compareHref && (
+        <a
+          class="link link-compare"
+          href={compareHref}
+          rel="noopener"
+          aria-label={UI[locale].compareLink(device.name)}
+        >
+          {UI[locale].compare}
+          <svg class="link-icon" viewBox="0 0 12 12" aria-hidden="true">
+            <path d="M3.5 2.5h6v6M9.5 2.5 2.5 9.5" />
+          </svg>
+        </a>
+      )}
+    </div>
   </div>
 </article>
 
@@ -74,11 +91,17 @@ const { locale, device } = Astro.props;
     color: var(--muted);
   }
 
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    margin-top: 0.5rem;
+  }
+
   .link {
     display: inline-flex;
     align-items: center;
     gap: 0.25rem;
-    margin-top: 0.5rem;
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--accent);

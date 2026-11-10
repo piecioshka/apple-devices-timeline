@@ -32,6 +32,10 @@ interface Dictionary {
   pressRelease: string;
   /** Accessible name of the apple.com link on a device card. */
   appleLink: (name: string) => string;
+  /** Visible text of the compare link on a device card. */
+  compare: string;
+  /** Accessible name of the compare link on a device card. */
+  compareLink: (name: string) => string;
   empty: string;
   /** Label before the date of the last data update. */
   updatedLabel: string;
@@ -97,6 +101,8 @@ export const UI: Record<Locale, Dictionary> = {
     jumpToYear: 'Jump to year',
     pressRelease: 'Press release',
     appleLink: (name) => `${name} on apple.com`,
+    compare: 'Compare',
+    compareLink: (name) => `Compare ${name} with its predecessor on apple.com`,
     empty: 'Nothing in this category yet. Pick another category above.',
     updatedLabel: 'Last updated',
     rumorsTitle: 'Rumors',
@@ -156,6 +162,8 @@ export const UI: Record<Locale, Dictionary> = {
     jumpToYear: 'Przejdź do roku',
     pressRelease: 'Komunikat prasowy',
     appleLink: (name) => `${name} na apple.com`,
+    compare: 'Porównaj',
+    compareLink: (name) => `Porównaj ${name} z poprzednikiem na apple.com`,
     empty:
       'W tej kategorii nie ma jeszcze nic. Wybierz inną kategorię powyżej.',
     updatedLabel: 'Ostatnia aktualizacja',
