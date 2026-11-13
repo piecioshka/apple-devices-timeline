@@ -14,6 +14,11 @@ Timeline of every device Apple announced from 2008 to today. Devices are grouped
 
 Live at https://piecioshka.github.io/apple-devices-timeline/ 🌐
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/timeline-dark.png">
+  <img alt="Apple Devices Timeline - timeline" src="docs/screenshots/timeline-light.png">
+</picture>
+
 ## Features ✨
 
 - 🗓️ Newest-first timeline grouped by year and by announcement day

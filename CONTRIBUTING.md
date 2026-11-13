@@ -33,7 +33,7 @@ Then open the URL printed in the terminal.
 | `npm run typecheck` | Run `astro check` |
 | `npm run format` | Format the repository with Prettier |
 | `npm run format:check` | Verify formatting |
-| `npm run share-images` | Render the Open Graph images (`public/og-*.png`) from the SVG templates in `assets/og/`, with the year range taken from the dataset |
+| `npm run share-images` | Render the Open Graph images (`public/og-image-*.png`) from the SVG templates in `assets/og/`, with the year range taken from the dataset |
 
 ## Tests
 

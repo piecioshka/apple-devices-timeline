@@ -132,8 +132,8 @@ test('pages carry canonical, hreflang and Open Graph metadata', async ({
   const image = await page
     .locator('meta[property="og:image"]')
     .getAttribute('content');
-  expect(image).toBe(absolute('/og-pl.png'));
-  const response = await request.get(url('/og-pl.png'));
+  expect(image).toBe(absolute('/og-image-pl.png'));
+  const response = await request.get(url('/og-image-pl.png'));
   expect(response.status()).toBe(200);
   expect(response.headers()['content-type']).toContain('image/png');
 });

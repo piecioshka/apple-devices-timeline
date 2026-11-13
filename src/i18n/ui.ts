@@ -68,7 +68,7 @@ interface Dictionary {
   notFoundLink: string;
   /** Open Graph locale tag, e.g. "en_GB". */
   ogLocale: string;
-  /** Alt text of the share image at `/og-<locale>.png`, which shows `years`. */
+  /** Alt text of the share image at `/og-image-<locale>.png`, which shows `years`. */
   ogImageAlt: (years: YearRange) => string;
 }
 

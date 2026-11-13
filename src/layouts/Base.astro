@@ -36,7 +36,7 @@ const alternates = LOCALES.map((candidate) => ({
   locale: candidate,
   href: absolute(localePath(candidate, basePath)),
 }));
-const ogImage = absolute(`/og-${locale}.png`);
+const ogImage = absolute(`/og-image-${locale}.png`);
 const description = ui.siteDescription(coverage);
 const ogImageAlt = ui.ogImageAlt(coverage);
 // `Astro.csp` is undefined when `security.csp` is off; the inline theme

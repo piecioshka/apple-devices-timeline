@@ -1,5 +1,5 @@
 // Renders the Open Graph images (1200x630) from the SVG templates in
-// `assets/og/` into `public/og-<locale>.png`, filling in the year range from
+// `assets/og/` into `public/og-image-<locale>.png`, filling in the year range from
 // the dataset. Needs `rsvg-convert` (librsvg) on the PATH. Run with
 // `npm run share-images`.
 import { execFileSync } from 'node:child_process';
@@ -13,7 +13,7 @@ const last = Math.max(...years);
 const images = [
   {
     template: 'assets/og/og-{locale}.svg',
-    output: 'public/og-{locale}.png',
+    output: 'public/og-image-{locale}.png',
     width: 1200,
     height: 630,
   },
