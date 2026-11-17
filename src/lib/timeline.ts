@@ -28,9 +28,7 @@ export function filterByCategory<T extends Pick<Device, 'category'>>(
 }
 
 export function sortNewestFirst(devices: Device[]): Device[] {
-  return [...devices].sort((a, b) =>
-    b.announcedAt.localeCompare(a.announcedAt),
-  );
+  return devices.toSorted((a, b) => b.announcedAt.localeCompare(a.announcedAt));
 }
 
 export function buildTimeline(devices: Device[]): TimelineYear[] {

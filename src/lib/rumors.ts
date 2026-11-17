@@ -52,7 +52,7 @@ export function windowEnd(window: string): string {
  * time runs backwards down the page, from 2028 to the latest announcement.
  */
 export function sortFurthestFirst(rumors: Rumor[]): Rumor[] {
-  return [...rumors].sort(
+  return rumors.toSorted(
     (a, b) => windowOrder(b.expectedAt) - windowOrder(a.expectedAt),
   );
 }
