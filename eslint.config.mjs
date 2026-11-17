@@ -9,9 +9,16 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   ...astro.configs.recommended,
   {
-    // Node scripts outside the Astro build.
+    // Node scripts outside the Astro build. `document` is used only inside
+    // Playwright `page.evaluate()` callbacks, which run in the browser.
     files: ['scripts/**'],
-    languageOptions: { globals: { console: 'readonly', process: 'readonly' } },
+    languageOptions: {
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+        document: 'readonly',
+      },
+    },
   },
   prettier,
 );
